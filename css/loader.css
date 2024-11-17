@@ -1,0 +1,100 @@
+.loader-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+.infinity-loader {
+    display: inline-grid;
+    padding: 5px;
+    background: #fff;
+    filter: blur(4px) contrast(12);
+}
+
+.infinity-loader:before {
+    content: "";
+    height: 40px;
+    aspect-ratio: 3;
+    --c: #0000 64%, #000 66% 98%, #0000 101%;
+    background:
+        radial-gradient(35% 146% at 50% 159%, var(--c)) 0 0,
+        radial-gradient(35% 146% at 50% -59%, var(--c)) 100% 100%;
+    background-size: calc(200%/3) 50%;
+    background-repeat: repeat-x;
+    -webkit-mask: repeating-linear-gradient(90deg, #000 0 10%, #0000 0 20%);
+    animation: infinity-loader .8s infinite linear;
+}
+
+@keyframes infinity-loader {
+    100% {
+        background-position: -200% 0, -100% 100%;
+    }
+}
+
+.circle-loader {
+    width: 40px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background:
+        radial-gradient(farthest-side, #ED303C 94%, #0000),
+        radial-gradient(farthest-side, #3B8183 94%, #0000),
+        radial-gradient(farthest-side, #FAD089 94%, #0000),
+        radial-gradient(farthest-side, #FF9C5B 94%, #0000),
+        #ED303C;
+    background-size: 105% 105%;
+    background-repeat: no-repeat;
+    animation: circle-loader 2s infinite;
+}
+
+@keyframes circle-loader {
+    0% {
+        background-position: 50% -50px, -40px 50%, 50% calc(100% + 50px), calc(100% + 50px) 50%
+    }
+
+    20%,
+    25% {
+        background-position: 50% -50px, -50px 50%, 50% calc(100% + 50px), 50% 50%
+    }
+
+    45%,
+    50% {
+        background-position: 50% -50px, -50px 50%, 50% 50%, 50% 50%
+    }
+
+    75%,
+    75% {
+        background-position: 50% -50px, 50% 50%, 50% 50%, 50% 50%
+    }
+
+    95%,
+    100% {
+        background-position: 50% 50%, 50% 50%, 50% 50%, 50% 50%
+    }
+}
+
+.bar-loader {
+    height: 4px;
+    width: 100%;
+    --c1: no-repeat linear-gradient(#6100ee 0 0);
+    --c2: no-repeat linear-gradient(#26aa0c 0 0);
+    background: var(--c1), var(--c2), #d7b8fc;
+    background-size: 60% 100%;
+    animation: bar-loader 3s infinite;
+}
+
+@keyframes bar-loader {
+    0% {
+        background-position: -150% 0, -150% 0
+    }
+
+    66% {
+        background-position: 250% 0, -150% 0
+    }
+
+    100% {
+        background-position: 250% 0, 250% 0
+    }
+}
