@@ -435,7 +435,41 @@ a:hover>.icon-bg-white-hover {
     }
 }
 
-/* comment react section end */
+/* header section start */
+@media (width<=440px) {
+    .drawer {
+        display: none !important;
+    }
+}
+
+/* header section end */
+/* index section start */
+.text-gold {
+    color: #a88041;
+}
+
+.text-italic {
+    font-style: italic;
+}
+
+.goldenStroke {
+    border-bottom: 2px solid #a88041;
+    min-width: 200px;
+}
+
+.focus-absolute {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transform: translate(43%, 50%);
+    border: 4px solid white;
+    border-radius: 50%;
+}
+
+.focus-absolute img {
+    width: 100px;
+    height: 100px;
+}
 
 /* index section end */
 

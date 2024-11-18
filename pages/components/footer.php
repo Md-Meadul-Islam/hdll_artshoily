@@ -2,7 +2,7 @@
     <div
         class="row g-0 d-flex align-items-center justify-content-between px-lg-5 px-md-3 px-2 py-5 bg-secondary-subtle">
         <div class="col-md-7 col-12">
-            <img data-src="./images/logo.png" alt="logo" style="width:100px">
+            <img data-src="./images/logo.jpg" alt="logo" style="width:100px">
             <div class="w-100">
                 <p>Artshoily is a destination for artistic luxury where you can discover and buy the most exquisite
                     pieces of fine art and
