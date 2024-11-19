@@ -13,6 +13,13 @@ $(document).ready(function () {
         localStorage.setItem('deviceUUID', deviceUUID);
     }
     $('body').on('click', function (e) {
+        if ($(e.target).closest('.drawer-menu a, .drawer').length) {
+            if ($(e.target).closest('.drawer-menu a').length) {
+                $('.drawer').toggleClass('active');
+            }
+        } else {
+            $('.drawer').removeClass('active');
+        }
     });
 
 

@@ -34,7 +34,7 @@
     <div
         class="row g-0 d-flex align-items-center justify-content-center bg-dark text-white px-lg-5 px-md-3 px-2 pt-lg-5 pt-md-3 pt-2 pb-2">
         <div class="col-lg-8 col-md-10 col-12">
-            <ul class="nav">
+            <ul class="nav d-flex align-items-center justify-content-center">
                 <li class="nav-item">
                     <a>About Us</a>
                 </li>
@@ -75,7 +75,7 @@
                     <a>Careers</a>
                 </li>
             </ul>
-            <ul class="nav">
+            <ul class="nav d-flex align-items-center justify-content-center">
                 <li class="nav-item">
                     <a>Authenticity</a>
                 </li>
@@ -123,11 +123,12 @@
                 <a class=""><i class="twitter-icon icon-bg-white"></i></a>
                 <a class=""><i class="instagram-icon icon-bg-white"></i></a>
             </div>
-            <div>
-                Copyright © 2024 <a href="https://www.artshoily.com">Artshoily</a>
-                <span>|</span>
+            <div class="pt-3 d-md-flex d-block text-center align-items-center justify-content-center">
+                <p class="d-flex mb-0 align-items-center justify-content-center"> Copyright © 2024 <a
+                        href="https://www.artshoily.com" class="ps-2">Artshoily</a> <span
+                        class="d-md-block d-none px-2">|</span></p>
                 <a>Privacy Policy</a>
-                <span>|</span>
+                <span class="px-2">|</span>
                 <a>Terms of Use</a>
             </div>
         </div>

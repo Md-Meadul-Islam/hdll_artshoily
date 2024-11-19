@@ -436,9 +436,41 @@ a:hover>.icon-bg-white-hover {
 }
 
 /* header section start */
-@media (width<=440px) {
+.drawer-menu {
+    display: none;
+    position: relative;
+}
+
+.drawer {
+    position: relative;
+    transition: all 1s ease-in;
+}
+
+.drawer.active {
+    display: block !important;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    min-width: 300px;
+    height: auto;
+    box-shadow: 0 0 10px rgba(168, 128, 65, 0.5);
+    padding: 1rem;
+    transition: all 0.5s ease-in;
+}
+
+@media (width<=600px) {
+    .drawer-menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     .drawer {
         display: none !important;
+    }
+
+    .topcategorybox .nav {
+        display: block !important;
     }
 }
 
