@@ -12,36 +12,33 @@
             class="col-md-8 col-sm-9 ps-lg-2 ps-0 d-flex flex-column align-items-end justify-content-end drawer bg-body-tertiary">
             <div class="row w-100 g-0 d-flex align-items-center justify-content-end">
                 <div class="col-md-8 col-12 d-flex">
-                    <ul class="nav w-100 d-flex justify-content-end align-items-center gap-3 fs-10px px-3">
-                        <li class="nav-item">
+                    <ul
+                        class="nav w-100 d-sm-flex d-block text-center justify-content-sm-end justify-content-center align-items-center gap-3 fs-10px">
+                        <li class="nav-item py-sm-0 py-2">
                             <a class="">BLOG</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item py-sm-0 py-2">
                             <a class="">LOG IN</a>
                         </li>
+                        <li class="nav-item py-sm-0 py-2">
+                            <a class="d-flex align-items-center justify-content-center">
+                                <span class="pe-1">SEARCH </span><i class="search-icon icon-bg-grey"></i>
+                            </a>
+                        </li>
                     </ul>
-                    <div>
-                        <div class="search-box d-flex align-items-center justify-content-end fs-10px"
-                            style="min-width:150px">
-                            <a id="search" class="pe-2">Search</a>
-                            <a href="" id="searchbtn" class="d-flex align-items-center"><i
-                                    class="search-icon icon-bg-grey"></i></a>
-                        </div>
-                        <hr>
-                    </div>
                 </div>
             </div>
             <div class="row g-0 w-100">
                 <div class="col-12 position-relative overflow-hidden topcategorybox d-flex p-0 m-0 py-1">
                     <ul
                         class="nav w-100 d-flex text-center pt-md-0 pt-3 align-items-center justify-content-end gap-4 text-uppercase">
-                        <li class="nav-item">
-                            <a>Are Gallery</a>
+                        <li class="nav-item py-sm-0 py-2">
+                            <a>Art Gallery</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item py-sm-0 py-2">
                             <a>Artists</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item py-sm-0 py-2">
                             <a>About Us</a>
                         </li>
                     </ul>

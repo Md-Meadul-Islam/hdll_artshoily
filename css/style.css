@@ -443,7 +443,6 @@ a:hover>.icon-bg-white-hover {
 
 .drawer {
     position: relative;
-    transition: all 1s ease-in;
 }
 
 .drawer.active {

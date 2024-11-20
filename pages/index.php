@@ -55,7 +55,7 @@
             <div class="row g-0 d-flex">
                 <div class="col-12">
                     <div class="hero-img w-100">
-                        <img data-src="./images/hero.jpg" alt="HomePage" class="w-100 h-100">
+                        <img data-src="./images/hero.jpg" src="./images/hero.jpg" alt="HomePage" class="w-100 h-100">
                     </div>
                 </div>
             </div>
@@ -77,7 +77,7 @@
                             and that is precisely what we build through our unique offering.
                         </p>
                     </div>
-                    <ul class="nav text-uppercase text-gold fs-10px d-flex align-items-center justify-content-around">
+                    <!-- <ul class="nav text-uppercase text-gold fs-10px d-flex align-items-center justify-content-around">
                         <li class="nav-item">
                             <a>Impeccable Curation</a>
                         </li>
@@ -88,15 +88,12 @@
                             <a>Personalized Service</a>
                         </li>
                         <li class="nav-item">
-                            <a>Personalized Service</a>
-                        </li>
-                        <li class="nav-item">
                             <a>Insured Worldwide Shipping</a>
                         </li>
                     </ul>
                     <div class="w-100 d-flex align-items-center justify-content-center py-3 fs-10px">
                         <a class="btn btn-sm btn-outline-secondary text-uppercase">Learn More</a>
-                    </div>
+                    </div> -->
                     <div class="w-100 bg-secondary-subtle mt-3 py-3">
                         <h4 class="text-center">
                             - DISCOVER OUR WORLD -
@@ -109,7 +106,7 @@
                                 </div>
                                 <div class="goldenStroke py-2"></div>
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <a class="text-uppercase">Fine Art</a>
+                                    <a class="text-uppercase">Art Gallery</a>
                                 </div>
                             </div>
                             <div class="col-md-4 col-8">
