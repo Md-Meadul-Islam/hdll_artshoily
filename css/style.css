@@ -399,13 +399,13 @@ a:hover>.icon-bg-white-hover {
 }
 
 
-.icon-bg-green {
-    background-color: rgba(46, 206, 2, 0.8);
+.icon-bg-gold {
+    background-color: rgba(168, 128, 65, 0.8);
     transition: all 0.25s ease;
 }
 
-.icon-bg-green-hover:hover {
-    background-color: rgba(46, 206, 2, 0.8);
+.icon-bg-gold-hover:hover {
+    background-color: rgba(168, 128, 65, 0.8);
     transition: all 0.25s ease;
 }
 
@@ -475,6 +475,14 @@ a:hover>.icon-bg-white-hover {
 
 /* header section end */
 /* index section start */
+.border-gold {
+    border-color: #a88041;
+}
+
+.bg-gold {
+    background-color: #a88041;
+}
+
 .text-gold {
     color: #a88041;
 }
