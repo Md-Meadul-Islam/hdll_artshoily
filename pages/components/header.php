@@ -33,13 +33,13 @@
                     <ul
                         class="nav w-100 d-flex text-center pt-md-0 pt-3 align-items-center justify-content-end gap-4 text-uppercase">
                         <li class="nav-item py-sm-0 py-2">
-                            <a>Art Gallery</a>
+                            <a href="art-gallery">Art Gallery</a>
                         </li>
                         <li class="nav-item py-sm-0 py-2">
-                            <a>Artists</a>
+                            <a href="artists">Artists</a>
                         </li>
                         <li class="nav-item py-sm-0 py-2">
-                            <a>About Us</a>
+                            <a href="about">About Us</a>
                         </li>
                     </ul>
                 </div>

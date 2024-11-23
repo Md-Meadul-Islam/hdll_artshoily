@@ -5,27 +5,24 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="keywords" content="artshoily">
-        <meta name="description"
-            content="Explore engaging content on Viral Already! Dive into culture, facts, family, history, tech, and politics. Join our community for insights and adventures!">
+        <meta name="description" content="">
         <meta property="og:locale" content="en_US">
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Viral Already" />
-        <meta property="og:title" content="Art Shoily | Different Thinking" />
-        <meta property="og:description"
-            content="Explore engaging content on Viral Already! Dive into culture, facts, family, history, tech, and politics. Join our community for insights and adventures!" />
-        <meta property="og:image" content="https://www.viralalready.com/images/og.jpg" />
-        <meta property="og:url" content="https://www.viralalready.com" />
+        <meta property="og:site_name" content="Art Shoily" />
+        <meta property="og:title" content="Art Shoily" />
+        <meta property="og:description" content="" />
+        <meta property="og:image" content="https://www.artshoily.com/images/og.jpg" />
+        <meta property="og:url" content="https://www.artshoily.com" />
         <meta property="og:image:width" content="1280">
         <meta property="og:image:height" content="720">
         <meta name="twitter:card" content="summary_large_image">
-        <meta itemprop="name" content="Art Shoily | Different Thinking" />
-        <meta itemprop="description"
-            content="Explore engaging content on Viral Already! Dive into culture, facts, family, history, tech, and politics. Join our community for insights and adventures!" />
+        <meta itemprop="name" content="Art Shoily" />
+        <meta itemprop="description" content="" />
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
         <meta name="rating" content="adult">
-        <meta name="author" content="Viral Already">
-        <link rel="canonical" href="https://viralalready.com" />
-        <link rel="apple-touch-icon" href="https://www.viralalready.com/images/favicon.ico">
+        <meta name="author" content="Art Shoily">
+        <link rel="canonical" href="https://artishoily.com" />
+        <link rel="apple-touch-icon" href="https://www.artishoily.com/images/favicon.ico">
         <link rel="icon" type="image/gif" href="../images/favicon.ico">
         <title>Art Shoily</title>
         <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
@@ -106,7 +103,7 @@
                                 </div>
                                 <div class="goldenStroke py-2"></div>
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <a class="text-uppercase">Art Gallery</a>
+                                    <a href="art-gallery" class="text-uppercase">Art Gallery</a>
                                 </div>
                             </div>
                             <div class="col-md-4 col-8">
@@ -142,20 +139,7 @@
                                 <p>Intricate Gond Paintings</p>
                                 <div class="goldenStroke"></div>
                                 <div class="py-2">
-                                    <a class="btn btn-sm btn-outline-secondary">SHOP</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 col-12 p-2">
-                            <div>
-                                <img data-src="./images/inspired_collections/Collectibles-01_5bbce089-5173-45e4-beda-c224bee3e335_720x.png"
-                                    alt="collections" class="w-100 h-100">
-                            </div>
-                            <div>
-                                <p>Intricate Gond Paintings</p>
-                                <div class="goldenStroke"></div>
-                                <div class="py-2">
-                                    <a class="btn btn-sm btn-outline-secondary">DISCOVER</a>
+                                    <a href="art-gallery" class="btn btn-sm btn-outline-secondary">SHOP</a>
                                 </div>
                             </div>
                         </div>
@@ -168,7 +152,20 @@
                                 <p>Intricate Gond Paintings</p>
                                 <div class="goldenStroke"></div>
                                 <div class="py-2">
-                                    <a class="btn btn-sm btn-outline-secondary">EXPLORE</a>
+                                    <a href="viewart/?a=" class="btn btn-sm btn-outline-secondary">EXPLORE</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6 col-12 p-2">
+                            <div>
+                                <img data-src="./images/inspired_collections/Collectibles-01_5bbce089-5173-45e4-beda-c224bee3e335_720x.png"
+                                    alt="collections" class="w-100 h-100">
+                            </div>
+                            <div>
+                                <p>Intricate Gond Paintings</p>
+                                <div class="goldenStroke"></div>
+                                <div class="py-2">
+                                    <a href="viewartists/?a=" class="btn btn-sm btn-outline-secondary">DISCOVER</a>
                                 </div>
                             </div>
                         </div>
@@ -254,7 +251,8 @@
                             </div>
                         </div>
                         <div class="col-12 d-flex align-items-end justify-content-end">
-                            <a class="btn btn-sm bg-secondary-subtle text-uppercase">VIEW ENTIRE COLLECTION </a>
+                            <a href="art-gallery" class="btn btn-sm bg-secondary-subtle text-uppercase">VIEW ENTIRE
+                                COLLECTION </a>
                         </div>
                     </div>
                 </div>
@@ -290,7 +288,8 @@
                                 </div>
                                 <div class="text-center">
                                     <p class="fs-10px fw-bold">Sachin Jaltare</p>
-                                    <a href="" class="btn btn-sm btn-outline-secondary text-uppercase">Discover</a>
+                                    <a href="veiwartists/?a="
+                                        class="btn btn-sm btn-outline-secondary text-uppercase">Discover</a>
                                 </div>
                             </div>
                         </div>
@@ -309,7 +308,8 @@
                                 </div>
                                 <div class="text-center">
                                     <p class="fs-10px fw-bold">Sangeeta Abhay</p>
-                                    <a href="" class="btn btn-sm btn-outline-secondary text-uppercase">Discover</a>
+                                    <a href="veiwartists/?a="
+                                        class="btn btn-sm btn-outline-secondary text-uppercase">Discover</a>
                                 </div>
                             </div>
                         </div>
@@ -328,7 +328,8 @@
                                 </div>
                                 <div class="text-center">
                                     <p class="fs-10px fw-bold">Asit Kumar Patnaik </p>
-                                    <a href="" class="btn btn-sm btn-outline-secondary text-uppercase">Discover</a>
+                                    <a href="veiwartists/?a="
+                                        class="btn btn-sm btn-outline-secondary text-uppercase">Discover</a>
                                 </div>
                             </div>
                         </div>
@@ -347,7 +348,8 @@
                                 </div>
                                 <div class="text-center">
                                     <p class="fs-10px fw-bold">Gurmeet Marwah</p>
-                                    <a href="" class="btn btn-sm btn-outline-secondary text-uppercase">Discover</a>
+                                    <a href="veiwartists/?a="
+                                        class="btn btn-sm btn-outline-secondary text-uppercase">Discover</a>
                                 </div>
                             </div>
                         </div>

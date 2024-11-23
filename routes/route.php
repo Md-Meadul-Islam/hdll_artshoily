@@ -5,6 +5,11 @@ use App\Services\Route;
 
 Route::get('', 'HomeController', 'index');
 
+//Art 
+Route::get('art-gallery', 'ArtController', 'index');
+//Artists
+Route::get('artists', 'ArtistsController', 'index');
+
 //default page
 Route::get('terms', 'DashboardController', 'terms');
 Route::get('privacy', 'DashboardController', 'privacy');
