@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top flex-column py-0 px-lg-4 px-2">
+<nav class="navbar navbar-expand-lg bg-white fixed-top flex-column py-0 px-lg-4 px-2 shadow-lg">
     <div class="row g-0 w-100 d-flex align-items-center justify-content-between py-1">
         <div class="col-lg-4 col-2">
             <a class="" href="/">
@@ -9,7 +9,7 @@
             <a class="cursor-pointer"><i class="menu-bar-icon icon-bg-grey"></i></a>
         </div>
         <div
-            class="col-md-8 col-sm-9 ps-lg-2 ps-0 d-flex flex-column align-items-end justify-content-end drawer bg-body-tertiary">
+            class="col-md-8 col-sm-9 ps-lg-2 ps-0 d-flex flex-column align-items-end justify-content-end drawer bg-white">
             <div class="row w-100 g-0 d-flex align-items-center justify-content-end">
                 <div class="col-md-8 col-12 d-flex">
                     <ul
