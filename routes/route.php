@@ -7,8 +7,10 @@ Route::get('', 'HomeController', 'index');
 
 //Art 
 Route::get('art-gallery', 'ArtController', 'index');
+Route::get('viewart/{a}', 'ArtController', 'view');
 //Artists
 Route::get('artists', 'ArtistsController', 'index');
+Route::get('api/artists', 'ArtistsController', 'getArtists');
 
 //default page
 Route::get('terms', 'DashboardController', 'terms');

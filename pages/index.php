@@ -152,7 +152,8 @@
                                 <p>Intricate Gond Paintings</p>
                                 <div class="goldenStroke"></div>
                                 <div class="py-2">
-                                    <a href="viewart/?a=" class="btn btn-sm btn-outline-secondary">EXPLORE</a>
+                                    <a href="viewart/?a=dadfdd545dfd3424"
+                                        class="btn btn-sm btn-outline-secondary">EXPLORE</a>
                                 </div>
                             </div>
                         </div>

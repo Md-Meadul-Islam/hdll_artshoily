@@ -24,7 +24,7 @@
         <link rel="canonical" href="https://artishoily.com" />
         <link rel="apple-touch-icon" href="https://www.artishoily.com/images/favicon.ico">
         <link rel="icon" type="image/gif" href="../images/favicon.ico">
-        <title>Art Shoily | About</title>
+        <title>Art Shoily | Artists</title>
         <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="./css/bootstrap.css" />
         <link rel="stylesheet" href="./css/style.css" />
@@ -35,18 +35,23 @@
 
     <body>
         <?php pageAdd('components/header'); ?>
-        <section class="my-5">
-            <div class="row pt-2 g-0">
+        <!-- hero section starts -->
+        <section class="mt-5">
+            <div class="row g-0 d-flex">
                 <div class="col-12">
-                    <h2>Artists Page</h2>
+                    <div class="hero-img w-100">
+                        <img data-src="./images/artists.png" src="./images/artists.png" alt="Artists Cover Image"
+                            class="w-100 h-100">
+                    </div>
                 </div>
             </div>
         </section>
+        <!-- hero section ends -->
         <?php pageAdd('components/footer'); ?>
         <script src="./js/jquery.min.js"></script>
         <script src="./js/bootstrap.min.js"></script>
         <script src="./js/animations.js"></script>
-        <script src="./js/index.js"></script>
+        <script src="./js/artists.js"></script>
     </body>
 
 </html>

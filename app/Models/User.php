@@ -14,7 +14,6 @@ class User
     public $coverphoto;
     public $error;
     private $userstable = 'users';
-    private $abouttable = 'userabouts';
     protected $connection;
     public function __construct()
     {
@@ -77,41 +76,9 @@ class User
         }
 
     }
-    public function tempRegister($data, $type = 'temp')
-    {
-        $authuser = $this->connection->prepare("SELECT first_name FROM {$this->userstable} WHERE (user_id = ? OR userip = ? OR  uuid = ?) AND pass IS NOT NULL LIMIT 1");
-        $authuser->bind_param("sss", $data['user_id'], $data['ip'], $data['uuid']);
-        $authuser->execute();
-        $result = $authuser->get_result();
-        if ($result->num_rows > 0) {
-            echo json_encode(['redirect' => 'login']);
-            exit;
-        }
-
-        $findexisted = $this->connection->prepare("SELECT user_id, first_name FROM {$this->userstable} WHERE (user_id =? OR userip = ? OR  uuid = ?) AND pass IS NULL LIMIT 1");
-        $findexisted->bind_param("sss", $data['user_id'], $data['ip'], $data['uuid']);
-        $findexisted->execute();
-        $result = $findexisted->get_result();
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            return $row['user_id'];
-        } else {
-            $stmt = $this->connection->prepare("INSERT INTO {$this->userstable} (user_id, first_name, email, userrole, uuid, userip) VALUES (?, ?, ?, ?, ?, ?)");
-            if ($stmt === false) {
-                die('Prepare failed: ' . htmlspecialchars($this->connection->error));
-            }
-            $stmt->bind_param("ssssss", $data['user_id'], $data['first_name'], $data['email'], $type, $data['uuid'], $data['ip']);
-
-            if ($stmt->execute()) {
-                return $data['user_id'];
-            } else {
-                return false;
-            }
-        }
-    }
     public function user($id)
     {
-        $stmt = $this->connection->prepare("SELECT first_name, last_name, email, phone, userphoto, coverphoto, userrole FROM {$this->userstable} WHERE user_id = ? LIMIT 1");
+        $stmt = $this->connection->prepare("SELECT first_name, last_name, email, phone, userphoto, coverphoto, bio, userrole FROM {$this->userstable} WHERE user_id = ? LIMIT 1");
         $stmt->bind_param("s", $id);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -129,24 +96,21 @@ class User
         }
         return $this;
     }
-    public function allWriter()
+    public function artists()
     {
-        $writers = [];
-        $role = 'writer';
-        $stmt = $this->connection->prepare("SELECT u.user_id, u.first_name, u.last_name, u.email, u.phone, u.userphoto, u.userrole, u.status, u.useragent, u.geolocation, u.cr_at, 
-                   COUNT(a.article_id) AS article_count
+        $artists = [];
+        $role = 'artists';
+        $stmt = $this->connection->prepare("SELECT u.user_id, u.first_name, u.last_name, u.email, u.phone, u.userphoto, u.bio, u.userrole, u.status, u.cr_at
             FROM {$this->userstable} u
-            LEFT JOIN articles a ON u.user_id = a.user_id
             WHERE u.userrole = ?
-            GROUP BY u.user_id
         ");
         $stmt->bind_param('s', $role);
         $stmt->execute();
         $result = $stmt->get_result();
         while ($row = $result->fetch_assoc()) {
-            $writers[] = $row;
+            $artists[] = $row;
         }
-        return $writers;
+        return $artists;
     }
     public function userStatusUpdate($uid, $s)
     {
