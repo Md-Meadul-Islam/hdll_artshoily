@@ -97,7 +97,7 @@
                         <?php for ($i = 0; $i < 47; $i++): ?>
                             <div class="col-md-4 col-sm-6 col-12 p-3">
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <img data-src="./images/art-gallery/Link-<?php echo $i; ?>.png" alt="editions"
+                                    <img data-src="../storage/arts/Link-<?php echo $i; ?>.png" alt="editions"
                                         style="max-height:300px; max-width:300px;width:100%">
                                 </div>
                                 <div class="row g-0 d-flex justify-content-between align-items-end pt-2">
@@ -108,7 +108,7 @@
                                     </div>
                                     <div class="col-6 d-flex flex-column align-items-end">
                                         <p class="mb-0 fs-10px"><a
-                                                class="btn btn-sm btn-outline-secondary bg-gold py-0 text-white text-uppercase">Buy</a>
+                                                class="btn btn-sm btn-outline-secondary bg-gold py-0 text-white text-uppercase rounded-0">Buy</a>
                                         </p>
                                         <p class="text-secondary fs-10px mb-0">Seema Kohli </p>
                                         <p class="text-secondary fs-10px">Rs. 35,000 </p>

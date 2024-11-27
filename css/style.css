@@ -1,16 +1,12 @@
 @font-face {
-    font-family: LibreBaskerville;
-    src: url("LibreBaskerville-Regular.ttf") format("truetype");
+    font-family: Roboto;
+    src: url("Roboto-Regular.ttf") format("truetype");
 }
 
-@font-face {
-    font-family: Alieron;
-    src: url("Aileron-Regular.otf") format("opentype");
-}
 
 body {
     margin: 0;
-    font-family: LibreBaskerville, sans-serif, Rubik;
+    font-family: Roboto, sans-serif, Rubik;
     max-width: 1440px;
     margin-left: auto;
     margin-right: auto;

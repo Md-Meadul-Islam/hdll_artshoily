@@ -12,6 +12,13 @@ Route::get('viewart/{a}', 'ArtController', 'view');
 Route::get('artists', 'ArtistsController', 'index');
 Route::get('api/artists', 'ArtistsController', 'getArtists');
 
+//auth routes
+Route::get('login', 'AuthController', 'loginView');
+Route::post('login', 'AuthController', 'login');
+Route::get('register', 'AuthController', 'registerView');
+Route::post('register', 'AuthController', 'register');
+Route::get('add-artists', 'AuthController', 'artistView');
+Route::post('store-artists', 'AuthController', 'artists');
 //default page
 Route::get('terms', 'DashboardController', 'terms');
 Route::get('privacy', 'DashboardController', 'privacy');

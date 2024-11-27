@@ -112,6 +112,18 @@ class User
         }
         return $artists;
     }
+    public function addArtists($data)
+    {
+        $insertStmt = $this->connection->prepare("INSERT INTO {$this->userstable} (user_id, first_name, last_name, userphoto, coverphoto, bio) VALUES (?, ?, ?, ?, ?, ?)");
+        if ($insertStmt === false) {
+            die('Prepare failed: ' . htmlspecialchars($this->connection->error));
+        }
+        $insertStmt->bind_param('ssssss', $data['user_id'], $data['fname'], $data['lname'], $data[0], $data[1], $data['bio']);
+
+        if ($insertStmt->execute()) {
+            return [$data['user_id'], $data['fname']];
+        }
+    }
     public function userStatusUpdate($uid, $s)
     {
         $stmt = $this->connection->prepare("UPDATE {$this->userstable} SET status = ? WHERE user_id = ?");
