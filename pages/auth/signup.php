@@ -36,10 +36,6 @@
     <body>
         <div class="signup w-80 mx-auto" id="signup">
             <div class="row g-0 vh-100 d-flex align-items-center justify-content-center">
-                <div class="col-lg-6 col-md-12 order-lg-first order-md-last text-center px-2">
-                    <h1>Welcome to <span class="fw-bold f-alieron text-pink mb-0 fs-sm-6dvw">Artshoily</span></h1>
-                    <p class="mb-0">Join Our Family !</p>
-                </div>
                 <div class="col-lg-6 col-md-12">
                     <div class="d-flex justify-content-center py-4">
                         <a href="/" class="d-flex align-items-center w-auto" style="text-decoration: none">

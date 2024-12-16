@@ -19,7 +19,7 @@ class User
     {
         $this->connection = Database::getInstance()->getConnection();
     }
-    public function login($email, $pass, $type = 'writer')
+    public function login($email, $pass, $type = 'admin')
     {
         $user_email = mysqli_real_escape_string($this->connection, $email);
         $user_password = mysqli_real_escape_string($this->connection, $pass);
@@ -51,7 +51,7 @@ class User
             return ['error' => 'User Not Found!'];
         }
     }
-    public function signup($data, $type = 'user')
+    public function signup($data, $type = 'artists')
     {
         $pass = password_hash($data['pass'], PASSWORD_DEFAULT);
         $stmt = $this->connection->prepare("SELECT * FROM {$this->userstable} WHERE (email =? OR userip = ?)  LIMIT 1");
@@ -114,14 +114,14 @@ class User
     }
     public function addArtists($data)
     {
-        $insertStmt = $this->connection->prepare("INSERT INTO {$this->userstable} (user_id, first_name, last_name, userphoto, coverphoto, bio) VALUES (?, ?, ?, ?, ?, ?)");
+        $insertStmt = $this->connection->prepare("INSERT INTO {$this->userstable} (user_id, first_name, last_name, userphoto, coverphoto, bio,userip) VALUES (?, ?, ?, ?, ?, ?, ?)");
         if ($insertStmt === false) {
             die('Prepare failed: ' . htmlspecialchars($this->connection->error));
         }
-        $insertStmt->bind_param('ssssss', $data['user_id'], $data['fname'], $data['lname'], $data[0], $data[1], $data['bio']);
+        $insertStmt->bind_param('sssssss', $data['userid'], $data['fname'], $data['lname'], $data[0], $data[1], $data['bio'], $data['ip']);
 
         if ($insertStmt->execute()) {
-            return [$data['user_id'], $data['fname']];
+            return [$data['userid'], $data['fname']];
         }
     }
     public function userStatusUpdate($uid, $s)

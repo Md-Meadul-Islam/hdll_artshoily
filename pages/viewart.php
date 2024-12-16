@@ -69,7 +69,9 @@
                                         </td>
                                         <td>
                                             <p class="mb-0">
-                                                <?php echo $art['user_ids'] ?>
+                                                <?php foreach ($art['users'] as $user): ?>
+                                                    <a><?php echo $user['first_name'] . ' ' . $user['last_name']; ?></a>
+                                                <?php endforeach ?>
                                             </p>
                                         </td>
                                     </tr>
@@ -110,7 +112,9 @@
                                     <tr>
                                         <td> <span class="text-secondary fs-10px fw-bold">Price</span> </td>
                                         <td>
-                                            <p class="mb-0 text-capitalize">$<?php echo $art['price'] ?></p>
+                                            <p class="mb-0 text-capitalize">
+                                                <?php echo $art['currency'] . ' ' . $art['price'] ?>
+                                            </p>
                                         </td>
                                     </tr>
                                 </tbody>

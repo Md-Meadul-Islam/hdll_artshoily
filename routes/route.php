@@ -15,8 +15,8 @@ Route::get('api/artists', 'ArtistsController', 'getArtists');
 //auth routes
 Route::get('login', 'AuthController', 'loginView');
 Route::post('login', 'AuthController', 'login');
-Route::get('register', 'AuthController', 'registerView');
-Route::post('register', 'AuthController', 'register');
+Route::get('signup', 'AuthController', 'signupView');
+Route::post('signup', 'AuthController', 'singup');
 Route::get('add-artists', 'AuthController', 'artistView');
 Route::post('store-artists', 'AuthController', 'artists');
 //default page

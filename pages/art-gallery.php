@@ -93,29 +93,38 @@
             <div class="row g-0 d-flex align-items-center justify-content-center py-3">
                 <div class="col-lg-8 col-12">
                     <h4 class="text-center text-uppercase text-secondary">- Gallery -</h4>
-                    <div class="row g-0 d-flex align-items-center justify-content-center">
-                        <?php for ($i = 0; $i < 47; $i++): ?>
+                    <div class="row g-0 d-flex justify-content-center">
+                        <?php foreach ($arts as $i => $art): ?>
                             <div class="col-md-4 col-sm-6 col-12 p-3">
-                                <div class="d-flex align-items-center justify-content-center">
-                                    <img data-src="../storage/arts/Link-<?php echo $i; ?>.png" alt="editions"
-                                        style="max-height:300px; max-width:300px;width:100%">
+                                <div class="d-flex align-items-center justify-content-center border border-1">
+                                    <img data-src="../storage/arts/<?php echo $art['image']; ?>"
+                                        alt="<?php $art['imgalt'] ?>" style="max-height:300px; max-width:300px;width:100%;">
                                 </div>
                                 <div class="row g-0 d-flex justify-content-between align-items-end pt-2">
                                     <div class="col-6">
-                                        <p class="mb-0 fs-10px">The Golden Womb - 10</p>
-                                        <p class="text-secondary fs-10px mb-0">Serigraph on Metallic Fi... </p>
-                                        <p class="text-secondary fs-10px">19.5 x 19.5 inches </p>
+                                        <p class="mb-0 fs-10px"><?php echo $art['name']; ?></p>
+                                        <p class="text-secondary fs-10px mb-0">
+                                            <?php echo $art['canvas_type'] . " on " . $art['media']; ?>
+                                        </p>
+                                        <p class="art-dimension text-secondary fs-10px" title=""><?php echo $art['size']; ?>
+                                        </p>
                                     </div>
                                     <div class="col-6 d-flex flex-column align-items-end">
                                         <p class="mb-0 fs-10px"><a
                                                 class="btn btn-sm btn-outline-secondary bg-gold py-0 text-white text-uppercase rounded-0">Buy</a>
                                         </p>
-                                        <p class="text-secondary fs-10px mb-0">Seema Kohli </p>
-                                        <p class="text-secondary fs-10px">Rs. 35,000 </p>
+                                        <p class="text-secondary fs-10px mb-0">
+                                            <?php foreach ($art['users'] as $user): ?>
+                                                <a href=""><?php echo $user['first_name'] . ' ' . $user['last_name']; ?></a>
+                                            <?php endforeach ?>
+                                        </p>
+                                        <p class="text-secondary fs-10px">
+                                            <?php echo $art['currency'] . " " . $art['price']; ?>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
-                        <?php endfor ?>
+                        <?php endforeach ?>
                         <div class="col-12 d-flex align-items-end justify-content-end">
                             <a href="art-gallery" class="btn btn-sm bg-secondary-subtle text-uppercase">View more</a>
                         </div>

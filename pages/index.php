@@ -213,7 +213,7 @@
                                 </div>
                                 <div class="col-6 d-flex flex-column align-items-end">
                                     <p class="text-secondary fs-10px mb-0">SS.H. Raza</p>
-                                    <p class="text-secondary fs-10px">Rs. 3,50,000</p>
+                                    <p class="text-secondary fs-10px">BDT 3,50,000</p>
                                 </div>
                             </div>
                         </div>
@@ -230,7 +230,7 @@
                                 </div>
                                 <div class="col-6 d-flex flex-column align-items-end">
                                     <p class="text-secondary fs-10px mb-0">Thota Vaikuntam</p>
-                                    <p class="text-secondary fs-10px">Rs. 1,50,000 </p>
+                                    <p class="text-secondary fs-10px">BDT 1,50,000 </p>
                                 </div>
                             </div>
                         </div>
@@ -247,7 +247,7 @@
                                 </div>
                                 <div class="col-6 d-flex flex-column align-items-end">
                                     <p class="text-secondary fs-10px mb-0">Seema Kohli </p>
-                                    <p class="text-secondary fs-10px">Rs. 35,000 </p>
+                                    <p class="text-secondary fs-10px">BDT 35,000 </p>
                                 </div>
                             </div>
                         </div>
@@ -449,7 +449,7 @@
                                     <p class="text-secondary fs-10px">6 x 2 x 7.75 inches</p>
                                 </div>
                                 <div class="col-6 d-flex flex-column align-items-end">
-                                    <p class="text-secondary fs-10px">Rs. 50,400 </p>
+                                    <p class="text-secondary fs-10px">BDT 50,400 </p>
                                 </div>
                             </div>
                         </div>
@@ -465,7 +465,7 @@
                                     <p class="text-secondary fs-10px">13.5 x 12 x 4.5 Inches</p>
                                 </div>
                                 <div class="col-6 d-flex flex-column align-items-end">
-                                    <p class="text-secondary fs-10px">Rs. 33,040</p>
+                                    <p class="text-secondary fs-10px">BDT 33,040</p>
                                 </div>
                             </div>
                         </div>

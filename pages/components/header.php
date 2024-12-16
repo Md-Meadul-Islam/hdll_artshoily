@@ -18,7 +18,7 @@
                             <a class="">BLOG</a>
                         </li>
                         <li class="nav-item py-sm-0 py-2">
-                            <a class="">LOG IN</a>
+                            <a class="" href="/login">LOG IN</a>
                         </li>
                         <li class="nav-item py-sm-0 py-2">
                             <a class="d-flex align-items-center justify-content-center">

@@ -36,15 +36,10 @@
     <body>
         <div class="login w-80 mx-auto" id="login">
             <div class="row g-0 vh-100 d-flex align-items-center justify-content-center">
-                <div class="col-lg-6 col-md-12 order-lg-first order-md-last text-center px-2">
-                    <h1>Welcome to <span class="fw-bold f-alieron text-pink mb-0 fs-sm-6dvw">Viral Already</span></h1>
-                </div>
                 <div class="col-lg-6 col-md-12">
                     <div class="d-flex justify-content-center py-4">
                         <a href="/" class="d-flex align-items-center w-auto" style="text-decoration: none">
-                            <img src="../images/viralalreadylogo.jpg" width="50px" height="50px"><span
-                                class="d-lg-block fw-bold f-alieron text-pink mb-0 fs-1 fs-sm-6dvw">Viral
-                                Already</span></a>
+                            <img src="../images/logo.jpg" width="150px" height="50px" alt="Art Shoily"></a>
                     </div><!-- End Logo -->
                     <div class="card mb-3">
                         <div class="card-body">
@@ -82,7 +77,7 @@
                                     <button class="btn btn-primary w-100" type="submit">Log-In</button>
                                 </div>
                                 <div class="col-12">
-                                    <p class="small mb-0 float-end">Haven't Account? <a href="writersignup"
+                                    <p class="small mb-0 float-end">Haven't Account? <a href="signup"
                                             class="text-decoration-underline text-success fw-bold">Create New
                                             Account</a></p>
                                 </div>

@@ -7,7 +7,9 @@ class ArtController
 {
     public function index()
     {
-        view('art-gallery');
+        $art = new Art();
+        $arts = $art->arts(1);
+        view('art-gallery', ['arts' => $arts]);
     }
     public function view($a)
     {

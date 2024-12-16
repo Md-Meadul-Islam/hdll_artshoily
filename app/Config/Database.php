@@ -7,9 +7,9 @@ use mysqli;
 class Database extends Singleton
 {
     private $serverName = 'localhost';
-    private $dbName = 'artshoily';//u664133865_viralalready';
-    private $userName = 'root';//u664133865_viral';
-    private $password = '';//VQi0pYP;t|3';
+    private $dbName = 'artshoily';//u664133865_artshoily';
+    private $userName = 'root';//u664133865_art';
+    private $password = '';//m^~Q?I5[D';
     protected $connection;
     protected function __construct()
     {
