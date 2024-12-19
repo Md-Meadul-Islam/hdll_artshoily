@@ -366,6 +366,10 @@ header .nav-link:hover::after {
     background-color: rgb(var(--bs-success-rgb));
 }
 
+.icon-bg-dark {
+    background-color: rgb(var(--bs-dark-rgb));
+}
+
 .icon-bg-success-subtle {
     background-color: rgba(var(--bs-success-rgb), 0.6);
 }
@@ -377,6 +381,8 @@ header .nav-link:hover::after {
 .icon-bg-success-hover:hover {
     background-color: rgb(var(--bs-success-rgb));
 }
+
+
 
 .icon-bg-grey {
     background-color: rgb(117, 115, 115);
@@ -507,7 +513,37 @@ a:hover>.icon-bg-white-hover {
 }
 
 /* index section end */
+/* admin section start */
+.loggeduser .usermiddlemenu {
+    flex: 1;
+    overflow-y: auto;
+    width: 60%;
+    margin-left: 2%;
+    margin-right: 22%;
+    transition: 0.25s ease;
+}
 
+.menuvisible {
+    display: block !important;
+    height: 100vh;
+    z-index: 99999;
+    background: white;
+
+}
+
+.leftmenu .sidebar {
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: center;
+    padding-top: 0.5rem;
+    padding-bottom: 1.5rem;
+    scroll-behavior: smooth;
+    transition: width 0.25s ease, opacity 0.25s ease, visibility 0.25s ease;
+    overflow-y: auto;
+}
+
+/* admin section end */
 /* footer section start */
 .toaster {
     position: fixed;

@@ -42,12 +42,6 @@
                     |
                 </li>
                 <li class="nav-item">
-                    <a>Our Promise</a>
-                </li>
-                <li class="nav-item px-2">
-                    |
-                </li>
-                <li class="nav-item">
                     <a>Client Stories</a>
                 </li>
                 <li class="nav-item px-2">
@@ -62,26 +56,8 @@
                 <li class="nav-item">
                     <a>Past Exhibitions</a>
                 </li>
-                <li class="nav-item px-2">
-                    |
-                </li>
-                <li class="nav-item">
-                    <a>Concierge</a>
-                </li>
-                <li class="nav-item px-2">
-                    |
-                </li>
-                <li class="nav-item">
-                    <a>Careers</a>
-                </li>
             </ul>
             <ul class="nav d-flex align-items-center justify-content-center">
-                <li class="nav-item">
-                    <a>Authenticity</a>
-                </li>
-                <li class="nav-item px-2">
-                    |
-                </li>
                 <li class="nav-item">
                     <a>Packaging & Shipping</a>
                 </li>
@@ -90,12 +66,6 @@
                 </li>
                 <li class="nav-item">
                     <a>Payments & Returns</a>
-                </li>
-                <li class="nav-item px-2">
-                    |
-                </li>
-                <li class="nav-item">
-                    <a>Videos</a>
                 </li>
                 <li class="nav-item px-2">
                     |

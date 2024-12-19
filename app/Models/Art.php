@@ -12,9 +12,8 @@ class Art
     {
         $this->connection = Database::getInstance()->getConnection();
     }
-    public function arts($page = 1)
+    public function arts($page = 1, $limit = 20)
     {
-        $limit = 20;
         $offset = ($page - 1) * 1;
         $data = [];
 
@@ -56,5 +55,30 @@ class Art
         $row = $result->fetch_assoc();
         $row['users'] = json_decode($row['users'], true);  // Decode users JSON array
         return $row;
+    }
+    public function limitedEdition()
+    {
+        $limit = 3;
+        $data = [];
+
+        $stmt = $this->connection->prepare("SELECT 
+            a.*,
+            JSON_ARRAYAGG(JSON_OBJECT('user_id', u.user_id, 'first_name', u.first_name, 'last_name', u.last_name)) AS users
+        FROM {$this->arts} AS a
+        LEFT JOIN {$this->users} AS u 
+        ON JSON_CONTAINS(a.user_ids, JSON_QUOTE(u.user_id), '$')
+        GROUP BY a.art_id
+        ORDER BY a.art_id DESC 
+        LIMIT ?
+    ");
+        $stmt->bind_param('i', $limit);
+
+        $stmt->execute();
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            $row['users'] = json_decode($row['users'], true);  // Decode users JSON array
+            $data[] = $row;
+        }
+        return $data;
     }
 }

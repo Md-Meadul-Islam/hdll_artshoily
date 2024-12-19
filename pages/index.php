@@ -67,11 +67,12 @@
                     </div>
                     <div class="w-100 py-3">
                         <p class="text-center">
-                            Artshoily is an online-first destination for curated artistic luxury. Since 2015, we have
-                            helped customers in 100+ cities worldwide,
-                            discover the most exquisite pieces for their collection. We know that shopping online for
-                            high value items requires trust and comfort,
-                            and that is precisely what we build through our unique offering.
+                            At Artshoily, we focus on quality and thoughtful curation, offering a carefully selected
+                            collection of paintings, drawings, limited edition prints, sculptures, digital art,
+                            traditional crafts, tribal art, rare collectibles, and unique artifacts. Each piece is
+                            sourced from trusted artists, designers, and collectors, ensuring authenticity and cultural
+                            depth. Whether you're discovering a statement piece or a hidden gem, Artshoily is your
+                            gateway to celebrating the rich artistic heritage of Bangladesh and beyond.
                         </p>
                     </div>
                     <!-- <ul class="nav text-uppercase text-gold fs-10px d-flex align-items-center justify-content-around">
@@ -200,54 +201,58 @@
                                     class="w-100 h-100">
                             </div>
                         </div>
-                        <div class="col-md-4 col-sm-6 col-12 p-3">
-                            <div class="d-flex align-items-center justify-content-center">
-                                <img data-src="./images/limited_editions/sapta_ras.png" alt="editions"
-                                    style="max-height:300px; max-width:300px">
-                            </div>
-                            <div class="row g-0 d-flex justify-content-between align-items-end pt-2">
-                                <div class="col-6">
-                                    <p class="mb-0 fs-10px">Sapta Ras</p>
-                                    <p class="text-secondary fs-10px mb-0">Serigraph on Paper</p>
-                                    <p class="text-secondary fs-10px">60 x 60 inches</p>
+                        <div class="col-12">
+                            <div class="limited-edition row d-flex align-items-center justify-content-center">
+                                <div class="col-md-4 col-sm-6 col-12 p-3">
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <img data-src="./images/limited_editions/sapta_ras.png" alt="editions"
+                                            style="max-height:300px; max-width:300px">
+                                    </div>
+                                    <div class="row g-0 d-flex justify-content-between align-items-end pt-2">
+                                        <div class="col-6">
+                                            <p class="mb-0 fs-10px">Sapta Ras</p>
+                                            <p class="text-secondary fs-10px mb-0">Serigraph on Paper</p>
+                                            <p class="text-secondary fs-10px">60 x 60 inches</p>
+                                        </div>
+                                        <div class="col-6 d-flex flex-column align-items-end">
+                                            <p class="text-secondary fs-10px mb-0">SS.H. Raza</p>
+                                            <p class="text-secondary fs-10px">BDT 3,50,000</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-6 d-flex flex-column align-items-end">
-                                    <p class="text-secondary fs-10px mb-0">SS.H. Raza</p>
-                                    <p class="text-secondary fs-10px">BDT 3,50,000</p>
+                                <div class="col-md-4 col-sm-6 col-12 p-3">
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <img data-src="./images/limited_editions/ed3e1602-d764-49e4-81b1-c9e6fe85d5ad_420x.png"
+                                            alt="editions" style="max-height:300px; max-width:300px">
+                                    </div>
+                                    <div class="row g-0 d-flex justify-content-between align-items-end pt-2">
+                                        <div class="col-6">
+                                            <p class="mb-0 fs-10px">Celebration</p>
+                                            <p class="text-secondary fs-10px mb-0">Serigraph on Paper</p>
+                                            <p class="text-secondary fs-10px">50 x 40 inches</p>
+                                        </div>
+                                        <div class="col-6 d-flex flex-column align-items-end">
+                                            <p class="text-secondary fs-10px mb-0">Thota Vaikuntam</p>
+                                            <p class="text-secondary fs-10px">BDT 1,50,000 </p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 col-12 p-3">
-                            <div class="d-flex align-items-center justify-content-center">
-                                <img data-src="./images/limited_editions/ed3e1602-d764-49e4-81b1-c9e6fe85d5ad_420x.png"
-                                    alt="editions" style="max-height:300px; max-width:300px">
-                            </div>
-                            <div class="row g-0 d-flex justify-content-between align-items-end pt-2">
-                                <div class="col-6">
-                                    <p class="mb-0 fs-10px">Celebration</p>
-                                    <p class="text-secondary fs-10px mb-0">Serigraph on Paper</p>
-                                    <p class="text-secondary fs-10px">50 x 40 inches</p>
-                                </div>
-                                <div class="col-6 d-flex flex-column align-items-end">
-                                    <p class="text-secondary fs-10px mb-0">Thota Vaikuntam</p>
-                                    <p class="text-secondary fs-10px">BDT 1,50,000 </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 col-12 p-3">
-                            <div class="d-flex align-items-center justify-content-center">
-                                <img data-src="./images/limited_editions/c200f30b-fe2e-47fa-a9a2-648b53aeb3fd_420x.png"
-                                    alt="editions" style="max-height:300px; max-width:300px">
-                            </div>
-                            <div class="row g-0 d-flex justify-content-between align-items-end pt-2">
-                                <div class="col-6">
-                                    <p class="mb-0 fs-10px">The Golden Womb - 10</p>
-                                    <p class="text-secondary fs-10px mb-0">Serigraph on Metallic Fi... </p>
-                                    <p class="text-secondary fs-10px">19.5 x 19.5 inches </p>
-                                </div>
-                                <div class="col-6 d-flex flex-column align-items-end">
-                                    <p class="text-secondary fs-10px mb-0">Seema Kohli </p>
-                                    <p class="text-secondary fs-10px">BDT 35,000 </p>
+                                <div class="col-md-4 col-sm-6 col-12 p-3">
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <img data-src="./images/limited_editions/c200f30b-fe2e-47fa-a9a2-648b53aeb3fd_420x.png"
+                                            alt="editions" style="max-height:300px; max-width:300px">
+                                    </div>
+                                    <div class="row g-0 d-flex justify-content-between align-items-end pt-2">
+                                        <div class="col-6">
+                                            <p class="mb-0 fs-10px">The Golden Womb - 10</p>
+                                            <p class="text-secondary fs-10px mb-0">Serigraph on Metallic Fi... </p>
+                                            <p class="text-secondary fs-10px">19.5 x 19.5 inches </p>
+                                        </div>
+                                        <div class="col-6 d-flex flex-column align-items-end">
+                                            <p class="text-secondary fs-10px mb-0">Seema Kohli </p>
+                                            <p class="text-secondary fs-10px">BDT 35,000 </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -416,7 +421,7 @@
         </section>
         <!-- client stories section ends -->
         <!--  gift cards section starts -->
-        <section class="py-5">
+        <!-- <section class="py-5">
             <div class="row g-0 d-flex align-items-center justify-content-center">
                 <h4 class="text-center text-uppercase">
                     - Gift cards - </h4>
@@ -427,13 +432,13 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
         <!-- gift cards section ends -->
         <!-- editors pics section starts -->
         <section class="py-5">
             <div class="row g-0 d-flex align-items-center justify-content-center">
                 <h4 class="text-center text-uppercase">
-                    - EDITOR S PICKS -
+                    - COLLECTIBLES -
                 </h4>
                 <div class="col-md-10 col-12">
                     <div class="row g-0 d-flex align-items-center justify-content-around">
@@ -496,7 +501,7 @@
             <div class="row g-0 d-flex align-items-center justify-content-center">
                 <div class="col-md-10 col-12">
                     <div class="row g-0 d-flex align-items-center justify-content-center">
-                        <h4 class="text-center text-uppercase">- IN THE NEWS -
+                        <h4 class="text-center text-uppercase">- PARTNERS AND CLIENTS -
                         </h4>
                         <div class="col-2 p-2 h-100">
                             <div class="w-100 h-100">

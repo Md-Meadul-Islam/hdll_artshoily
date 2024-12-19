@@ -19,4 +19,11 @@ class ArtController
             view('viewart', ['art' => $art]);
         }
     }
+    public function loadLimitedEditionPrints()
+    {
+        header('Content-Type: application/json');
+        $art = new Art();
+        $arts = $art->limitedEdition();
+        echo json_encode(['success' => true, 'data' => $arts]);
+    }
 }

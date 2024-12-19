@@ -1,4 +1,18 @@
+function loadLimitedEditionPrints() {
+    $.ajax({
+        url: 'load-limited-edition-prints',
+        method: 'GET',
+        success: function (res) {
+            if (res.success) {
+                $('.limited-edition').append(res.data);
+            }
+        }
+    })
+}
+
 $(document).ready(function () {
+    loadLimitedEditionPrints();
+
     function generateUUID() {
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
             var r = Math.random() * 16 | 0,
@@ -19,6 +33,8 @@ $(document).ready(function () {
         } else {
             $('.drawer').removeClass('active');
         }
+
+
     });
 
 

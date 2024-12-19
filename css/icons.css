@@ -70,24 +70,6 @@
     -webkit-mask: url('../images/icons/bell-fill.svg') no-repeat center;
 }
 
-.trending-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    text-align: center;
-    mask: url('../images/icons/trending.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/trending.svg') no-repeat center;
-}
-
-.music-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    text-align: center;
-    mask: url('../images/icons/music.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/music.svg') no-repeat center;
-}
-
 .like-icon {
     display: inline-block;
     width: 16px;
@@ -95,14 +77,6 @@
     text-align: center;
     mask: url('../images/icons/hand-thumbs-up-fill.svg') no-repeat center;
     -webkit-mask: url('../images/icons/hand-thumbs-up-fill.svg') no-repeat center;
-}
-
-.dislike-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/hand-thumbs-down-fill.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/hand-thumbs-down-fill.svg') no-repeat center;
 }
 
 .love-icon {
@@ -113,12 +87,12 @@
     -webkit-mask: url('../images/icons/heart-fill.svg') no-repeat center;
 }
 
-.withyou-icon {
+.star-icon {
     display: inline-block;
     width: 16px;
     height: 16px;
-    mask: url('../images/icons/withyou-fill.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/withyou-fill.svg') no-repeat center;
+    mask: url('../images/icons/star.svg') no-repeat center;
+    -webkit-mask: url('../images/icons/star.svg') no-repeat center;
 }
 
 .comment-icon {
@@ -135,62 +109,6 @@
     height: 16px;
     mask: url('../images/icons/eye.svg') no-repeat center;
     -webkit-mask: url('../images/icons/eye.svg') no-repeat center;
-}
-
-.repost-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/repost.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/repost.svg') no-repeat center;
-}
-
-.emoji-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/emoji.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/emoji.svg') no-repeat center;
-}
-
-.send-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/send.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/send.svg') no-repeat center;
-}
-
-.reply-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/reply-fill.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/reply-fill.svg') no-repeat center;
-}
-
-.image-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/image.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/image.svg') no-repeat center;
-}
-
-.video-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/video.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/video.svg') no-repeat center;
-}
-
-.history-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/history.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/history.svg') no-repeat center;
 }
 
 .angle-left-icon {
@@ -353,44 +271,12 @@
     -webkit-mask: url('../images/icons/break.svg') no-repeat center;
 }
 
-.code-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/code-slash.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/code-slash.svg') no-repeat center;
-}
-
-.public-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/privacy-public.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/privacy-public.svg') no-repeat center;
-}
-
-.private-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/privacy-private.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/privacy-private.svg') no-repeat center;
-}
-
 .caret-down-icon {
     display: inline-block;
     width: 16px;
     height: 16px;
     mask: url('../images/icons/caret-down.svg') no-repeat center;
     -webkit-mask: url('../images/icons/caret-down.svg') no-repeat center;
-}
-
-.draft-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/draft.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/draft.svg') no-repeat center;
 }
 
 .error-icon {
@@ -407,36 +293,4 @@
     height: 16px;
     mask: url('../images/icons/okey.svg') no-repeat center;
     -webkit-mask: url('../images/icons/okey.svg') no-repeat center;
-}
-
-.facebook-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/facebook.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/facebook.svg') no-repeat center;
-}
-
-.twitter-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/twitter-x.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/twitter-x.svg') no-repeat center;
-}
-
-.instagram-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/instagram.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/instagram.svg') no-repeat center;
-}
-
-.linkedin-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/linkedin.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/linkedin.svg') no-repeat center;
 }

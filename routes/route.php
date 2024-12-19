@@ -8,6 +8,7 @@ Route::get('', 'HomeController', 'index');
 //Art 
 Route::get('art-gallery', 'ArtController', 'index');
 Route::get('viewart/{a}', 'ArtController', 'view');
+Route::get('load-limited-edition-prints', 'ArtController', 'loadLimitedEditionPrints');
 //Artists
 Route::get('artists', 'ArtistsController', 'index');
 Route::get('api/artists', 'ArtistsController', 'getArtists');
@@ -16,15 +17,21 @@ Route::get('api/artists', 'ArtistsController', 'getArtists');
 Route::get('login', 'AuthController', 'loginView');
 Route::post('login', 'AuthController', 'login');
 Route::get('signup', 'AuthController', 'signupView');
-Route::post('signup', 'AuthController', 'singup');
-Route::get('add-artists', 'AuthController', 'artistView');
-Route::post('store-artists', 'AuthController', 'artists');
+Route::post('signup', 'AuthController', 'signup');
+Route::get('admin/add-artists', 'AuthController', 'artistView');
+Route::post('admin/store-artists', 'AuthController', 'artists');
+
+//admin routes
+Route::get('admin', 'AdminController', 'index', []);
+Route::get('admin/load-arts-paginate', 'AdminController', 'loadArtsPaginate');
+Route::get('admin/create-art-modal', 'AdminController', 'loadCreateArtModal', []);
+
 //default page
-Route::get('terms', 'DashboardController', 'terms');
-Route::get('privacy', 'DashboardController', 'privacy');
-Route::get('contact', 'DashboardController', 'contact');
-Route::get('about', 'DashboardController', 'about');
-Route::get('cookie', 'DashboardController', 'cookie');
-Route::get('404', 'DashboardController', 'notFound');
-Route::get('503', 'DashboardController', 'accessDeined');
-Route::post('logout', 'DashboardController', 'logout', [AuthMiddleware::class]);
+Route::get('terms', 'HomeController', 'terms');
+Route::get('privacy', 'HomeController', 'privacy');
+Route::get('contact', 'HomeController', 'contact');
+Route::get('about', 'HomeController', 'about');
+Route::get('cookie', 'HomeController', 'cookie');
+Route::get('404', 'HomeController', 'notFound');
+Route::get('503', 'HomeController', 'accessDeined');
+Route::post('logout', 'HomeController', 'logout', [AuthMiddleware::class]);

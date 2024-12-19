@@ -64,10 +64,6 @@
                                 </li>
                                 <li class="nav-item">
                                     <a href=""
-                                        class="btn bg-gold btn-outline-secondary text-white rounded-0 border border-2 px-4">Style</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href=""
                                         class="btn bg-gold btn-outline-secondary text-white rounded-0 border border-2 px-4">Size</a>
                                 </li>
                                 <li class="nav-item d-lg-block d-none">
