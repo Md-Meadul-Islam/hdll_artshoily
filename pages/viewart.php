@@ -39,7 +39,7 @@
         <section class="mt-5">
             <div class="row g-0 d-flex align-items-center justify-content-center pt-4">
                 <div class="col-lg-10 col-12 p-2">
-                    <div class="row g-5 d-flex px-2 py-2">
+                    <div class="row g-5 d-flex justify-content-center px-2 py-2">
                         <div class="col-lg-8 col-sm-6 col-12">
                             <div class="art-image border border-1 border-secondary shadow w-100 overflow-hidden">
                                 <img class="w-100" data-src="../storage/arts/<?php echo $art['image']; ?>"
@@ -150,9 +150,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 mt-2">
-                            <p class="text-justify"><?php echo $art['description'] ?></p>
-                        </div>
                         <div class="col-12">
                             <div class="row g-3 d-flex">
                                 <?php if (!empty($suggestions)): ?>
@@ -181,6 +178,36 @@
                                     <?php endforeach ?>
                                 <?php endif ?>
                             </div>
+                        </div>
+                        <hr>
+                        <div class="col-md-10 col-12 mt-2 p-2">
+                            <h4 class="text-nowrap">About the Artwork</h4>
+                            <p class="text-justify"><?php echo $art['description'] ?></p>
+                        </div>
+                        <hr>
+                        <div class="col-md-10 col-12 mt-2 p-2">
+                            <h4 class="fw-bold">Shipping and Returns</h4>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <p class="fw-bold mb-0 pe-2">Delivery Time:</p>
+                                    </td>
+                                    <td>Typically 5-7 business days for domestic shipments, 10-14 business days for
+                                        international shipments.</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p class="fw-bold mb-0 pe-2">Returns:</p>
+                                    </td>
+                                    <td>14 day return policy. Visit our help section for more information.</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p class="fw-bold mb-0 pe-2">Delivery Cost:</p>
+                                    </td>
+                                    <td>Shipping is included.</td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                 </div>
