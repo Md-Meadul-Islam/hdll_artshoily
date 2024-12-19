@@ -21,10 +21,24 @@ class ArtController
             $suggestions = $arts->moreFromArtist($a, $first_user['user_id'], 6);
             if (!empty($suggestions)) {
                 view('viewart', ['art' => $art, 'suggestions' => $suggestions]);
+            } else {
+                view('viewart', ['art' => $art, 'suggestions' => null]);
             }
-            view('viewart', ['art' => $art, 'suggestions' => null]);
-
         }
+    }
+    public function moreFromArtist()
+    {
+        header('Content-type: application/json');
+        $u = $_GET['user_id'];
+        $a = $_GET['art_id'];
+        $arts = new Art();
+        $suggestions = $arts->moreFromArtist($a, $u, 6);
+        if (!empty($suggestions)) {
+            echo json_encode(['success' => true, 'data' => $suggestions]);
+        } else {
+            echo json_encode(['success' => false, 'message' => "No Data"]);
+        }
+
     }
     public function loadLimitedEditionPrints()
     {

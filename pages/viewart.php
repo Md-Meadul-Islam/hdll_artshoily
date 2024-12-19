@@ -4,8 +4,9 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="keywords" content="artshoily">
-        <meta name="description" content="">
+        <meta name="keywords"
+            content="artshoily, <?php echo $art['name'] . ', ' . $art['users'][0]['first_name'] . ' ' . $art['users'][0]['last_name'] ?>">
+        <meta name="description" content="<?php echo $art['description'] ?>">
         <meta property="og:locale" content="en_US">
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Art Shoily" />
@@ -24,7 +25,7 @@
         <link rel="canonical" href="https://artishoily.com" />
         <link rel="apple-touch-icon" href="https://www.artishoily.com/images/favicon.ico">
         <link rel="icon" type="image/gif" href="../images/favicon.ico">
-        <title>Art Shoily | Art</title>
+        <title><?php echo $art['name'] ?> | Art Shoily</title>
         <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="./css/bootstrap.css" />
         <link rel="stylesheet" href="./css/style.css" />
@@ -97,6 +98,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                                <!-- add to cart -->
                                 <div class="bg-dark text-white shadow-lg mt-3">
                                     <div class="w-100 d-flex align-items-center justify-content-between pt-2 px-2">
                                         <div>
@@ -109,8 +111,18 @@
                                                 </span>
                                             </p>
                                         </div>
+                                        <div class="quantity w-50">
+                                            <input type="number" class="form-control" value="1" min="1">
+                                        </div>
+
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between pt-2 px-2">
                                         <div>
-                                            <a class="btn btn-danger px-3">Add to Cart</a>
+                                            <a class="btn btn-outline-success bg-gold text-white px-3">Buy Now</a>
+                                        </div>
+                                        <div>
+                                            <a class="btn btn-outline-success btn-danger text-white px-3">Add to
+                                                Cart</a>
                                         </div>
                                     </div>
                                     <div class="px-2 pb-1">
@@ -129,11 +141,11 @@
                                     </div>
 
                                     <div class="d-flex align-items-center pt-2">
-                                        <i class="star-icon bg-dark" style="zoom:1.2"></i>
-                                        <i class="star-icon bg-dark" style="zoom:1.2"></i>
-                                        <i class="star-icon bg-dark" style="zoom:1.2"></i>
-                                        <i class="star-icon bg-dark" style="zoom:1.2"></i>
-                                        <i class="star-icon bg-dark" style="zoom:1.2"></i>
+                                        <i class="star-icon bg-warning" style="zoom:1.2"></i>
+                                        <i class="star-icon bg-warning" style="zoom:1.2"></i>
+                                        <i class="star-icon bg-warning" style="zoom:1.2"></i>
+                                        <i class="star-icon bg-warning" style="zoom:1.2"></i>
+                                        <i class="star-icon bg-warning" style="zoom:1.2"></i>
                                         <span class="ps-1">Trustpilot Score</span>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between pt-3">
@@ -150,41 +162,30 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- more from artists -->
                         <div class="col-12">
-                            <div class="row g-3 d-flex">
-                                <?php if (!empty($suggestions)): ?>
-                                    <?php $firstUser = $art['users'][0]; ?>
-                                    <h4>More From <a href="viewartists/?a=<?php echo $firstUser['user_id'] ?>"
-                                            class="text-danger"><?php echo $firstUser['first_name'] . " " . $firstUser['last_name'] ?></a>
-                                    </h4>
-                                    <?php foreach ($suggestions as $suggest): ?>
-                                        <div class="col-lg-2 col-md-3 col-6">
-                                            <a href="viewart/?a=<?php echo $suggest['art_id'] ?>">
-                                                <img data-src="../storage/arts/<?php echo $suggest['image']; ?>"
-                                                    alt="<?php $suggest['imgalt'] ?>"
-                                                    style="max-height:300px; max-width:300px;width:100%;">
-                                            </a>
-                                            <p class="mb-0 fs-10px"><?php echo $suggest['name']; ?></p>
-                                            <p class="text-secondary fs-10px mb-0">
-                                                <?php echo $suggest['canvas_type'] . " on " . $suggest['media']; ?>
-                                            </p>
-                                            <p class="art-dimension text-secondary fs-10px mb-0" title="">
-                                                <?php echo $suggest['size']; ?>
-                                            </p>
-                                            <p class="text-secondary fs-10px">
-                                                <?php echo $suggest['currency'] . " " . $suggest['price']; ?>
-                                            </p>
-                                        </div>
-                                    <?php endforeach ?>
-                                <?php endif ?>
+                            <?php $firstUser = $art['users'][0]; ?>
+                            <div class="suggestions row g-3 d-flex" data-userid="<?php echo $firstUser['user_id']; ?>"
+                                data-username="<?php echo $firstUser['first_name'] . " " . $firstUser['last_name'] ?>">
                             </div>
                         </div>
                         <hr>
                         <div class="col-md-10 col-12 mt-2 p-2">
-                            <h4 class="text-nowrap">About the Artwork</h4>
-                            <p class="text-justify"><?php echo $art['description'] ?></p>
+                            <h4 class="fw-bold">About the Artwork</h4>
+                            <?php
+                            $description = htmlspecialchars($art['description']);
+                            $words = explode(' ', $description);
+                            $first_100_words = implode(' ', array_slice($words, 0, 100));
+                            $remain_words = implode(' ', array_slice($words, 100));
+                            ?>
+                            <p class="art-desc text-justify mb-0" data-remain="<?php echo $remain_words; ?>">
+                                <?php echo $first_100_words; ?>
+                            </p>
+                            <a
+                                class="more-description-btn cursor-pointer w-100 d-flex align-items-center justify-content-center"><i
+                                    class="angle-down-icon icon-bg-grey" style="zoom:1.2"></i></a>
                         </div>
-                        <hr>
+                        <hr class="mt-1">
                         <div class="col-md-10 col-12 mt-2 p-2">
                             <h4 class="fw-bold">Shipping and Returns</h4>
                             <table>
@@ -208,6 +209,9 @@
                                     <td>Shipping is included.</td>
                                 </tr>
                             </table>
+                            <a
+                                class="more-shipping-btn cursor-pointer w-100 d-flex align-items-center justify-content-center"><i
+                                    class="angle-down-icon icon-bg-grey" style="zoom:1.2"></i></a>
                         </div>
                     </div>
                 </div>

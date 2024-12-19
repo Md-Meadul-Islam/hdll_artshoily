@@ -279,6 +279,22 @@
     -webkit-mask: url('../images/icons/caret-down.svg') no-repeat center;
 }
 
+.angle-down-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    mask: url('../images/icons/angle-down.svg') no-repeat center;
+    -webkit-mask: url('../images/icons/angle-down.svg') no-repeat center;
+}
+
+.angle-up-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    mask: url('../images/icons/angle-up.svg') no-repeat center;
+    -webkit-mask: url('../images/icons/angle-up.svg') no-repeat center;
+}
+
 .error-icon {
     display: inline-block;
     width: 16px;

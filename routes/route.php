@@ -8,6 +8,7 @@ Route::get('', 'HomeController', 'index');
 //Art 
 Route::get('art-gallery', 'ArtController', 'index');
 Route::get('viewart/{a}', 'ArtController', 'view');
+Route::get('api/more-from-artists', 'ArtController', 'moreFromArtist');
 Route::get('load-limited-edition-prints', 'ArtController', 'loadLimitedEditionPrints');
 //Artists
 Route::get('artists', 'ArtistsController', 'index');
