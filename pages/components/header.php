@@ -41,6 +41,9 @@
                         <li class="nav-item py-sm-0 py-2">
                             <a href="about">About Us</a>
                         </li>
+                        <li class="nav-item py-sm-0 py-2">
+                            <a class="d-flex"><i class="cart-icon icon-bg-dark"></i></a>
+                        </li>
                     </ul>
                 </div>
             </div>

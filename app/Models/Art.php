@@ -56,6 +56,25 @@ class Art
         $row['users'] = json_decode($row['users'], true);  // Decode users JSON array
         return $row;
     }
+    public function moreFromArtist($art_id, $user_id, $limit = 5)
+    {
+        $data = [];
+        $stmt = $this->connection->prepare("SELECT 
+            a.*
+            FROM {$this->arts} AS a
+            WHERE JSON_CONTAINS(a.user_ids, JSON_QUOTE(?), '$')
+            AND a.art_id != ?
+            ORDER BY a.id DESC 
+            LIMIT ?
+        ");
+        $stmt->bind_param('ssi', $user_id, $art_id, $limit);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+        return $data;
+    }
     public function limitedEdition()
     {
         $limit = 3;

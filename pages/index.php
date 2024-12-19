@@ -210,12 +210,12 @@
                                     </div>
                                     <div class="row g-0 d-flex justify-content-between align-items-end pt-2">
                                         <div class="col-6">
-                                            <p class="mb-0 fs-10px">Sapta Ras</p>
+                                            <p class="mb-0 fs-10px">Untitled 3434</p>
                                             <p class="text-secondary fs-10px mb-0">Serigraph on Paper</p>
                                             <p class="text-secondary fs-10px">60 x 60 inches</p>
                                         </div>
                                         <div class="col-6 d-flex flex-column align-items-end">
-                                            <p class="text-secondary fs-10px mb-0">SS.H. Raza</p>
+                                            <p class="text-secondary fs-10px mb-0">Rafael Mirkim</p>
                                             <p class="text-secondary fs-10px">BDT 3,50,000</p>
                                         </div>
                                     </div>
@@ -232,7 +232,7 @@
                                             <p class="text-secondary fs-10px">50 x 40 inches</p>
                                         </div>
                                         <div class="col-6 d-flex flex-column align-items-end">
-                                            <p class="text-secondary fs-10px mb-0">Thota Vaikuntam</p>
+                                            <p class="text-secondary fs-10px mb-0">Alex Bonan</p>
                                             <p class="text-secondary fs-10px">BDT 1,50,000 </p>
                                         </div>
                                     </div>
@@ -249,7 +249,7 @@
                                             <p class="text-secondary fs-10px">19.5 x 19.5 inches </p>
                                         </div>
                                         <div class="col-6 d-flex flex-column align-items-end">
-                                            <p class="text-secondary fs-10px mb-0">Seema Kohli </p>
+                                            <p class="text-secondary fs-10px mb-0">Rafael Mirkim</p>
                                             <p class="text-secondary fs-10px">BDT 35,000 </p>
                                         </div>
                                     </div>
@@ -380,10 +380,10 @@
                                     alt="editions" style="max-height:300px; max-width:300px">
                             </div>
                             <div>
-                                <p class="fs-10px text-italic py-2">Painting by Dinkar Jadhav</p>
+                                <p class="fs-10px text-italic py-2">Painting by Rafael Mirkim</p>
                                 <div class="goldenStroke"></div>
-                                <p class="text-secondary fs-10px mb-0 pt-2">Client: M. Chopra</p>
-                                <p class="text-secondary fs-10px">Gurgaon, India</p>
+                                <p class="text-secondary fs-10px mb-0 pt-2">Client: M. Maikel</p>
+                                <p class="text-secondary fs-10px">Toronto, Canada</p>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-6 col-12 p-3">
@@ -394,8 +394,8 @@
                             <div>
                                 <p class="fs-10px text-italic py-2">Paintings by Claire Iono </p>
                                 <div class="goldenStroke"></div>
-                                <p class="text-secondary fs-10px mb-0 pt-2">Client: A. Banerji</p>
-                                <p class="text-secondary fs-10px">Bangalore, India </p>
+                                <p class="text-secondary fs-10px mb-0 pt-2">Client: D'Anglo</p>
+                                <p class="text-secondary fs-10px">New York, USA </p>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-6 col-12 p-3">
@@ -404,7 +404,7 @@
                                     alt="editions" style="max-height:300px; max-width:300px">
                             </div>
                             <div>
-                                <p class="fs-10px text-italic py-2">Painting by Sachin Jaltare </p>
+                                <p class="fs-10px text-italic py-2">Painting by Alex Bonan</p>
                                 <div class="goldenStroke"></div>
                                 <p class="text-secondary fs-10px mb-0 pt-2">Client: Sonal Gandhi</p>
                                 <p class="text-secondary fs-10px">Chicago, USA </p>

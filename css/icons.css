@@ -294,3 +294,11 @@
     mask: url('../images/icons/okey.svg') no-repeat center;
     -webkit-mask: url('../images/icons/okey.svg') no-repeat center;
 }
+
+.cart-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    mask: url('../images/icons/cart.svg') no-repeat center;
+    -webkit-mask: url('../images/icons/cart.svg') no-repeat center;
+}

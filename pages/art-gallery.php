@@ -93,8 +93,11 @@
                         <?php foreach ($arts as $i => $art): ?>
                             <div class="col-md-4 col-sm-6 col-12 p-3">
                                 <div class="d-flex align-items-center justify-content-center border border-1">
-                                    <img data-src="../storage/arts/<?php echo $art['image']; ?>"
-                                        alt="<?php $art['imgalt'] ?>" style="max-height:300px; max-width:300px;width:100%;">
+                                    <a href="viewart/?a=<?php echo $art['art_id'] ?>">
+                                        <img data-src="../storage/arts/<?php echo $art['image']; ?>"
+                                            alt="<?php $art['imgalt'] ?>"
+                                            style="max-height:300px; max-width:300px;width:100%;">
+                                    </a>
                                 </div>
                                 <div class="row g-0 d-flex justify-content-between align-items-end pt-2">
                                     <div class="col-6">
@@ -107,11 +110,14 @@
                                     </div>
                                     <div class="col-6 d-flex flex-column align-items-end">
                                         <p class="mb-0 fs-10px"><a
-                                                class="btn btn-sm btn-outline-secondary bg-gold py-0 text-white text-uppercase rounded-0">Buy</a>
+                                                class="cursor-pointer text-white text-uppercase rounded-0"><i
+                                                    class="cart-icon icon-bg-gold icon-bg-grey-hover"></i>
+                                            </a>
                                         </p>
                                         <p class="text-secondary fs-10px mb-0">
                                             <?php foreach ($art['users'] as $user): ?>
-                                                <a href=""><?php echo $user['first_name'] . ' ' . $user['last_name']; ?></a>
+                                                <a
+                                                    href="viewartists/?a=<?php echo $user['user_id'] ?>"><?php echo $user['first_name'] . ' ' . $user['last_name']; ?></a>
                                             <?php endforeach ?>
                                         </p>
                                         <p class="text-secondary fs-10px">

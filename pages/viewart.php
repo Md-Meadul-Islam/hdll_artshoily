@@ -154,7 +154,33 @@
                             <p class="text-justify"><?php echo $art['description'] ?></p>
                         </div>
                         <div class="col-12">
-
+                            <div class="row g-3 d-flex">
+                                <?php if (!empty($suggestions)): ?>
+                                    <?php $firstUser = $art['users'][0]; ?>
+                                    <h4>More From <a href="viewartists/?a=<?php echo $firstUser['user_id'] ?>"
+                                            class="text-danger"><?php echo $firstUser['first_name'] . " " . $firstUser['last_name'] ?></a>
+                                    </h4>
+                                    <?php foreach ($suggestions as $suggest): ?>
+                                        <div class="col-lg-2 col-md-3 col-6">
+                                            <a href="viewart/?a=<?php echo $suggest['art_id'] ?>">
+                                                <img data-src="../storage/arts/<?php echo $suggest['image']; ?>"
+                                                    alt="<?php $suggest['imgalt'] ?>"
+                                                    style="max-height:300px; max-width:300px;width:100%;">
+                                            </a>
+                                            <p class="mb-0 fs-10px"><?php echo $suggest['name']; ?></p>
+                                            <p class="text-secondary fs-10px mb-0">
+                                                <?php echo $suggest['canvas_type'] . " on " . $suggest['media']; ?>
+                                            </p>
+                                            <p class="art-dimension text-secondary fs-10px mb-0" title="">
+                                                <?php echo $suggest['size']; ?>
+                                            </p>
+                                            <p class="text-secondary fs-10px">
+                                                <?php echo $suggest['currency'] . " " . $suggest['price']; ?>
+                                            </p>
+                                        </div>
+                                    <?php endforeach ?>
+                                <?php endif ?>
+                            </div>
                         </div>
                     </div>
                 </div>
