@@ -1,6 +1,6 @@
 function loadAllArtists() {
     $.ajax({
-        url: "/api/artists",
+        url: "api/artists",
         method: 'GET',
         dataType: 'json',
         success: function (res) {

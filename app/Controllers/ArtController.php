@@ -16,14 +16,7 @@ class ArtController
         $arts = new Art();
         if ($a) {
             $art = $arts->view($a);
-            $first_user = $art['users'][0];
-
-            $suggestions = $arts->moreFromArtist($a, $first_user['user_id'], 6);
-            if (!empty($suggestions)) {
-                view('viewart', ['art' => $art, 'suggestions' => $suggestions]);
-            } else {
-                view('viewart', ['art' => $art, 'suggestions' => null]);
-            }
+            view('viewart', ['art' => $art]);
         }
     }
     public function moreFromArtist()

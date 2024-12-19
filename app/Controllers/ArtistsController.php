@@ -20,4 +20,15 @@ class ArtistsController
         }
         echo json_encode(["success" => true, "data" => $artists]);
     }
+    public function focusArtists()
+    {
+        header('Content-Type: application/json');
+        $user = new User();
+        $artists = $user->focusArtists();
+        if (!$artists) {
+            echo json_encode(["success" => false, "message" => "No artists!"]);
+            return 0;
+        }
+        echo json_encode(["success" => true, "data" => $artists]);
+    }
 }

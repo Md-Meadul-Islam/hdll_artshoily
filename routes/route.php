@@ -2,14 +2,18 @@
 use App\Middleware\AuthMiddleware;
 use App\Middleware\GuestMiddleware;
 use App\Services\Route;
-
+// home page
 Route::get('', 'HomeController', 'index');
+Route::get('api/load-limited-edition-prints', 'ArtController', 'loadLimitedEditionPrints');
+Route::get('api/focus-artists', 'ArtistsController', 'focusArtists');
 
-//Art 
+//Art gallery page
 Route::get('art-gallery', 'ArtController', 'index');
+
+//view art page
 Route::get('viewart/{a}', 'ArtController', 'view');
 Route::get('api/more-from-artists', 'ArtController', 'moreFromArtist');
-Route::get('load-limited-edition-prints', 'ArtController', 'loadLimitedEditionPrints');
+
 //Artists
 Route::get('artists', 'ArtistsController', 'index');
 Route::get('api/artists', 'ArtistsController', 'getArtists');

@@ -112,6 +112,22 @@ class User
         }
         return $artists;
     }
+    public function focusArtists()
+    {
+        $artists = [];
+        $role = 'artists';
+        $stmt = $this->connection->prepare("SELECT u.user_id, u.first_name, u.last_name,  u.userphoto, u.coverphoto
+            FROM {$this->userstable} u
+            WHERE u.userrole = ? AND status=1
+        ");
+        $stmt->bind_param('s', $role);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            $artists[] = $row;
+        }
+        return $artists;
+    }
     public function addArtists($data)
     {
         $insertStmt = $this->connection->prepare("INSERT INTO {$this->userstable} (user_id, first_name, last_name, userphoto, coverphoto, bio,userip) VALUES (?, ?, ?, ?, ?, ?, ?)");
