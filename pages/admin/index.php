@@ -20,24 +20,7 @@
         <section class="mt-5 px-2 pt-3 d-block">
             <div class="row admincontainer d-flex position-relative g-0">
                 <?php pageAdd('admin/leftbar'); ?>
-                <div class="middlemenu col-10">
-                    <div class="row py-1 g-0">
-                        <div class="col-12 pb-2">
-                            <table class="table table-bordered table-striped hover">
-                                <thead>
-                                    <th>#</th>
-                                    <th>Name</th>
-                                    <th>Image</th>
-                                    <th>Artists</th>
-                                    <th>Price</th>
-                                    <th>Action</th>
-                                    <th>Create at</th>
-                                </thead>
-                                <tbody id="arts-table">
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                <div class="middlemenu col-10" style="height:90vh;overflow-y:auto;">
                 </div>
             </div>
         </section>
@@ -96,6 +79,7 @@
         </div>
         <script src="../js/jquery.min.js"></script>
         <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/animations.js"></script>
         <script src="../js/admin.js"></script>
         <?php pageAdd('components/toaster'); ?>
     </body>

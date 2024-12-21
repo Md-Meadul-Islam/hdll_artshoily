@@ -14,24 +14,29 @@ class User
     public $coverphoto;
     public $error;
     private $userstable = 'users';
+    private $focusartists = 'focus_artists';
     protected $connection;
     public function __construct()
     {
         $this->connection = Database::getInstance()->getConnection();
     }
-    public function login($email, $pass, $type = 'admin')
+    public function login($email, $pass, $type = 'artists')
     {
         $user_email = mysqli_real_escape_string($this->connection, $email);
         $user_password = mysqli_real_escape_string($this->connection, $pass);
-
-        $hashed_password = password_hash($user_password, PASSWORD_DEFAULT);
         if (empty($user_email)) {
             return ['error' => 'Fill up Email field!'];
         }
         if (empty($user_password)) {
             return ['error' => 'Fill up Password field!'];
         }
-        $stmt = $this->connection->prepare("SELECT user_id, first_name, email, pass, userphoto, status FROM {$this->userstable} WHERE email = ? AND userrole = ? LIMIT 1");
+        $hashed_password = password_hash($user_password, PASSWORD_DEFAULT);
+        $stmt = '';
+        if ($type === 'admin') {
+            $stmt = $this->connection->prepare("SELECT user_id, first_name, email, pass, userphoto,userrole, status FROM {$this->userstable} WHERE first_name = ? AND userrole = ? LIMIT 1");
+        } else {
+            $stmt = $this->connection->prepare("SELECT user_id, first_name, email, pass, userphoto, userrole, status FROM {$this->userstable} WHERE email = ? AND userrole = ? LIMIT 1");
+        }
         $stmt->bind_param("ss", $user_email, $type);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -100,7 +105,7 @@ class User
     {
         $artists = [];
         $role = 'artists';
-        $stmt = $this->connection->prepare("SELECT u.user_id, u.first_name, u.last_name, u.email, u.phone, u.userphoto, u.bio, u.userrole, u.status, u.cr_at
+        $stmt = $this->connection->prepare("SELECT u.user_id, u.first_name, u.last_name, u.email, u.phone, u.userphoto,u.coverphoto, u.bio, u.userrole, u.status, u.cr_at
             FROM {$this->userstable} u
             WHERE u.userrole = ?
         ");
@@ -112,13 +117,46 @@ class User
         }
         return $artists;
     }
+    public function paginateArtist($page, $limit)
+    {
+        $artists = [];
+        $offset = ($page - 1) * 1;
+        $role = 'artists';
+        $stmt = $this->connection->prepare("SELECT u.user_id, u.first_name, u.last_name, u.email, u.phone, u.userphoto,u.coverphoto, u.bio, u.userrole, u.status, u.cr_at
+            FROM {$this->userstable} u
+            WHERE u.userrole = ?
+            ORDER BY u.id DESC
+            LIMIT ? OFFSET ?
+        ");
+        $stmt->bind_param('sii', $role, $limit, $offset);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            $artists[] = $row;
+        }
+        return $artists;
+    }
+    public function get($id, $role = 'artists')
+    {
+        $stmt = $this->connection->prepare("SELECT u.user_id, u.first_name, u.last_name, u.email, u.phone, u.userphoto, u.coverphoto, u.bio, u.userrole, u.status, u.cr_at
+            FROM {$this->userstable} u
+            WHERE u.user_id = ? AND u.userrole = ?
+        ");
+        $stmt->bind_param('ss', $id, $role);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
     public function focusArtists()
     {
         $artists = [];
         $role = 'artists';
         $stmt = $this->connection->prepare("SELECT u.user_id, u.first_name, u.last_name,  u.userphoto, u.coverphoto
             FROM {$this->userstable} u
-            WHERE u.userrole = ? AND status=1
+            INNER JOIN {$this->focusartists} f
+            ON u.user_id = f.user_id
+            WHERE u.userrole = ? AND u.status = 1 
+            ORDER BY f.sl LIMIT 4
         ");
         $stmt->bind_param('s', $role);
         $stmt->execute();

@@ -26,10 +26,10 @@
         <link rel="icon" type="image/gif" href="../images/favicon.ico">
         <title>Art Shoily | Signup</title>
         <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
-        <link rel="stylesheet" href="./css/bootstrap.css" />
-        <link rel="stylesheet" href="./css/style.css" />
-        <link rel="stylesheet" href="./css/loader.css" />
-        <link rel="stylesheet" href="./css/icons.css" />
+        <link rel="stylesheet" href="../css/bootstrap.css" />
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/loader.css" />
+        <link rel="stylesheet" href="../css/auth-icons.css" />
         <script src="../js/utilities.js"></script>
     </head>
 
@@ -39,14 +39,14 @@
                 <div class="col-lg-6 col-md-12">
                     <div class="d-flex justify-content-center py-4">
                         <a href="/" class="d-flex align-items-center w-auto" style="text-decoration: none">
-                            <img src="../images/logo.jpg" width="150px" height="50px"></a>
+                            <img data-src="../images/logo.jpg" width="150px" height="50px"></a>
                     </div><!-- End Logo -->
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="pt-4 pb-2">
                                 <h5 class="card-title text-center pb-0 fs-4">Create New Account!</h5>
                             </div>
-                            <form action="writersignup" method="POST" class="row g-0">
+                            <form action="signup" method="POST" class="row g-0">
                                 <div class="col-12">
                                     <div class="row g-0">
                                         <div class="col-md-6 col-sm-12 pe-2">
@@ -139,8 +139,9 @@
                 </div>
             </div>
         </div>
-        <script src="./js/jquery.min.js"></script>
-        <script src="./js/bootstrap.min.js"></script>
+        <script src="../js/jquery.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/animations.js"></script>
         <script>
             $(document).ready(function () {
                 $('.showpass').on('mousedown', function () {

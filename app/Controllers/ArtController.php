@@ -33,6 +33,29 @@ class ArtController
         }
 
     }
+    public function storeArt()
+    {
+        // [name] => Baker Nash
+        //     [artists] => dadfddaf3424
+        //     [price] => 768
+        //     [place] => Necessitatibus nulla neque dolorum sunt Nam nisi aut vel a commodo sit quos reiciendis
+        //     [creationDate] => 23-Apr-2015
+        //     [media] => Eligendi enim et laboris mollitia veritatis neque animi nihil rerum et ex cumque dolore
+        //     [canvasType] => Tenetur sunt sint non dolor
+        //     [size] => Nobis dolorem corporis placeat in dolore fugit incididunt similique maiores quos atque dolore faci
+        //     [frame] => Provident repellendus Illum animi rem lorem omnis consequat Consequatur Laborum qui harum maxi
+        //     [currency] => BDT
+        //     [availability] => available
+        //     [description] => Cupidi
+        $data = [];
+        foreach ($_POST as $key => $value) {
+            $data[$key] = sanitizeInput($value);
+        }
+        $name = sanitizeInput($_POST['name']);
+        $artists = json_encode($_POST['artists']);
+        $price = sanitizeInput($_POST['price']);
+        dd($_POST);
+    }
     public function loadLimitedEditionPrints()
     {
         header('Content-Type: application/json');

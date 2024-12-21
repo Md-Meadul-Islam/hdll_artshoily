@@ -9,6 +9,12 @@ class ArtistsController
     {
         view('artists');
     }
+    public function view($a)
+    {
+        $user = new User();
+        $artist = $user->get($a, 'artists');
+        view('viewartists', ['artist' => $artist]);
+    }
     public function getArtists()
     {
         header('Content-Type: application/json');
@@ -30,5 +36,9 @@ class ArtistsController
             return 0;
         }
         echo json_encode(["success" => true, "data" => $artists]);
+    }
+    public function storeArtist()
+    {
+        dd($_FILES);
     }
 }

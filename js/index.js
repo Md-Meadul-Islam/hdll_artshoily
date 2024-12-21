@@ -8,7 +8,7 @@ function loadLimitedEditionPrints() {
                 data.forEach(art => {
                     let elm = ` <div class="col-md-4 col-sm-6 col-12 p-3">
                                 <div class="d-flex align-items-center justify-content-center">
-                                <a href="viewart/?a=${art['art_id']}">
+                                <a href="viewart?a=${art['art_id']}">
                                     <img src="../storage/arts/${art['image']}" alt="editions"
                                         style="max-height:300px; max-width:300px">
                                         </a>
@@ -20,7 +20,7 @@ function loadLimitedEditionPrints() {
                                         <p class="text-secondary fs-10px">${art['size']}</p>
                                     </div>
                                     <div class="col-6 d-flex flex-column align-items-end">
-                                        <p class="text-secondary fs-10px mb-0"><a href="viewartists/?a=${art['users'][0]['user_id']}">${art['users'][0]['first_name'] + ' ' + art['users'][0]['last_name']}</a></p>
+                                        <p class="text-secondary fs-10px mb-0"><a href="viewartists?a=${art['users'][0]['user_id']}">${art['users'][0]['first_name'] + ' ' + art['users'][0]['last_name']}</a></p>
                                         <p class="text-secondary fs-10px">${art['currency'] + ' ' + art['price']}</p>
                                     </div>
                                 </div>
@@ -54,7 +54,7 @@ function focusArtists() {
                                 </div>
                                 <div class="text-center">
                                     <p class="fs-10px fw-bold">${artist['first_name'] + ' ' + artist['last_name']}</p>
-                                    <a href="veiwartists/?a=${artist['user_id']}"
+                                    <a href="viewartists?a=${artist['user_id']}"
                                         class="btn btn-sm btn-outline-secondary text-uppercase">Discover</a>
                                 </div>
                             </div>

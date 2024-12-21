@@ -24,7 +24,7 @@
         <link rel="canonical" href="https://artishoily.com" />
         <link rel="apple-touch-icon" href="https://www.artishoily.com/images/favicon.ico">
         <link rel="icon" type="image/gif" href="../images/favicon.ico">
-        <title>Art Shoily | Login</title>
+        <title>Art Shoily | Admin Login</title>
         <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="../css/bootstrap.css" />
         <link rel="stylesheet" href="../css/style.css" />
@@ -39,21 +39,21 @@
                 <div class="col-lg-6 col-md-12">
                     <div class="d-flex justify-content-center py-4">
                         <a href="/" class="d-flex align-items-center w-auto" style="text-decoration: none">
-                            <img src="../images/logo.jpg" width="150px" height="50px" alt="Art Shoily"></a>
+                            <img data-src="../images/logo.jpg" width="150px" height="50px" alt="Art Shoily"></a>
                     </div><!-- End Logo -->
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="pt-4 pb-2">
                                 <h5 class="card-title text-center pb-0 fs-4">Access to your Account!!</h5>
                             </div>
-                            <form action="writerlogin" method="POST" class="row g-1">
+                            <form action="login" method="POST" class="row g-1">
                                 <div class="col-12">
-                                    <label for="email" class="form-label"><strong>E-mail</strong></label>
+                                    <label for="username" class="form-label"><strong>UserName</strong></label>
                                     <div class="input-group">
                                         <span class="input-group-text" id="inputGroupPrepend"><span
-                                                class="envelope-icon icon-bg-grey"></span></span>
-                                        <input type="email" name="email" class="form-control" id="email"
-                                            autocomplete="email" required>
+                                                class="user-icon icon-bg-grey"></span></span>
+                                        <input type="text" name="username" class="form-control" id="username"
+                                            autocomplete="username" required>
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -77,7 +77,7 @@
                                     <button class="btn btn-primary w-100" type="submit">Log-In</button>
                                 </div>
                                 <div class="col-12">
-                                    <p class="small mb-0 float-end">Haven't Account? <a href="signup"
+                                    <p class="small mb-0 float-end">Haven't Account? <a href="/signup"
                                             class="text-decoration-underline text-success fw-bold">Create New
                                             Account</a></p>
                                 </div>

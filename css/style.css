@@ -475,6 +475,19 @@ a:hover>.icon-bg-white-hover {
     }
 }
 
+.userdetails {
+    position: absolute;
+    top: 40px;
+    right: 5%;
+    box-shadow: 0 0 10px rgba(103, 101, 101, 0.5);
+    z-index: 9999;
+    padding: 0.5rem;
+    scroll-behavior: smooth;
+    transition: all 0.25s ease;
+    display: none;
+    text-align: center;
+}
+
 /* header section end */
 /* index section start */
 .border-gold {
@@ -536,14 +549,85 @@ a:hover>.icon-bg-white-hover {
     overflow-x: hidden;
     overflow-y: auto;
     text-align: center;
-    padding-top: 0.5rem;
-    padding-bottom: 1.5rem;
     scroll-behavior: smooth;
     transition: width 0.25s ease, opacity 0.25s ease, visibility 0.25s ease;
     overflow-y: auto;
 }
 
 /* admin section end */
+/* modal section start */
+.previewBox {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.previewBox .previewImg {
+    position: relative;
+    border: 2px solid rgba(128, 128, 128, 0.5);
+    border-radius: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.previewImg img {
+    padding: 2px;
+    object-fit: cover;
+    max-width: 120px;
+    max-height: 100px;
+}
+
+.previewcrossbtn {
+    display: none;
+    transition: all 0.25s ease;
+}
+
+.previewImg:hover>.previewcrossbtn {
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    top: 0;
+    right: 0;
+    color: red;
+}
+
+#choosepostimage {
+    display: none;
+}
+
+#imageInputDiv {
+    display: none;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(-15%, -50%);
+    background-color: white;
+    min-width: 200px;
+    border-radius: 5px;
+    border: 2px solid grey;
+    padding: 0.5rem;
+}
+
+#imagewidthparam,
+#imageheightparam {
+    width: 40px;
+    outline: none;
+}
+
+#customImgInput {
+    display: inline-block;
+    cursor: pointer;
+    font-size: 16px;
+    position: relative;
+    width: 40px;
+    height: 30px;
+    text-align: center;
+    border: 2px solid rgba(128, 128, 128, 0.5);
+    border-radius: 5px;
+    padding: 2px;
+    margin-right: 5px;
+}
+
+/* modal section end */
 /* footer section start */
 .toaster {
     position: fixed;

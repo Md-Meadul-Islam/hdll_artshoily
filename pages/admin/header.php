@@ -18,22 +18,22 @@
             <div class="px-3 d-flex align-items-center position-relative">
                 <?php if (user()->email) { ?>
                     <a class="userphotobtn position-relative mx-1 cursor-pointer">
-                        <img data-src="<?php echo user()->userphoto ?>" alt="Profile"
+                        <img data-src="../<?php echo user()->userphoto ?>" alt="Profile"
                             class="rounded-circle border border-2 border-secondary-subtle" width="32px" height="32px">
                     </a>
+                    <div class="userdetails bg-body-tertiary">
+                        <div class="py-1 text-nowrap">
+                            <a
+                                class="cursor-pointer p-2 text-underline-hover text-nowrap"><?php echo user()->firstname . ' ' . user()->lastname ?></a>
+                        </div>
+                        <div class="py-1 d-flex justify-content-center">
+                            <a class="btn btn-sm btn-secondary cursor-pointer text-nowrap"
+                                onclick="event.preventDefault(); document.getElementById('logout_form').submit();">Log
+                                Out</a>
+                            <form id="logout_form" action="logout" method="POST"></form>
+                        </div>
+                    </div>
                 <?php } ?>
-                <div class="userdetails bg-body-tertiary d-flex">
-                    <div class="py-1 text-nowrap">
-                        <a
-                            class="cursor-pointer p-2 text-underline-hover"><?php echo user()->firstname . ' ' . user()->lastname ?></a>
-                    </div>
-                    <div class="py-1 d-flex justify-content-end">
-                        <a class="btn btn-sm btn-secondary cursor-pointer"
-                            onclick="event.preventDefault(); document.getElementById('logout_form').submit();">Log
-                            Out</a>
-                        <form id="logout_form" action="logout" method="POST"></form>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

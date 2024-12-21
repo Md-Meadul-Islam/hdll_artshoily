@@ -9,20 +9,14 @@ class AuthController
     {
         view(file_path: 'auth.login');
     }
+
     public function login()
     {
-        $userId = generateUId();
         $email = sanitizeInput($_POST['email']);
         $pass = sanitizeInput($_POST['password']);
-        $ip = getClientIP();
-        $data = [
-            'email' => $email,
-            'pass' => $pass,
-            'ip' => $ip
-        ];
         if (isset($email) && isset($pass)) {
             $user = new User();
-            $userinfo = $user->login($email, $pass, 'admin');
+            $userinfo = $user->login($email, $pass, 'artists');
             if ($userinfo) {
                 $_SESSION['success'][] = 'Welcome ! You are Successfully Logged In.';
                 return redirect('/');
@@ -30,6 +24,31 @@ class AuthController
         } else {
             $_SESSION['error'][] = 'Please fill Up Required Field !';
             return redirect('login');
+        }
+
+    }
+    public function adminLoginView()
+    {
+        view(file_path: 'auth.admin-login');
+    }
+    public function adminLogin()
+    {
+        $username = sanitizeInput($_POST['username']);
+        $pass = sanitizeInput($_POST['password']);
+        if (isset($username) && isset($pass)) {
+            $user = new User();
+            $userinfo = $user->login($username, $pass, 'admin');
+            if ($userinfo['userid']) {
+                $_SESSION['temp'] = $userinfo['userid'];
+                $_SESSION['success'][] = 'Welcome ! You are Logged In.';
+                return redirect('/admin');
+            } else {
+                $_SESSION['error'][] = $userinfo['error'];
+                return redirect('/admin/login');
+            }
+        } else {
+            $_SESSION['error'][] = 'Please fill Up Required Field !';
+            return redirect('admin/login');
         }
 
     }
