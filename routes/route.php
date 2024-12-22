@@ -34,6 +34,7 @@ Route::post('admin/login', 'AuthController', 'adminLogin', [GuestMiddleware::cla
 Route::get('admin/load-arts-paginate', 'AdminController', 'loadArtsPaginate');
 Route::get('admin/load-artists-paginate', 'AdminController', 'loadArtistsPaginate');
 Route::get('admin/create-art-modal', 'AdminController', 'loadCreateArtModal', []);
+Route::get('admin/copy-art-modal', 'AdminController', 'loadCopyArtModal', []);
 Route::post('store-art', 'ArtController', 'storeArt', [AuthMiddleware::class]);
 Route::get('admin/add-artitsts-modal', 'AdminController', 'loadCreateArtistsModal', []);
 Route::post('store-artist', 'ArtistsController', 'storeArtist', [AuthMiddleware::class]);

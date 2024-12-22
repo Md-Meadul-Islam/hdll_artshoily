@@ -34,6 +34,15 @@ class AdminController
         $artists = $user->artists();
         view('admin.add-art-modal', ['artists' => $artists]);
     }
+    public function loadCopyArtModal()
+    {
+        $artId = $_GET['dataId'];
+        $user = new User();
+        $artists = $user->artists();
+        $arts = new Art();
+        $art = $arts->view($artId);
+        view('admin.copy-art-modal', ['artists' => $artists, 'art' => $art]);
+    }
     public function loadCreateArtistsModal()
     {
         view('admin.add-artists-modal', );

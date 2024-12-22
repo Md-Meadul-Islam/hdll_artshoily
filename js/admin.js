@@ -61,8 +61,8 @@ function loadArtsPaginate(page = 1) {
                                         <td>${d.price + ' ' + d.currency} </td>
                                         <td>
                                             <div class="d-flex gap-1 align-items-center justify-content-center">
-                                             <a class="copy-arts btn btn-sm bg-success text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#staticmodal">Copy</a>
+                                             <a class="copy-art btn btn-sm bg-success text-white"
+                                                    data-bs-toggle="modal" data-bs-target="#staticmodal" id="copy-art">Copy</a>
                                                 <a class="edit-arts btn btn-sm bg-primary text-white text-nowrap"
                                                     data-bs-toggle="modal" data-bs-target="#staticmodal">Full Edit</a>
                                                 <?php if ($article['is_deleted'] == '0') { ?>
@@ -185,9 +185,42 @@ function saveFormData(formData, url) {
         data: formData,
         processData: false,
         contentType: false,
-        success: function (res) {
+        success: function (resposne) {
+            const res = JSON.parse(resposne);
             if (res.success) {
-                console.log(res)
+                $('#staticmodal').modal('hide');
+                $('.toaster').html(anySuccess(res.message));
+
+                const d = res.data;
+                let tr = `<tr data-id="${d.art_id}" key="0">
+                <td>0</td>
+                <td>${d.name}</td>
+                <td>
+                    <div>
+                        <img src="../storage/arts/${d.image}" alt="" width="80px" height="60px">
+                    </div>
+                </td>
+                  <td class="">`
+                d.users.forEach(user => {
+                    tr += `<a> ${user.first_name + ' ' + user.last_name}</a>`;
+                })
+                tr += `</td>
+                <td>${d.price + ' ' + d.currency} </td>
+                <td>
+                    <div class="d-flex gap-1 align-items-center justify-content-center">
+                     <a class="copy-arts btn btn-sm bg-success text-white"
+                            data-bs-toggle="modal" data-bs-target="#staticmodal">Copy</a>
+                        <a class="edit-arts btn btn-sm bg-primary text-white text-nowrap"
+                            data-bs-toggle="modal" data-bs-target="#staticmodal">Full Edit</a>
+                        <?php if ($article['is_deleted'] == '0') { ?>
+                            <a class="soft-delete-arts btn btn-sm bg-warning text-nowrap">Soft Delete</a>
+                        <?php } ?>
+                        <a class="delete-arts btn btn-sm bg-danger">Delete</a>
+                    </div>
+                </td>
+                <td>${d.cr_at}</td>
+            </tr>`;
+                $('#main-table tbody').prepend(tr);
             }
         },
         error: function (xhr) {
@@ -315,6 +348,39 @@ $(document).ready(function () {
             $.ajax({
                 url: 'admin/create-art-modal',
                 method: 'GET',
+                success: function (res) {
+                    $('#staticmodal .modal-content').html(res);
+                    let fields = [
+                        { input: '#name', limit: 200 },
+                        { input: '#place', limit: 50 },
+                        { input: '#creation-date', limit: 20 },
+                        { input: '#media', limit: 50 },
+                        { input: '#canvas-type', limit: 50 },
+                        { input: '#frame', limit: 50 },
+                        { input: '#size', limit: 50 }
+                    ];
+                    fields.forEach((field) => {
+                        $(field.input).on('keyup', function (e) {
+                            let remaining = field.limit - $(this).val().length;
+                            let spanElement = $(this).closest('div').prev('label').find('.limit');
+                            if (remaining >= 0) {
+                                spanElement.text(`(Max ${field.limit} characters // ${remaining} remaining)`).removeClass('text-danger').addClass('text-success');
+                            } else {
+                                spanElement.text(`(Exceeded by ${Math.abs(remaining)} characters)`).removeClass('text-success').addClass('text-danger');
+                            }
+                        })
+                    })
+                }
+            })
+        }
+        if (targetId === 'copy-art') {
+            const tr = $(e.relatedTarget).closest('tr');
+            const dataId = tr.data('id');
+            $('#staticmodal .modal-content').html(' ');
+            $.ajax({
+                url: 'admin/copy-art-modal',
+                method: 'GET',
+                data: { dataId },
                 success: function (res) {
                     $('#staticmodal .modal-content').html(res);
                     let fields = [

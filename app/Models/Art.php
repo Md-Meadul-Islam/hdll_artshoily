@@ -56,6 +56,35 @@ class Art
         $row['users'] = json_decode($row['users'], true);  // Decode users JSON array
         return $row;
     }
+    public function storeArt($data)
+    {
+        $stmt = $this->connection->prepare("INSERT INTO {$this->arts} (art_id, user_ids, name, date_created, place_created, media, canvas_type, size, frame, description, price, currency, image, imgalt, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        if ($stmt === false) {
+            die('Prepare failed: ' . htmlspecialchars($this->connection->error));
+        }
+        $stmt->bind_param('sssssssssssssss', $data['art_id'], $data['artists'], $data['name'], $data['creationDate'], $data['place'], $data['media'], $data['canvasType'], $data['size'], $data['frame'], $data['description'], $data['price'], $data['currency'], $data['image'], $data['name'], $data['availability']);
+        if ($stmt->execute()) {
+            $insertId = $this->connection->insert_id;
+            $fetchStmt = $this->connection->prepare("SELECT  a.art_id, a.name, a.image, a.price, a.currency, a.cr_at,
+                JSON_ARRAYAGG(JSON_OBJECT('user_id', u.user_id, 'first_name', u.first_name, 'last_name', u.last_name)) AS users
+                FROM {$this->arts} AS a
+                LEFT JOIN {$this->users} AS u 
+                ON JSON_CONTAINS(a.user_ids, JSON_QUOTE(u.user_id), '$')
+                WHERE a.id = ?
+                GROUP BY a.id
+                ");
+            if ($fetchStmt === false) {
+                die('Prepare failed: ' . htmlspecialchars($this->connection->error));
+            }
+            $fetchStmt->bind_param('i', $insertId);
+            $fetchStmt->execute();
+            $result = $fetchStmt->get_result();
+            $insertedRow = $result->fetch_assoc();
+            return ['data' => $insertedRow];
+        } else {
+            return ['error' => $stmt->error];
+        }
+    }
     public function moreFromArtist($art_id, $user_id, $limit = 5)
     {
         $data = [];

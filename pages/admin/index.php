@@ -17,10 +17,10 @@
 
     <body>
         <?php pageAdd('admin/header') ?>
-        <section class="mt-5 px-2 pt-3 d-block">
+        <section class="mt-5 pt-3 d-block">
             <div class="row admincontainer d-flex position-relative g-0">
                 <?php pageAdd('admin/leftbar'); ?>
-                <div class="middlemenu col-10" style="height:90vh;overflow-y:auto;">
+                <div class="middlemenu col-10" style="height:90vh;overflow-y:auto; scrollbar-width:none;">
                 </div>
             </div>
         </section>

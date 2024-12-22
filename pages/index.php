@@ -197,7 +197,7 @@
                     <div class="row g-0 d-flex align-items-center justify-content-around">
                         <div class="col-12 py-3">
                             <div>
-                                <img data-src="./images/limited_editions/Desktop-06_1800x.png" alt="Limited Editions"
+                                <img data-src="./images/Desktop-06_1800x.png" alt="Limited Editions"
                                     class="w-100 h-100">
                             </div>
                         </div>
@@ -213,8 +213,8 @@
                 </div>
                 <div class="col-12 py-3">
                     <div>
-                        <img data-src="./images/limited_editions/Homepage_Small_Banner_Desktop_1800x.png"
-                            alt="Limited Editions" class="w-100 h-100">
+                        <img data-src="./images/Homepage_Small_Banner_Desktop_1800x.png" alt="Limited Editions"
+                            class="w-100 h-100">
                     </div>
                 </div>
             </div>
