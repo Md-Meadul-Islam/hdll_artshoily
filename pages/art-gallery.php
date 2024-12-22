@@ -93,7 +93,7 @@
                         <?php foreach ($arts as $i => $art): ?>
                             <div class="col-md-4 col-sm-6 col-12 p-3">
                                 <div class="d-flex align-items-center justify-content-center border border-1">
-                                    <a href="viewart/?a=<?php echo $art['art_id'] ?>">
+                                    <a href="viewart?a=<?php echo $art['art_id'] ?>">
                                         <img data-src="../storage/arts/<?php echo $art['image']; ?>"
                                             alt="<?php $art['imgalt'] ?>"
                                             style="max-height:300px; max-width:300px;width:100%;">
@@ -101,7 +101,9 @@
                                 </div>
                                 <div class="row g-0 d-flex justify-content-between align-items-end pt-2">
                                     <div class="col-6">
-                                        <p class="mb-0 fs-10px"><?php echo $art['name']; ?></p>
+                                        <p class="mb-0 fs-10px"><a
+                                                href="viewart?a=<?php echo $art['art_id'] ?>"><?php echo $art['name']; ?></a>
+                                        </p>
                                         <p class="text-secondary fs-10px mb-0">
                                             <?php echo $art['canvas_type'] . " on " . $art['media']; ?>
                                         </p>

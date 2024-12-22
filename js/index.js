@@ -15,7 +15,7 @@ function loadLimitedEditionPrints() {
                                 </div>
                                 <div class="row g-0 d-flex justify-content-between align-items-end pt-2">
                                     <div class="col-6">
-                                        <p class="mb-0 fs-10px">${art['name']}</p>
+                                        <p class="mb-0 fs-10px"><a href="viewart?a=${art['art_id']}">${art['name']}</a></p>
                                         <p class="text-secondary fs-10px mb-0">${art['canvas_type'] + ' on ' + art['media']}</p>
                                         <p class="text-secondary fs-10px">${art['size']}</p>
                                     </div>
