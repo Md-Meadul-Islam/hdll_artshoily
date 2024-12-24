@@ -21,6 +21,34 @@
             <div class="row admincontainer d-flex position-relative g-0">
                 <?php pageAdd('admin/leftbar'); ?>
                 <div class="middlemenu col-10" style="height:90vh;overflow-y:auto; scrollbar-width:none;">
+                    <div class="row g-3 d-flex px-2 align-items-center justify-content-center">
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <div class="border border-1 p-2 shadow">
+                                <h5>Focus Artists</h5>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <div class="border border-1 p-2 shadow">
+                                <h5>Limited Edition</h5>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <div class="border border-1 p-2 shadow">
+                                <h5>Client Stories</h5>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <div class="border border-1 p-2 shadow">
+                                <h5>Inspired Collection</h5>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <div class="border border-1 p-2 shadow">
+                                <h5>Editor's Pics</h5>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

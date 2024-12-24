@@ -18,6 +18,7 @@ Route::get('api/more-from-artists', 'ArtController', 'moreFromArtist');
 Route::get('artists', 'ArtistsController', 'index');
 Route::get('viewartists/{a}', 'ArtistsController', 'view');
 Route::get('api/artists', 'ArtistsController', 'getArtists');
+Route::get('api/load-arts-of-artist', 'ArtistsController', 'getArtOfArtist');
 
 //auth routes
 Route::get('login', 'AuthController', 'loginView');
@@ -36,9 +37,9 @@ Route::get('admin/load-artists-paginate', 'AdminController', 'loadArtistsPaginat
 Route::get('admin/create-art-modal', 'AdminController', 'loadCreateArtModal', []);
 Route::get('admin/copy-art-modal', 'AdminController', 'loadCopyArtModal', []);
 Route::post('store-art', 'ArtController', 'storeArt', [AuthMiddleware::class]);
-Route::get('admin/add-artitsts-modal', 'AdminController', 'loadCreateArtistsModal', []);
+Route::post('delete-art', 'ArtController', 'delete', [AuthMiddleware::class]);
+Route::get('admin/add-artitsts-modal', 'AdminController', 'loadCreateArtistsModal', [AuthMiddleware::class]);
 Route::post('store-artist', 'ArtistsController', 'storeArtist', [AuthMiddleware::class]);
-Route::get('admin/add-focus-art-modal', 'AdminController', 'loadFocusArtistsModal', []);
 
 //default page
 Route::get('terms', 'HomeController', 'terms');

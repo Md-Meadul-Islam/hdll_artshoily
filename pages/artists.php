@@ -37,11 +37,15 @@
         <?php pageAdd('components/header'); ?>
         <!-- hero section starts -->
         <section class="mt-5">
-            <div class="row g-0 d-flex">
+            <div class="row g-0 d-flex align-items-center justify-content-center">
                 <div class="col-12">
                     <div class="hero-img w-100">
                         <img data-src="./images/artists.png" src="./images/artists.png" alt="Artists Cover Image"
                             class="w-100 h-100">
+                    </div>
+                </div>
+                <div class="col-md-10 col-12 pt-3">
+                    <div class="all-artists row g-3 d-flex align-items-center justify-content-around">
                     </div>
                 </div>
             </div>

@@ -108,7 +108,7 @@
                     <label for="price" class="form-label mb-0">
                         <strong>Price </strong></label>
                     <div class="input-group">
-                        <input type="number" name="price" class="form-control" id="price" min="10" value="10"
+                        <input type="number" name="price" class="form-control" id="price" min="10"
                             value="<?php echo $art['price'] ?>">
                     </div>
                 </div>
@@ -217,8 +217,8 @@
         </div>
         <div class="col-12 py-2">
             <div class="previewBox py-2" id="previewBox">
-                <div class="previewImg position-relative"><img src="../storage/arts/<?php echo $art['image'] ?>"><span
-                        class="previewcrossbtn">✖</span></div>
+                <div class="previewImg position-relative"><img src="../storage/arts/<?php echo $art['image'] ?>"
+                        class="previousImg"><span class="previewcrossbtn">✖</span></div>
             </div>
             <div class="d-flex" style="width:80px">
                 <div class="input-group">

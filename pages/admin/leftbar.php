@@ -36,41 +36,6 @@
                     </a>
                 </div>
                 <div>
-                    <a class="d-flex align-items-center text-secondary cursor-pointer border border-1 border-secondary p-2 bg-primary-subtle bg-grey-400-hover"
-                        data-bs-toggle="modal" data-bs-target="#staticmodal" id="add-focus-artists">
-                        <i class="user-icon icon-bg-grey" style="zoom:1.5"></i>
-                        <span class="ps-2">Focus Artists</span>
-                    </a>
-                </div>
-                <div>
-                    <a class="d-flex align-items-center text-secondary cursor-pointer border border-1 border-secondary p-2 bg-danger-subtle bg-grey-400-hover"
-                        id="inspired-collection">
-                        <i class="search-icon icon-bg-grey" style="zoom:1.5"></i>
-                        <span class="ps-2">Inspired Collection</span>
-                    </a>
-                </div>
-                <div>
-                    <a class="d-flex align-items-center text-secondary cursor-pointer border border-1 border-secondary p-2 bg-primary-subtle bg-grey-400-hover"
-                        id="limited-edition">
-                        <i class="article-icon icon-bg-grey" style="zoom:1.5"></i>
-                        <span class="ps-2">Limited Edition</span>
-                    </a>
-                </div>
-                <div>
-                    <a class="d-flex align-items-center text-secondary cursor-pointer border border-1 border-secondary p-2 bg-warning-subtle bg-grey-400-hover"
-                        id="client-stories">
-                        <i class="polls-icon icon-bg-grey" style="zoom:1.5"></i>
-                        <span class="ps-2">Client Stories</span>
-                    </a>
-                </div>
-                <div>
-                    <a class="d-flex align-items-center text-secondary cursor-pointer border border-1 border-secondary p-2 bg-danger-subtle bg-grey-400-hover"
-                        id="editor-pics">
-                        <i class="article-icon icon-bg-grey" style="zoom:1.5"></i>
-                        <span class="ps-2">Editor's Pics</span>
-                    </a>
-                </div>
-                <div>
                     <a class="d-flex align-items-center text-secondary cursor-pointer border border-1 border-secondary p-2 bg-danger-subtle bg-grey-400-hover"
                         id="blogs">
                         <i class="article-icon icon-bg-grey" style="zoom:1.5"></i>

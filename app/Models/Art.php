@@ -14,7 +14,7 @@ class Art
     }
     public function arts($page = 1, $limit = 20)
     {
-        $offset = ($page - 1) * 1;
+        $offset = ($page - 1) * $limit;
         $data = [];
 
         $stmt = $this->connection->prepare("SELECT 
@@ -55,6 +55,27 @@ class Art
         $row = $result->fetch_assoc();
         $row['users'] = json_decode($row['users'], true);  // Decode users JSON array
         return $row;
+    }
+    public function getArtOfArtist($artistId, $limit = 9)
+    {
+        $stmt = $this->connection->prepare("SELECT 
+            a.*
+            FROM {$this->arts} AS a
+            WHERE JSON_CONTAINS(a.user_ids, JSON_QUOTE(?), '$')
+            LIMIT ?
+        ");
+        if ($stmt === false) {
+            die('Prepare failed: ' . htmlspecialchars($this->connection->error));
+        }
+        $stmt->bind_param('si', $artistId, $limit);
+        if (!$stmt->execute()) {
+            die('Execute failed: ' . htmlspecialchars($stmt->error));
+        }
+        $result = $stmt->get_result();
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+
+        return $data;
+
     }
     public function storeArt($data)
     {
@@ -128,5 +149,39 @@ class Art
             $data[] = $row;
         }
         return $data;
+    }
+    public function delete($id)
+    {
+        $fetchStmt = $this->connection->prepare("SELECT image FROM {$this->arts} WHERE art_id = ?");
+        if ($fetchStmt === false) {
+            die('Prepare failed: ' . htmlspecialchars($this->connection->error));
+        }
+        $fetchStmt->bind_param('s', $id);
+        $fetchStmt->execute();
+        $result = $fetchStmt->get_result();
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $imagePath = 'storage/arts/' . $row['image'];
+            $realPath = realpath($imagePath);
+            if ($realPath && file_exists($realPath)) {
+                unlink($realPath);
+            }
+        } else {
+            return ['success' => false, 'message' => 'Record not found!'];
+        }
+        $deleteStmt = $this->connection->prepare("DELETE FROM {$this->arts} WHERE art_id = ?");
+        if ($deleteStmt === false) {
+            die('Prepare failed: ' . htmlspecialchars($this->connection->error));
+        }
+        $deleteStmt->bind_param('s', $id);
+        if ($deleteStmt->execute()) {
+            if ($deleteStmt->affected_rows > 0) {
+                return ['success' => true, 'message' => 'Record and image deleted successfully!'];
+            } else {
+                return ['success' => false, 'message' => 'Failed to delete the record!'];
+            }
+        } else {
+            return ['success' => false, 'message' => 'Delete query failed!'];
+        }
     }
 }

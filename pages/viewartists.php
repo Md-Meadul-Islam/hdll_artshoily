@@ -35,22 +35,55 @@
 
     <body>
         <?php pageAdd('components/header'); ?>
-        <section class="mt-5">
-            <div class="w-100">
-                <img data-src="../images/artists.png" alt="artists cover" class="w-100">
-            </div>
-        </section>
         <!-- artist section starts -->
         <section class="mt-5">
             <div class="row g-0 d-flex align-items-center justify-content-center pt-4">
                 <div class="col-lg-10 col-12 p-2">
-                    <div class="row g-5 d-flex justify-content-center px-2 py-2">
-                        <?php dump($artist) ?>
+                    <div class="row g-0 d-flex justify-content-center px-2 py-2">
+                        <div class="col-12">
+                            <img data-src="<?php echo $artist['coverphoto'] ?>"
+                                alt="<?php echo $artist['first_name'] ?>" class="w-100"
+                                style="max-height:300px;object-fit:cover;">
+                        </div>
+                        <div class="col-12 pt-3">
+                            <div class="row g-2">
+                                <div class="col-md-6 col-12">
+                                    <div class="row g-0">
+                                        <div class="col-md-6 col-12 p-2">
+                                            <img data-src="<?php echo $artist['userphoto'] ?>"
+                                                alt="<?php echo $artist['first_name'] ?>" class="p-2 w-100">
+                                        </div>
+                                        <div class="col-md-6 col-12 p-2">
+                                            <h3 class="fw-bold">
+                                                <?php echo $artist['first_name'] . ' ' . $artist['last_name']; ?>
+                                            </h3>
+                                            <p class="mb-0"><?php echo $artist['lifespan'] ?></p>
+                                            <p class="mb-0"><?php echo $artist['origin'] ?></p>
+                                            <p class="mb-0"><?php echo $artist['email'] ?></p>
+                                            <p class="mb-0"><?php echo $artist['phone'] ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12 p-2">
+                                    <p class="text-justify text-secondary"><?php echo $artist['bio'] ?></p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
         <!-- artist section ends -->
+        <section>
+            <div class="row g-0 d-flex align-items-center justify-content-center pt-2">
+                <div class="col-md-10 col-12">
+                    <h5 class="text-uppercase fw-semibold px-2">More of his Design</h5>
+                    <div class="goldenStroke"></div>
+                    <div class="more-from-artist row g-2 d-flex justify-content-center">
+                    </div>
+                </div>
+            </div>
+        </section>
         <?php pageAdd('components/footer'); ?>
         <script src="./js/jquery.min.js"></script>
         <script src="./js/bootstrap.min.js"></script>

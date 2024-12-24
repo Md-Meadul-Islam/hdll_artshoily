@@ -55,7 +55,7 @@ function loadArtsPaginate(page = 1) {
                                         </td>
                                         <td class="">`
                     d.users.forEach(user => {
-                        tr += `<a> ${user.first_name + ' ' + user.last_name}</a>`;
+                        tr += `<a class="bg-dark text-white mx-1 fs-8px"> ${user.first_name + ' ' + user.last_name}</a>`;
                     })
                     tr += `</td>
                                         <td>${d.price + ' ' + d.currency} </td>
@@ -65,9 +65,6 @@ function loadArtsPaginate(page = 1) {
                                                     data-bs-toggle="modal" data-bs-target="#staticmodal" id="copy-art">Copy</a>
                                                 <a class="edit-arts btn btn-sm bg-primary text-white text-nowrap"
                                                     data-bs-toggle="modal" data-bs-target="#staticmodal">Full Edit</a>
-                                                <?php if ($article['is_deleted'] == '0') { ?>
-                                                    <a class="soft-delete-arts btn btn-sm bg-warning text-nowrap">Soft Delete</a>
-                                                <?php } ?>
                                                 <a class="delete-arts btn btn-sm bg-danger">Delete</a>
                                             </div>
                                         </td>
@@ -105,9 +102,6 @@ function loadArtistsPaginate(page = 1) {
                                             <div class="d-flex gap-1 align-items-center justify-content-center">
                                                 <a class="edit-arts btn btn-sm bg-primary text-white text-nowrap"
                                                     data-bs-toggle="modal" data-bs-target="#staticmodal">Full Edit</a>
-                                                <?php if ($article['is_deleted'] == '0') { ?>
-                                                    <a class="soft-delete-arts btn btn-sm bg-warning text-nowrap">Soft Delete</a>
-                                                <?php } ?>
                                                 <a class="delete-arts btn btn-sm bg-danger">Delete</a>
                                             </div>
                                         </td>
@@ -185,12 +179,10 @@ function saveFormData(formData, url) {
         data: formData,
         processData: false,
         contentType: false,
-        success: function (resposne) {
-            const res = JSON.parse(resposne);
+        success: function (res) {
             if (res.success) {
                 $('#staticmodal').modal('hide');
                 $('.toaster').html(anySuccess(res.message));
-
                 const d = res.data;
                 let tr = `<tr data-id="${d.art_id}" key="0">
                 <td>0</td>
@@ -201,9 +193,11 @@ function saveFormData(formData, url) {
                     </div>
                 </td>
                   <td class="">`
-                d.users.forEach(user => {
-                    tr += `<a> ${user.first_name + ' ' + user.last_name}</a>`;
-                })
+                if (Array.isArray(d.users)) {
+                    d.users.forEach(user => {
+                        tr += `<a class="class="bg-dark text-white mx-1 fs-8px"">${user.first_name} ${user.last_name}</a>`;
+                    });
+                }
                 tr += `</td>
                 <td>${d.price + ' ' + d.currency} </td>
                 <td>
@@ -212,9 +206,6 @@ function saveFormData(formData, url) {
                             data-bs-toggle="modal" data-bs-target="#staticmodal">Copy</a>
                         <a class="edit-arts btn btn-sm bg-primary text-white text-nowrap"
                             data-bs-toggle="modal" data-bs-target="#staticmodal">Full Edit</a>
-                        <?php if ($article['is_deleted'] == '0') { ?>
-                            <a class="soft-delete-arts btn btn-sm bg-warning text-nowrap">Soft Delete</a>
-                        <?php } ?>
                         <a class="delete-arts btn btn-sm bg-danger">Delete</a>
                     </div>
                 </td>
@@ -260,12 +251,34 @@ $(document).ready(function () {
             $('.middlemenu').append(mainTable);
             loadArtistsPaginate(1);
         }
+        if ($(e.target).closest('.delete-arts').length) {
+            const tr = $(e.target).closest('tr');
+            const dataId = tr.data('id');
+            if (confirm('Are you sure to Delete this?')) {
+                $.ajax({
+                    url: '/delete-art',
+                    type: 'POST',
+                    data: { id: dataId },
+                    success: function (response) {
+                        if (response.success) {
+                            tr.remove();
+                            $('.toaster').html(anySuccess(response.message));
+                        } else {
+                            $('.toaster').html(anyError(response.message));
+                        }
+                    },
+                    error: function () {
+                        $('.toaster').html(anyError(response.message));
+                    }
+                });
+            }
+        }
 
         if (e.target.id === 'artsavebtn') {
             const barLoader = $(e.target).closest('.modal-content').find('.loader-wrapper');
             barLoader.removeClass('d-none');
             let formData = new FormData();
-            let artName = $('#name').val(), artistsSelect = $('#artists'), place = $('#place').val()
+            let artName = $('#name').val(), place = $('#place').val()
                 , creationDate = $('#creation-date').val(), media = $('#media').val(), canvasType = $('#canvas-type').val(), size = $('#size').val(), frame = $('#frame').val(), price = $('#price').val(), currency = $('#currency').val(), availability = $('#availability').val(), description = $('#description').html();
             if (artName) {
                 formData.append('name', artName)
@@ -301,12 +314,17 @@ $(document).ready(function () {
                 $('.toaster').html(anyError('Image required !'));
                 return 0;
             }
-            const base64String = image[0].src.split(',')[1];
-            const byteCharacters = atob(base64String);
-            const byteNumbers = new Array(byteCharacters.length).fill().map((_, i) => byteCharacters.charCodeAt(i));
-            const byteArray = new Uint8Array(byteNumbers);
-            const blob = new Blob([byteArray], { type: 'image/jpeg' });
-            formData.append('image', blob, 'image.jpg');
+            if (image.hasClass('previousImg')) {
+                $('.toaster').html(anyError('Image already Uploaded ! Please select another one.'));
+                return 0;
+            } else {
+                const base64String = image[0].src.split(',')[1];
+                const byteCharacters = atob(base64String);
+                const byteNumbers = new Array(byteCharacters.length).fill().map((_, i) => byteCharacters.charCodeAt(i));
+                const byteArray = new Uint8Array(byteNumbers);
+                const blob = new Blob([byteArray], { type: 'image/jpeg' });
+                formData.append('image', blob, 'image.jpg');
+            }
             saveFormData(formData, 'store-art');
         }
         if (e.target.id === 'artistssavebtn') {

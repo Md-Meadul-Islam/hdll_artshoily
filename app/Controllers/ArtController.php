@@ -35,6 +35,7 @@ class ArtController
     }
     public function storeArt()
     {
+        header("Content-Type: application/json");
         $data = [];
         $image_upload_dir = 'storage/arts/';
         $image_max_size = 5 * 1024 * 1024; // 5 MB
@@ -75,6 +76,23 @@ class ArtController
         $arts = $art->limitedEdition();
         echo json_encode(['success' => true, 'data' => $arts]);
     }
+    public function delete()
+    {
+        header('Content-type: application/json');
+        if (empty($_POST['id'])) {
+            echo json_encode(['success' => false, 'message' => 'Something Wrong !']);
+            return 0;
+        }
+        $id = sanitizeInput($_POST['id']);
+        $arts = new Art();
+        $res = $arts->delete($id);
+        if ($res['success']) {
+            echo json_encode(['success' => true, 'message' => 'Art Deleted Successfully !']);
+            return 0;
+        } else {
+            echo json_encode(['success' => false, 'message' => $res['message']]);
+        }
+    }
     private function uploadFile($file, $upload_dir, $allowed_types, $max_size)
     {
         if (!file_exists('storage/arts')) {
@@ -98,4 +116,5 @@ class ArtController
             return false;
         }
     }
+
 }

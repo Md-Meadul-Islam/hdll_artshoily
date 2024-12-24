@@ -352,6 +352,11 @@ header .nav-link:hover::after {
     transition: all 0.25s ease;
 }
 
+.icon-bg-green {
+    background-color: green;
+    transition: all 0.25s ease;
+}
+
 .icon-bg-pink {
     background-color: rgb(var(--bs-purple));
     transition: all 0.25s ease;
