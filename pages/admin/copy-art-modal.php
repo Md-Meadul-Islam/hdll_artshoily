@@ -4,7 +4,15 @@
     </div>
     <div class="w-100 g-0 d-flex justify-content-between align-items-center p-3">
         <div class="">
-            <h5 class="modal-title">Create Art From Copying</h5>
+            <h5 class="modal-title">
+                <?php
+                if ($mode == 'copy') {
+                    echo 'Create Art From Copying';
+                } else {
+                    echo 'Edit / Update Art';
+                }
+                ?>
+            </h5>
         </div>
         <div class="position-relative">
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -232,9 +240,18 @@
     <div class="modal-footer px-0 pb-0">
         <div class="col-12 d-flex justify-content-end align-items-center gap-2">
             <?php
-            if (user()->email) { ?>
-                <button type="submit" class="btn btn-primary" id="artsavebtn" name="artsavebtn">Save</button>
-            <?php } ?>
+            if (user()->email) {
+                if ($mode == 'copy') { ?>
+                    <button type="submit" class="btn btn-primary" id="artsavebtn" name="artsavebtn">Save</button>
+                    <?php
+                } else {
+                    ?>
+                    <button type="submit" class="btn btn-primary" id="artupdatebtn" name="artupdatebtn"
+                        data-id="<?php echo $art['art_id']; ?>">Update</button>
+                    <?php
+                }
+            }
+            ?>
         </div>
     </div>
 </div>

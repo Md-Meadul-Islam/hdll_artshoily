@@ -63,7 +63,7 @@ function loadArtsPaginate(page = 1) {
                                             <div class="d-flex gap-1 align-items-center justify-content-center">
                                              <a class="copy-art btn btn-sm bg-success text-white"
                                                     data-bs-toggle="modal" data-bs-target="#staticmodal" id="copy-art">Copy</a>
-                                                <a class="edit-arts btn btn-sm bg-primary text-white text-nowrap"
+                                                <a class="edit-arts btn btn-sm bg-primary text-white text-nowrap" id="edit-art"
                                                     data-bs-toggle="modal" data-bs-target="#staticmodal">Full Edit</a>
                                                 <a class="delete-arts btn btn-sm bg-danger">Delete</a>
                                             </div>
@@ -227,7 +227,8 @@ $(document).ready(function () {
         if ($(e.target).closest('.userphotobtn').length) {
             $('.userdetails').toggleClass('d-block');
         }
-        if ($(e.target).closest('.allarts').length && !all_arts_btn_clicked) {
+        //arts
+        if ($(e.target).closest('.all-arts-btn').length && !all_arts_btn_clicked) {
             all_arts_btn_clicked = true;
             all_artists_btn_clicked = false;
             const mainTable = ` <table class="table table-bordered table-striped hover" id="main-table">
@@ -239,41 +240,6 @@ $(document).ready(function () {
             $('.middlemenu').append(mainTable);
             loadArtsPaginate(1);
         }
-        if ($(e.target).closest('.allartists').length && !all_artists_btn_clicked) {
-            all_artists_btn_clicked = true;
-            all_arts_btn_clicked = false;
-            const mainTable = ` <table class="table table-bordered table-striped hover" id="main-table">
-                        <thead> </thead>
-                        <tbody> </tbody>
-                    </table>`;
-            $('.middlemenu').html(' ');
-            $('.middlemenu').append(addButton('new-artists', 'Add Artist', 'user'));
-            $('.middlemenu').append(mainTable);
-            loadArtistsPaginate(1);
-        }
-        if ($(e.target).closest('.delete-arts').length) {
-            const tr = $(e.target).closest('tr');
-            const dataId = tr.data('id');
-            if (confirm('Are you sure to Delete this?')) {
-                $.ajax({
-                    url: '/delete-art',
-                    type: 'POST',
-                    data: { id: dataId },
-                    success: function (response) {
-                        if (response.success) {
-                            tr.remove();
-                            $('.toaster').html(anySuccess(response.message));
-                        } else {
-                            $('.toaster').html(anyError(response.message));
-                        }
-                    },
-                    error: function () {
-                        $('.toaster').html(anyError(response.message));
-                    }
-                });
-            }
-        }
-
         if (e.target.id === 'artsavebtn') {
             const barLoader = $(e.target).closest('.modal-content').find('.loader-wrapper');
             barLoader.removeClass('d-none');
@@ -327,6 +293,97 @@ $(document).ready(function () {
             }
             saveFormData(formData, 'store-art');
         }
+        if (e.target.id === 'artupdatebtn') {
+            const barLoader = $(e.target).closest('.modal-content').find('.loader-wrapper');
+            barLoader.removeClass('d-none');
+            let formData = new FormData();
+            let artId = $('#artupdatebtn').data('id'), artName = $('#name').val(), place = $('#place').val()
+                , creationDate = $('#creation-date').val(), media = $('#media').val(), canvasType = $('#canvas-type').val(), size = $('#size').val(), frame = $('#frame').val(), price = $('#price').val(), currency = $('#currency').val(), availability = $('#availability').val(), description = $('#description').html();
+            if (artName) {
+                formData.append('artId', artId);
+                formData.append('name', artName);
+            } else {
+                $('.toaster').html(anyError('Art Name is required !'));
+                return 0;
+            }
+            if (selectedArtists.length > 0) {
+                formData.append('artists', JSON.stringify(selectedArtists));
+            } else {
+                $('.toaster').html(anyError('Please Select Artists !'));
+                return 0;
+            }
+            if (price) {
+                formData.append('price', price)
+            } else {
+                $('.toaster').html(anyError('Please give Price !'));
+                return 0;
+            }
+
+            place ? formData.append('place', place) : '';
+            creationDate ? formData.append('creationDate', creationDate) : '';
+            media ? formData.append('media', media) : '';
+            canvasType ? formData.append('canvasType', canvasType) : '';
+            size ? formData.append('size', size) : '';
+            frame ? formData.append('frame', frame) : '';
+            currency ? formData.append('currency', currency) : '';
+            availability ? formData.append('availability', availability) : '';
+            description ? formData.append('description', sanitizeTextTag(description)) : '';
+
+            const image = $('#previewBox img');
+            if (image.length === 0) {
+                $('.toaster').html(anyError('Image required !'));
+                return 0;
+            }
+            if (image.hasClass('previousImg')) {
+                formData.append('previousImage', image[0].src);
+            } else {
+                const base64String = image[0].src.split(',')[1];
+                const byteCharacters = atob(base64String);
+                const byteNumbers = new Array(byteCharacters.length).fill().map((_, i) => byteCharacters.charCodeAt(i));
+                const byteArray = new Uint8Array(byteNumbers);
+                const blob = new Blob([byteArray], { type: 'image/jpeg' });
+                formData.append('image', blob, 'image.jpg');
+            }
+            saveFormData(formData, 'update-art');
+        }
+
+        if ($(e.target).closest('.delete-arts').length) {
+            const tr = $(e.target).closest('tr');
+            const dataId = tr.data('id');
+            if (confirm('Are you sure to Delete this?')) {
+                $.ajax({
+                    url: '/delete-art',
+                    type: 'POST',
+                    data: { id: dataId },
+                    success: function (response) {
+                        if (response.success) {
+                            tr.remove();
+                            $('.toaster').html(anySuccess(response.message));
+                        } else {
+                            $('.toaster').html(anyError(response.message));
+                        }
+                    },
+                    error: function () {
+                        $('.toaster').html(anyError(response.message));
+                    }
+                });
+            }
+        }
+
+
+        //artists
+        if ($(e.target).closest('.all-artists-btn').length && !all_artists_btn_clicked) {
+            all_artists_btn_clicked = true;
+            all_arts_btn_clicked = false;
+            const mainTable = ` <table class="table table-bordered table-striped hover" id="main-table">
+                        <thead> </thead>
+                        <tbody> </tbody>
+                    </table>`;
+            $('.middlemenu').html(' ');
+            $('.middlemenu').append(addButton('new-artists', 'Add Artist', 'user'));
+            $('.middlemenu').append(mainTable);
+            loadArtistsPaginate(1);
+        }
         if (e.target.id === 'artistssavebtn') {
             const barLoader = $(e.target).closest('.modal-content').find('.loader-wrapper');
             barLoader.removeClass('d-none');
@@ -360,7 +417,8 @@ $(document).ready(function () {
     //static modal show, event handling
     $('#staticmodal').on('show.bs.modal', function (e) {
         var targetId = $(e.relatedTarget).attr('id');
-        //add art
+        //arts
+        //new arts
         if (targetId === 'new-art') {
             $('#staticmodal .modal-content').html(' ');
             $.ajax({
@@ -391,6 +449,7 @@ $(document).ready(function () {
                 }
             })
         }
+        //copy arts
         if (targetId === 'copy-art') {
             const tr = $(e.relatedTarget).closest('tr');
             const dataId = tr.data('id');
@@ -398,7 +457,7 @@ $(document).ready(function () {
             $.ajax({
                 url: 'admin/copy-art-modal',
                 method: 'GET',
-                data: { dataId },
+                data: { dataId, mode: 'copy' },
                 success: function (res) {
                     $('#staticmodal .modal-content').html(res);
                     let fields = [
@@ -424,6 +483,41 @@ $(document).ready(function () {
                 }
             })
         }
+        if (targetId === 'edit-art') {
+            const tr = $(e.relatedTarget).closest('tr');
+            const dataId = tr.data('id');
+            $('#staticmodal .modal-content').html(' ');
+            $.ajax({
+                url: 'admin/copy-art-modal',
+                method: 'GET',
+                data: { dataId, mode: 'edit' },
+                success: function (res) {
+                    $('#staticmodal .modal-content').html(res);
+                    let fields = [
+                        { input: '#name', limit: 200 },
+                        { input: '#place', limit: 50 },
+                        { input: '#creation-date', limit: 20 },
+                        { input: '#media', limit: 50 },
+                        { input: '#canvas-type', limit: 50 },
+                        { input: '#frame', limit: 50 },
+                        { input: '#size', limit: 50 }
+                    ];
+                    fields.forEach((field) => {
+                        $(field.input).on('keyup', function (e) {
+                            let remaining = field.limit - $(this).val().length;
+                            let spanElement = $(this).closest('div').prev('label').find('.limit');
+                            if (remaining >= 0) {
+                                spanElement.text(`(Max ${field.limit} characters // ${remaining} remaining)`).removeClass('text-danger').addClass('text-success');
+                            } else {
+                                spanElement.text(`(Exceeded by ${Math.abs(remaining)} characters)`).removeClass('text-success').addClass('text-danger');
+                            }
+                        })
+                    })
+                }
+            })
+        }
+        //artists
+        //add artist
         if (targetId === 'new-artists') {
             $('#staticmodal .modal-content').html(' ');
             $.ajax({
@@ -449,6 +543,7 @@ $(document).ready(function () {
                 }
             })
         }
+        //add focus artists
         if (targetId === 'add-focus-artists') {
             $('#staticmodal .modal-content').html(' ');
             $.ajax({

@@ -101,17 +101,15 @@ class User
         }
         return $this;
     }
-    public function artists($page = 1, $limit = 20)
+    public function artists()
     {
-        $offset = ($page - 1) * $limit;
         $artists = [];
         $role = 'artists';
         $stmt = $this->connection->prepare("SELECT u.user_id, u.first_name, u.last_name, u.email, u.phone, u.userphoto,u.coverphoto, u.bio, u.userrole, u.status, u.cr_at
             FROM {$this->userstable} u
             WHERE u.userrole = ?
-            LIMIT ? OFFSET ?
         ");
-        $stmt->bind_param('sii', $role, $limit, $offset);
+        $stmt->bind_param('s', $role);
         $stmt->execute();
         $result = $stmt->get_result();
         while ($row = $result->fetch_assoc()) {
@@ -122,7 +120,7 @@ class User
     public function paginateArtist($page, $limit)
     {
         $artists = [];
-        $offset = ($page - 1) * 1;
+        $offset = ($page - 1) * $limit;
         $role = 'artists';
         $stmt = $this->connection->prepare("SELECT u.user_id, u.first_name, u.last_name, u.email, u.phone, u.userphoto,u.coverphoto, u.bio, u.userrole, u.status, u.cr_at
             FROM {$this->userstable} u

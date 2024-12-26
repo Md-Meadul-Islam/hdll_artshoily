@@ -91,12 +91,10 @@ function loadArtsOfArtist() {
 }
 
 $(document).ready(function () {
-    // loadAllArtists();
     const urlPath = window.location.pathname;
     if (urlPath === '/artists') {
         loadAllArtists(1, 20);
     }
-    console.log(urlPath);
     if (urlPath === '/viewartists') {
         loadArtsOfArtist();
     }

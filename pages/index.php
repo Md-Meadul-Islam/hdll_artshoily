@@ -303,18 +303,18 @@
             </div>
         </section> -->
         <!-- gift cards section ends -->
-        <!-- editors pics section starts -->
+        <!-- collectibles section starts -->
         <section class="py-5">
             <div class="row g-0 d-flex align-items-center justify-content-center">
                 <h4 class="text-center text-uppercase">
                     - COLLECTIBLES -
                 </h4>
                 <div class="col-md-10 col-12">
-                    <div class="row g-0 d-flex align-items-center justify-content-around">
+                    <div class="row g-0 d-flex justify-content-around">
                         <div class="col-md-4 col-sm-6 col-12 p-3">
                             <div class="d-flex align-items-center justify-content-center">
-                                <img data-src="./images/editors/Link.png" alt="editors"
-                                    style="max-height:300px; max-width:300px">
+                                <img data-src="./images/collectibles/rug1.jpg" alt="editors"
+                                    style="height:300px; max-width:300px">
                             </div>
                             <div class="row g-0 d-flex justify-content-between align-items-end pt-2">
                                 <div class="col-6">
@@ -329,8 +329,8 @@
                         </div>
                         <div class="col-md-4 col-sm-6 col-12 p-3">
                             <div class="d-flex align-items-center justify-content-center">
-                                <img data-src="./images/editors/Link (1).png" alt="editors"
-                                    style="max-height:300px; max-width:300px">
+                                <img data-src="./images/collectibles/rug2.jpg" alt="editors" style="height:300px;
+                                    max-width:300px">
                             </div>
                             <div class="row g-0 d-flex justify-content-between align-items-end pt-2">
                                 <div class="col-6">
@@ -345,8 +345,8 @@
                         </div>
                         <div class="col-md-4 col-sm-6 col-12 p-3">
                             <div class="d-flex align-items-center justify-content-center">
-                                <img data-src="./images/editors/Link (2).png" alt="editors"
-                                    style="max-height:300px; max-width:300px">
+                                <img data-src="./images/collectibles/rug3.jpg" alt="editors"
+                                    style="height:300px; max-width:300px">
                             </div>
                             <div class="row g-0 d-flex justify-content-between align-items-end pt-2">
                                 <div class="col-6">
@@ -364,7 +364,7 @@
                 </div>
             </div>
         </section>
-        <!-- editors pics section ends -->
+        <!-- collectibles section ends -->
         <!-- news section starts -->
         <section class="py-5">
             <div class="row g-0 d-flex align-items-center justify-content-center">

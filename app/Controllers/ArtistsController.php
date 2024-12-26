@@ -22,7 +22,7 @@ class ArtistsController
         $user = new User();
         $page = sanitizeInput($_GET['page']);
         $limit = sanitizeInput($_GET['limit']);
-        $artists = $user->artists($page, $limit);
+        $artists = $user->paginateArtist($page, $limit);
         if (!$artists) {
             echo json_encode(["success" => false, "message" => "No artists!"]);
             return 0;

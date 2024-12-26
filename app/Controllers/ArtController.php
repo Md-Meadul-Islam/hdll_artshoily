@@ -69,6 +69,53 @@ class ArtController
         }
 
     }
+    public function updateArt()
+    {
+        header("Content-Type: application/json");
+        $data = [];
+        $image_upload_dir = 'storage/arts/';
+        $image_max_size = 5 * 1024 * 1024; // 5 MB
+        $allowed_image_types = ['image/jpeg', 'image/png', 'image/gif'];
+
+        foreach ($_POST as $key => $value) {
+            $data[$key] = sanitizeInput($value);
+        }
+        $dataOkey = false;
+        if ($data['previousImage'] && !empty($data['artId'])) {
+            $filePath = $data['previousImage'];
+            $filename = explode('/storage/arts/', $filePath)[1];
+            $data['image'] = $filename;
+            $dataOkey = true;
+        } elseif (!empty($_FILES['image']['name']) && !empty($_data['artId'])) {
+            $image = [
+                'name' => $_FILES['image']['name'],
+                'type' => $_FILES['image']['type'],
+                'tmp_name' => $_FILES['image']['tmp_name'],
+                'error' => $_FILES['image']['error'],
+                'size' => $_FILES['image']['size']
+            ];
+            $filename = $this->uploadFile($image, $image_upload_dir, $allowed_image_types, $image_max_size);
+            if (!$filename) {
+                $_SESSION['error'][] = "Failed to upload image!";
+                return 0;
+            }
+            $artists = json_decode($_POST['artists'], true);
+            $data['artists'] = json_encode($artists);
+            $data['image'] = $filename;
+            $dataOkey = true;
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Art Cannot Updated !']);
+            return 0;
+        }
+        if ($dataOkey) {
+            $art = new Art();
+            $res = $art->updateArt($data);
+            if ($res['data']) {
+                echo json_encode(['success' => true, 'message' => 'Art Updated Successfully !', 'data' => $res['data']]);
+            }
+        }
+
+    }
     public function loadLimitedEditionPrints()
     {
         header('Content-Type: application/json');

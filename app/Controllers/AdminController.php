@@ -37,11 +37,12 @@ class AdminController
     public function loadCopyArtModal()
     {
         $artId = $_GET['dataId'];
+        $mode = $_GET['mode'];
         $user = new User();
         $artists = $user->artists();
         $arts = new Art();
         $art = $arts->view($artId);
-        view('admin.copy-art-modal', ['artists' => $artists, 'art' => $art]);
+        view('admin.copy-art-modal', ['artists' => $artists, 'art' => $art, 'mode' => $mode]);
     }
     public function loadCreateArtistsModal()
     {
