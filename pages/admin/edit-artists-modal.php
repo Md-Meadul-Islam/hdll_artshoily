@@ -4,7 +4,7 @@
     </div>
     <div class="w-100 g-0 d-flex justify-content-between align-items-center p-3">
         <div class="">
-            <h5 class="modal-title">Add new Artists</h5>
+            <h5 class="modal-title">Edit & Update Artists</h5>
         </div>
         <div class="position-relative">
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -21,7 +21,7 @@
                         <strong>First Name </strong><span class="limit text-success fs-8px"></span></label>
                     <div class="input-group">
                         <input type="text" name="first_name" class="form-control rounded-0" id="first_name"
-                            placeholder="Leonardo" required>
+                            value="<?php echo $artist['first_name'] ?>" placeholder="Leonardo" required>
                     </div>
                 </div>
                 <div class="col-md-6 col-12">
@@ -29,7 +29,7 @@
                         <strong>Last Name </strong><span class="limit text-success fs-8px"></span></label>
                     <div class="input-group">
                         <input type="text" name="last_name" class="form-control rounded-0" id="last_name"
-                            placeholder="da Vinci">
+                            value="<?php echo $artist['last_name'] ?>" placeholder="da Vinci">
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@
                         <strong>Life Span </strong><span class="limit text-success fs-8px"></span></label>
                     <div class="input-group">
                         <input type="text" name="lifespan" class="form-control rounded-0" id="lifespan"
-                            placeholder="23-5-2098">
+                            value="<?php echo $artist['lifespan'] ?>" placeholder="23-5-2098">
                     </div>
                 </div>
                 <div class="col-md-6 col-12">
@@ -49,7 +49,7 @@
                         <strong>Origin </strong><span class="limit text-success fs-8px"></span></label>
                     <div class="input-group">
                         <input type="text" name="origin" class="form-control rounded-0" id="origin"
-                            placeholder="paris, france">
+                            value="<?php echo $artist['origin'] ?>" placeholder="paris, france">
                     </div>
                 </div>
             </div>
@@ -132,7 +132,7 @@
                 </div>
                 <div class="bio1 mb-1 m-2" id="bio1" contenteditable="true" spellcheck="true" role="textbox"
                     aria-multiline="true" style="min-height:50px; max-height:400px; overflow-y:auto;outline:none">
-                    <div></div>
+                    <?php echo html_entity_decode($artist['bio1']) ?>
                 </div>
             </div>
         </div>
@@ -214,7 +214,9 @@
                 </div>
                 <div class="bio2 mb-1 m-2" id="bio2" contenteditable="true" spellcheck="true" role="textbox"
                     aria-multiline="true" style="min-height:50px; max-height:400px; overflow-y:auto;outline:none;">
-                    <div></div>
+                    <?php if ($artist['bio2']) {
+                        echo html_entity_decode($artist['bio2']);
+                    } ?>
                 </div>
             </div>
         </div>
@@ -296,12 +298,18 @@
                 </div>
                 <div class="bio3 mb-1 m-2" id="bio3" contenteditable="true" spellcheck="true" role="textbox"
                     aria-multiline="true" style="min-height:50px; max-height:400px; overflow-y:auto;outline:none;">
-                    <div></div>
+                    <?php if ($artist['bio3']) {
+                        echo html_entity_decode($artist['bio3']);
+                    } ?>
                 </div>
             </div>
         </div>
         <div class="col-12 py-2">
             <div class="previewBox py-2" id="previewBox">
+                <div class="previewImg position-relative"><img src="../<?php echo $artist['userphoto'] ?>"
+                        class="previousImg"><span class="previewcrossbtn">✖</span></div>
+                <div class="previewImg position-relative"><img src="../<?php echo $artist['coverphoto'] ?>"
+                        class="previousImg"><span class="previewcrossbtn">✖</span></div>
             </div>
             <div class="d-flex" style="width:80px">
                 <div class="input-group">
@@ -316,7 +324,7 @@
         <div class="col-12 d-flex justify-content-end align-items-center gap-2">
             <?php
             if (user()->email) { ?>
-                <button type="submit" class="btn btn-primary" id="artistssavebtn" name="artistssavebtn">Save</button>
+                <button type="submit" class="btn btn-primary" id="artistupdatebtn" name="artistupdatebtn">Update</button>
             <?php } ?>
         </div>
     </div>

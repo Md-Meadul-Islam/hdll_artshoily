@@ -48,6 +48,13 @@ class AdminController
     {
         view('admin.add-artists-modal', );
     }
+    public function loadEditArtistsModal()
+    {
+        $id = $_GET['dataId'];
+        $user = new User();
+        $artist = $user->get($id, 'artists');
+        view('admin.edit-artists-modal', ['artist' => $artist]);
+    }
     public function loadFocusArtistsModal()
     {
         $user = new User();

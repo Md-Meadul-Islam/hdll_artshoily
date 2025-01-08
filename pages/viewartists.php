@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="keywords" content="artshoily, <?php echo $artist['first_name'] . ' ' . $artist['last_name'] ?>">
-        <meta name="description" content="<?php echo $artist['bio'] ?>">
+        <meta name="description" content="">
         <meta property="og:locale" content="en_US">
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Art Shoily" />
@@ -34,6 +34,11 @@
     </head>
 
     <body>
+        <style>
+            p {
+                margin-bottom: 0 !important;
+            }
+        </style>
         <?php pageAdd('components/header'); ?>
         <!-- artist section starts -->
         <section class="mt-5">
@@ -65,7 +70,18 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12 p-2">
-                                    <p class="text-justify text-secondary"><?php echo $artist['bio'] ?></p>
+                                    <p class="text-justify text-secondary">
+                                        <?php echo html_entity_decode($artist['bio1']) ?>
+                                    </p>
+                                    <?php if ($artist['bio2']) { ?>
+                                        <p class="text-justify text-secondary">
+                                            <?php echo html_entity_decode($artist['bio2']); ?>
+                                        </p>
+                                    <?php } ?>
+                                    <?php if ($artist['bio3']) { ?>
+                                        <p class="text-justify text-secondary">
+                                            <?php echo html_entity_decode($artist['bio3']); ?>
+                                        </p><?php } ?>
                                 </div>
                             </div>
                         </div>

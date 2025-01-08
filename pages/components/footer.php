@@ -2,7 +2,7 @@
     <div
         class="row g-0 d-flex align-items-center justify-content-between px-lg-5 px-md-3 px-2 py-5 bg-secondary-subtle">
         <div class="col-md-7 col-12">
-            <img data-src="./images/logo.jpg" alt="logo" style="width:100px">
+            <img data-src="./images/logo2.jpg" alt="logo" style="width:150px">
             <div class="w-100">
                 <p>Artshoily is a destination for artistic luxury where you can discover and buy the most exquisite
                     pieces of fine art and
@@ -15,7 +15,7 @@
                     you can truly enjoy your experience of discovering that special find.</p>
             </div>
             <div>
-                <a href="tel:+987654321000">+98 7654321000</a><span class="px-2">|</span><a
+                <a href="tel:+8809876543210">+880 9876 543 210</a><span class="px-2">|</span><a
                     href="">info@artshoily.com</a>
             </div>
         </div>

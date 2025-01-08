@@ -36,6 +36,9 @@
                             <a href="art-gallery">Art Gallery</a>
                         </li>
                         <li class="nav-item py-sm-0 py-2">
+                            <a href="sculptures">Sculptures</a>
+                        </li>
+                        <li class="nav-item py-sm-0 py-2">
                             <a href="artists">Artists</a>
                         </li>
                         <li class="nav-item py-sm-0 py-2">

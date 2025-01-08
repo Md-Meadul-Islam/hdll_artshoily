@@ -35,7 +35,19 @@
 
     <body>
         <?php pageAdd('components/header'); ?>
-        <section class="my-5">
+        <!-- hero section starts -->
+        <section class="mt-5">
+            <div class="row g-0">
+                <div class="col-12">
+                    <div class="hero-img w-100">
+                        <img data-src="./images/bg_about_us.jpg" src="./images/bg_about_us.jpg" alt="HomePage"
+                            class="w-100 h-100">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- hero section ends -->
+        <section class="my-2">
             <div class="row pt-2 g-0 d-flex align-items-center justify-content-center">
                 <div class="col-lg-10 col-12 py-5 px-2">
                     <p>Artshoily is your platform for buying and collecting art. The name suggests a fusion of art with

@@ -67,12 +67,13 @@
                     </div>
                     <div class="w-100 py-3">
                         <p class="text-center">
-                            At Artshoily, we focus on quality and thoughtful curation, offering a carefully selected
-                            collection of paintings, drawings, limited edition prints, sculptures, digital art,
-                            traditional crafts, tribal art, rare collectibles, and unique artifacts. Each piece is
-                            sourced from trusted artists, designers, and collectors, ensuring authenticity and cultural
-                            depth. Whether you're discovering a statement piece or a hidden gem, Artshoily is your
-                            gateway to celebrating the rich artistic heritage of Bangladesh and beyond.
+                            Welcome to <strong>Artshoily</strong>—your destination for authentic, thoughtfully curated
+                            art that
+                            celebrates the rich cultural heritage of Bangladesh and beyond. Inspired by the Bengali word
+                            "shoily" (style), we blend tradition with modernity, offering unique pieces that resonate
+                            with art enthusiasts and art lovers. More than a marketplace, Artshoily supports emerging
+                            talent and honors the narratives shaping our history. Discover art with authenticity, depth,
+                            and a story to tell.
                         </p>
                     </div>
                     <!-- <ul class="nav text-uppercase text-gold fs-10px d-flex align-items-center justify-content-around">
@@ -109,12 +110,12 @@
                             </div>
                             <div class="col-md-4 col-8">
                                 <div class="">
-                                    <img data-src="./images/discover/01.png" alt="discover"
+                                    <img data-src="./images/discover/01.jpg" alt="discover"
                                         class="w-100 h-100 rounded-circle">
                                 </div>
                                 <div class="goldenStroke py-2"></div>
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <a class="text-uppercase">Collectibles</a>
+                                    <a href="sculptures" class="text-uppercase">Sculptures</a>
                                 </div>
                             </div>
                         </div>
@@ -133,11 +134,11 @@
                     <div class="row g-0 d-flex align-items-center justify-content-around">
                         <div class="col-md-4 col-sm-6 col-12 p-2">
                             <div>
-                                <img data-src="./images/inspired_collections/Gond_Art_1_720x.png" alt="collections"
+                                <img data-src="./images/inspired_collections/1.jpg" alt="collections"
                                     class="w-100 h-100">
                             </div>
                             <div>
-                                <p>Intricate Gond Paintings</p>
+                                <p>Acrylic on Canvas</p>
                                 <div class="goldenStroke"></div>
                                 <div class="py-2">
                                     <a href="art-gallery" class="btn btn-sm btn-outline-secondary">SHOP</a>
@@ -146,11 +147,11 @@
                         </div>
                         <div class="col-md-4 col-sm-6 col-12 p-2">
                             <div>
-                                <img data-src="./images/inspired_collections/Oleographs-03_720x.png" alt="collections"
+                                <img data-src="./images/inspired_collections/2.jpg" alt="collections"
                                     class="w-100 h-100">
                             </div>
                             <div>
-                                <p>Intricate Gond Paintings</p>
+                                <p>Acrylic on Canvas</p>
                                 <div class="goldenStroke"></div>
                                 <div class="py-2">
                                     <a href="viewart/?a=dadfdd545dfd3424"
@@ -160,11 +161,11 @@
                         </div>
                         <div class="col-md-4 col-sm-6 col-12 p-2">
                             <div>
-                                <img data-src="./images/inspired_collections/Collectibles-01_5bbce089-5173-45e4-beda-c224bee3e335_720x.png"
-                                    alt="collections" class="w-100 h-100">
+                                <img data-src="./images/inspired_collections/3.jpg" alt="collections"
+                                    class="w-100 h-100">
                             </div>
                             <div>
-                                <p>Intricate Gond Paintings</p>
+                                <p>Oil Paint on Canvas</p>
                                 <div class="goldenStroke"></div>
                                 <div class="py-2">
                                     <a href="viewartists/?a=" class="btn btn-sm btn-outline-secondary">DISCOVER</a>
@@ -185,12 +186,11 @@
                             - Limited Edition Prints -
                         </h4>
                         <p class="text-center">
-                            A collection of limited edition masterpieces by World most acclaimed artists; serigraphs
-                            offer a
-                            fantastic way to own works by masters such as M.F. Husain, Thota Vaikuntam, S.H. Raza and
-                            many
-                            more,
-                            at affordable prices.
+                            A curated collection of limited edition European masterpieces; serigraphs provide an
+                            extraordinary opportunity to own works by legendary artists such as Pablo Picasso, Claude
+                            Monet, Vincent van Gogh, and many others. These exquisite pieces capture the essence of
+                            European art movements, from Impressionism to Cubism, offering collectors the chance to
+                            acquire timeless works at accessible prices.
                         </p>
                         <div class="goldenStroke w-50"></div>
                     </div>
@@ -307,13 +307,13 @@
         <section class="py-5">
             <div class="row g-0 d-flex align-items-center justify-content-center">
                 <h4 class="text-center text-uppercase">
-                    - COLLECTIBLES -
+                    - SCULPTURES -
                 </h4>
                 <div class="col-md-10 col-12">
                     <div class="row g-0 d-flex justify-content-around">
                         <div class="col-md-4 col-sm-6 col-12 p-3">
                             <div class="d-flex align-items-center justify-content-center">
-                                <img data-src="./images/collectibles/rug1.jpg" alt="editors"
+                                <img data-src="./images/sculptures/Link 1.png" alt="Sculpture"
                                     style="height:300px; max-width:300px">
                             </div>
                             <div class="row g-0 d-flex justify-content-between align-items-end pt-2">
@@ -329,7 +329,7 @@
                         </div>
                         <div class="col-md-4 col-sm-6 col-12 p-3">
                             <div class="d-flex align-items-center justify-content-center">
-                                <img data-src="./images/collectibles/rug2.jpg" alt="editors" style="height:300px;
+                                <img data-src="./images/sculptures/Link 2.png" alt="Sculpture" style="height:300px;
                                     max-width:300px">
                             </div>
                             <div class="row g-0 d-flex justify-content-between align-items-end pt-2">
@@ -345,12 +345,12 @@
                         </div>
                         <div class="col-md-4 col-sm-6 col-12 p-3">
                             <div class="d-flex align-items-center justify-content-center">
-                                <img data-src="./images/collectibles/rug3.jpg" alt="editors"
+                                <img data-src="./images/sculptures/Link 3.png" alt="Sculpture"
                                     style="height:300px; max-width:300px">
                             </div>
                             <div class="row g-0 d-flex justify-content-between align-items-end pt-2">
                                 <div class="col-6">
-                                    <p class="mb-0 fs-10px fw-bold">Bala Krishna </p>
+                                    <p class="mb-0 fs-10px fw-bold">Alex Bonan</p>
                                     <p class="text-secondary fs-10px mb-0">Bronze</p>
                                     <p class="text-secondary fs-10px">3.5 x 3.5 x 4 inches</p>
                                 </div>
@@ -422,7 +422,7 @@
                             - LATEST FROM OUR BLOG -
                         </h4>
                     </div>
-                    <div class="row g-0 d-flex align-items-center justify-content-around p-2">
+                    <div class="row g-0 d-flex justify-content-around p-2">
                         <div class="col-md-4 col-sm-6 col-12 p-3">
                             <div class="d-flex align-items-center justify-content-center">
                                 <img data-src="./images/blog/718a48ac-3d9d-47b1-9dc6-c124fb10c66e_435x290.png"
@@ -436,22 +436,22 @@
                         </div>
                         <div class="col-md-4 col-sm-6 col-12 p-3">
                             <div class="d-flex align-items-center justify-content-center">
-                                <img data-src="./images/blog/bb76d2b4-7349-4b02-a869-f3c938e376e4_435x290.png"
+                                <img data-src="./images/blog/bb76d2b4-7349-4b02-a869-f3c938e376e4_435x290.jpg"
                                     alt="editions" style="max-height:200px; width:100%">
                             </div>
                             <div class="py-3">
                                 <div class="goldenStroke w-80"></div>
                                 <p class="fs-10px pt-2">Art of Consequence - A Photo Essay on the Legendary, Non
-                                    Conforming Artist Jamini Roy</p>
+                                    Conforming Artist Jamima Rock</p>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-6 col-12 p-3">
                             <div class="d-flex align-items-center justify-content-center">
-                                <img data-src="./images/blog/c69ad448-6e9a-4cb3-9769-591de18a0ef9_435x290.png"
+                                <img data-src="./images/blog/c69ad448-6e9a-4cb3-9769-591de18a0ef9_435x290.jpg"
                                     alt="editions" style="max-height:200px; width:100%">
                             </div>
                             <div class="py-3">
-                                <p class="fs-10px pb-2">V.S. Gaitonde The Record breaking Icon of Indian Modernism</p>
+                                <p class="fs-10px pb-2">Byran Wolf The Record breaking Icon of Italian Modernism</p>
                                 <div class="goldenStroke w-80"></div>
                             </div>
                         </div>

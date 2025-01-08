@@ -24,7 +24,7 @@
         <link rel="canonical" href="https://artishoily.com" />
         <link rel="apple-touch-icon" href="https://www.artishoily.com/images/favicon.ico">
         <link rel="icon" type="image/gif" href="../images/favicon.ico">
-        <title>Art Shoily | Art Gallery</title>
+        <title>Art Shoily | Sculptures</title>
         <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="./css/bootstrap.css" />
         <link rel="stylesheet" href="./css/style.css" />
@@ -40,7 +40,7 @@
             <div class="row g-0">
                 <div class="col-12">
                     <div class="hero-img w-100">
-                        <img data-src="./images/bg_art_gallery.jpg" src="./images/bg_art_gallery.jpg" alt="HomePage"
+                        <img data-src="./images/bg_sculpture.jpg" src="./images/bg_sculpture.jpg" alt="HomePage"
                             class="w-100 h-100">
                     </div>
                 </div>
@@ -88,49 +88,59 @@
         <section class="mt-5">
             <div class="row g-0 d-flex align-items-center justify-content-center py-3">
                 <div class="col-lg-8 col-12">
-                    <h4 class="text-center text-uppercase text-secondary">- Gallery -</h4>
+                    <h4 class="text-center text-uppercase text-secondary">- Sculpture Gallery -</h4>
                     <div class="row g-0 d-flex justify-content-center">
-                        <?php foreach ($arts as $i => $art): ?>
-                            <div class="col-md-4 col-sm-6 col-12 p-3">
-                                <div class="d-flex align-items-center justify-content-center border border-1">
-                                    <a href="viewart?a=<?php echo $art['art_id'] ?>">
-                                        <img data-src="../storage/arts/<?php echo $art['image']; ?>"
-                                            alt="<?php $art['imgalt'] ?>"
-                                            style="max-height:300px; max-width:300px;width:100%;">
-                                    </a>
+                        <div class="col-md-4 col-sm-6 col-12 p-3">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <img data-src="./images/sculptures/Link 1.png" alt="Sculpture"
+                                    style="height:300px; max-width:300px;width:100%">
+                            </div>
+                            <div class="row g-0 d-flex justify-content-between align-items-end pt-2">
+                                <div class="col-6">
+                                    <p class="mb-0 fs-10px fw-bold">Hanuman Plaque 01 </p>
+                                    <p class="text-secondary fs-10px mb-0">Brass</p>
+                                    <p class="text-secondary fs-10px">6 x 2 x 7.75 inches</p>
                                 </div>
-                                <div class="row g-0 d-flex justify-content-between align-items-end pt-2">
-                                    <div class="col-6">
-                                        <p class="mb-0 fs-10px"><a
-                                                href="viewart?a=<?php echo $art['art_id'] ?>"><?php echo $art['name']; ?></a>
-                                        </p>
-                                        <p class="text-secondary fs-10px mb-0">
-                                            <?php echo $art['canvas_type'] . " on " . $art['media']; ?>
-                                        </p>
-                                        <p class="art-dimension text-secondary fs-10px" title=""><?php echo $art['size']; ?>
-                                        </p>
-                                    </div>
-                                    <div class="col-6 d-flex flex-column align-items-end">
-                                        <p class="mb-0 fs-10px"><a
-                                                class="cursor-pointer text-white text-uppercase rounded-0"><i
-                                                    class="cart-icon icon-bg-gold icon-bg-grey-hover"></i>
-                                            </a>
-                                        </p>
-                                        <p class="text-secondary fs-10px mb-0">
-                                            <?php foreach ($art['users'] as $user): ?>
-                                                <a
-                                                    href="viewartists/?a=<?php echo $user['user_id'] ?>"><?php echo $user['first_name'] . ' ' . $user['last_name']; ?></a>
-                                            <?php endforeach ?>
-                                        </p>
-                                        <p class="text-secondary fs-10px">
-                                            <?php echo $art['currency'] . " " . $art['price']; ?>
-                                        </p>
-                                    </div>
+                                <div class="col-6 d-flex flex-column align-items-end">
+                                    <p class="text-secondary fs-10px">BDT 50,400 </p>
                                 </div>
                             </div>
-                        <?php endforeach ?>
+                        </div>
+                        <div class="col-md-4 col-sm-6 col-12 p-3">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <img data-src="./images/sculptures/Link 2.png" alt="Sculpture" style="height:300px;
+                                    max-width:300px;width:100%">
+                            </div>
+                            <div class="row g-0 d-flex justify-content-between align-items-end pt-2">
+                                <div class="col-6">
+                                    <p class="mb-0 fs-10px fw-bold">Sperry Remington Idool Red Typewriter </p>
+                                    <p class="text-secondary fs-10px mb-0">Assorted Materials </p>
+                                    <p class="text-secondary fs-10px">13.5 x 12 x 4.5 Inches</p>
+                                </div>
+                                <div class="col-6 d-flex flex-column align-items-end">
+                                    <p class="text-secondary fs-10px">BDT 33,040</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6 col-12 p-3">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <img data-src="./images/sculptures/Link 3.png" alt="Sculpture"
+                                    style="height:300px; max-width:300px;width:100%">
+                            </div>
+                            <div class="row g-0 d-flex justify-content-between align-items-end pt-2">
+                                <div class="col-6">
+                                    <p class="mb-0 fs-10px fw-bold">Alex Bonan</p>
+                                    <p class="text-secondary fs-10px mb-0">Bronze</p>
+                                    <p class="text-secondary fs-10px">3.5 x 3.5 x 4 inches</p>
+                                </div>
+                                <div class="col-6 d-flex flex-column align-items-end">
+                                    <p class="text-secondary fs-10px">Price on Inquiry | <span
+                                            class="text-uppercase text-gold">Sold</span></p>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-12 d-flex align-items-end justify-content-end">
-                            <a href="art-gallery" class="btn btn-sm bg-secondary-subtle text-uppercase">View more</a>
+                            <a href="sculptures" class="btn btn-sm bg-secondary-subtle text-uppercase">View more</a>
                         </div>
                     </div>
                 </div>

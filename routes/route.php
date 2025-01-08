@@ -9,6 +9,7 @@ Route::get('api/focus-artists', 'ArtistsController', 'focusArtists');
 
 //Art gallery page
 Route::get('art-gallery', 'ArtController', 'index');
+Route::get('sculptures', 'SculptureController', 'index');
 
 //view art page
 Route::get('viewart/{a}', 'ArtController', 'view');
@@ -25,8 +26,6 @@ Route::get('login', 'AuthController', 'loginView');
 Route::post('login', 'AuthController', 'login');
 Route::get('signup', 'AuthController', 'signupView');
 Route::post('signup', 'AuthController', 'signup');
-Route::get('admin/add-artists', 'AuthController', 'artistView');
-Route::post('admin/store-artists', 'AuthController', 'artists');
 
 //admin routes
 Route::get('admin', 'AdminController', 'index', [AuthMiddleware::class]);
@@ -40,7 +39,11 @@ Route::post('store-art', 'ArtController', 'storeArt', [AuthMiddleware::class]);
 Route::post('update-art', 'ArtController', 'updateArt', [AuthMiddleware::class]);
 Route::post('delete-art', 'ArtController', 'delete', [AuthMiddleware::class]);
 Route::get('admin/add-artitsts-modal', 'AdminController', 'loadCreateArtistsModal', [AuthMiddleware::class]);
+Route::get('admin/add-artists', 'ArtistController', 'artistView');
 Route::post('store-artist', 'ArtistsController', 'storeArtist', [AuthMiddleware::class]);
+Route::get('admin/edit-artists-modal', 'AdminController', 'loadEditArtistsModal', [AuthMiddleware::class]);
+Route::post('update-artists', 'ArtistsController', 'updateArtist', [AuthMiddleware::class]);
+Route::post('delete-artists', 'ArtistsController', 'delete', [AuthMiddleware::class]);
 
 //default page
 Route::get('terms', 'HomeController', 'terms');

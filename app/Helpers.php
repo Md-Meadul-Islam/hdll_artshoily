@@ -157,3 +157,26 @@ function generateSlug($title)
     $slug = strtolower($slug);
     return $slug;
 }
+function uploadFile($file, $upload_dir, $allowed_types, $max_size)
+{
+    if (!file_exists('storage/artists')) {
+        mkdir('storage/artists', 0777, true);
+    }
+    if ($file['error'] !== UPLOAD_ERR_OK) {
+        return "Error uploading file: " . $file['error'];
+    }
+    if (!in_array(mime_content_type($file['tmp_name']), $allowed_types)) {
+        return "Invalid file type.";
+    }
+    if ($file['size'] > $max_size) {
+        return "File size exceeds the allowed limit.";
+    }
+    $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
+    $filename = random_str(20) . "." . $extension;
+    $file_path = $upload_dir . $filename;
+    if (move_uploaded_file($file['tmp_name'], $file_path)) {
+        return $file_path;
+    } else {
+        return false;
+    }
+}

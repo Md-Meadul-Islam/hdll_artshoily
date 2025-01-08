@@ -83,7 +83,7 @@ class User
     }
     public function user($id)
     {
-        $stmt = $this->connection->prepare("SELECT first_name, last_name, email, phone, userphoto, coverphoto, bio, userrole FROM {$this->userstable} WHERE user_id = ? LIMIT 1");
+        $stmt = $this->connection->prepare("SELECT first_name, last_name, email, phone, userphoto, coverphoto, userrole FROM {$this->userstable} WHERE user_id = ? LIMIT 1");
         $stmt->bind_param("s", $id);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -105,11 +105,12 @@ class User
     {
         $artists = [];
         $role = 'artists';
+        $status = 1;
         $stmt = $this->connection->prepare("SELECT u.user_id, u.first_name, u.last_name, u.email, u.phone, u.userphoto,u.coverphoto, u.bio, u.userrole, u.status, u.cr_at
             FROM {$this->userstable} u
-            WHERE u.userrole = ?
+            WHERE u.status = ? AND u.userrole = ?
         ");
-        $stmt->bind_param('s', $role);
+        $stmt->bind_param('ss', $status, $role);
         $stmt->execute();
         $result = $stmt->get_result();
         while ($row = $result->fetch_assoc()) {
@@ -122,13 +123,14 @@ class User
         $artists = [];
         $offset = ($page - 1) * $limit;
         $role = 'artists';
-        $stmt = $this->connection->prepare("SELECT u.user_id, u.first_name, u.last_name, u.email, u.phone, u.userphoto,u.coverphoto, u.bio, u.userrole, u.status, u.cr_at
+        $status = 1;
+        $stmt = $this->connection->prepare("SELECT u.user_id, u.first_name, u.last_name, u.email, u.phone, u.userphoto,u.coverphoto, u.userrole, u.status, u.cr_at
             FROM {$this->userstable} u
-            WHERE u.userrole = ?
+            WHERE u.status =? AND u.userrole = ?
             ORDER BY u.id DESC
             LIMIT ? OFFSET ?
         ");
-        $stmt->bind_param('sii', $role, $limit, $offset);
+        $stmt->bind_param('ssii', $status, $role, $limit, $offset);
         $stmt->execute();
         $result = $stmt->get_result();
         while ($row = $result->fetch_assoc()) {
@@ -138,7 +140,7 @@ class User
     }
     public function get($id, $role = 'artists')
     {
-        $stmt = $this->connection->prepare("SELECT u.user_id, u.first_name, u.last_name, u.email, u.phone, u.userphoto, u.coverphoto, u.lifespan, u.origin, u.bio
+        $stmt = $this->connection->prepare("SELECT u.user_id, u.first_name, u.last_name, u.email, u.phone, u.userphoto, u.coverphoto, u.lifespan, u.origin, u.bio1, u.bio2, u.bio3
             FROM {$this->userstable} u
             WHERE u.user_id = ? AND u.userrole = ?
         ");
@@ -166,16 +168,16 @@ class User
         }
         return $artists;
     }
-    public function addArtists($data)
+    public function storeArtists($data)
     {
-        $insertStmt = $this->connection->prepare("INSERT INTO {$this->userstable} (user_id, first_name, last_name, userphoto, coverphoto, bio,userip) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $insertStmt = $this->connection->prepare("INSERT INTO {$this->userstable} (user_id, first_name, last_name, userphoto, coverphoto, lifespan, origin, bio1, bio2, bio3, userip) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         if ($insertStmt === false) {
             die('Prepare failed: ' . htmlspecialchars($this->connection->error));
         }
-        $insertStmt->bind_param('sssssss', $data['userid'], $data['fname'], $data['lname'], $data[0], $data[1], $data['bio'], $data['ip']);
+        $insertStmt->bind_param('sssssssssss', $data['user_id'], $data['fname'], $data['lname'], $data['userphoto'], $data['coverphoto'], $data['lifespan'], $data['origin'], $data['bio1'], $data['bio2'], $data['bio3'], $data['ip']);
 
         if ($insertStmt->execute()) {
-            return [$data['userid'], $data['fname']];
+            return true;
         }
     }
     public function userStatusUpdate($uid, $s)
@@ -188,5 +190,46 @@ class User
         return false;
 
     }
+    public function delete($id)
+    {
+        $fetchStmt = $this->connection->prepare("SELECT userphoto, coverphoto FROM {$this->userstable} WHERE user_id = ?");
+        if ($fetchStmt === false) {
+            die('Prepare failed: ' . htmlspecialchars($this->connection->error));
+        }
+        $fetchStmt->bind_param('s', $id);
+        $fetchStmt->execute();
+        $result = $fetchStmt->get_result();
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $userphoto = $row['userphoto'];
+            $coverphoto = $row['coverphoto'];
+            $realPath1 = realpath($userphoto);
+            if ($realPath1 && file_exists($realPath1)) {
+                unlink($realPath1);
+            }
+            if ($coverphoto !== 'storage/artists/default-cover.jpg') {
+                $realPath2 = realpath($coverphoto);
+                if ($realPath2 && file_exists($realPath2)) {
+                    unlink($realPath2);
+                }
+            }
 
+        } else {
+            return ['success' => false, 'message' => 'Record not found!'];
+        }
+        $deleteStmt = $this->connection->prepare("DELETE FROM {$this->userstable} WHERE user_id = ?");
+        if ($deleteStmt === false) {
+            die('Prepare failed: ' . htmlspecialchars($this->connection->error));
+        }
+        $deleteStmt->bind_param('s', $id);
+        if ($deleteStmt->execute()) {
+            if ($deleteStmt->affected_rows > 0) {
+                return ['success' => true, 'message' => 'Record and image deleted successfully!'];
+            } else {
+                return ['success' => false, 'message' => 'Failed to delete the record!'];
+            }
+        } else {
+            return ['success' => false, 'message' => 'Delete query failed!'];
+        }
+    }
 }

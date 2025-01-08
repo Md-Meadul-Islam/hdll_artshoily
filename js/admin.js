@@ -1,3 +1,5 @@
+let arts = [];
+let artists = [];
 function formatDoc(cmd, value = null) {
     if (value) {
         document.execCommand(cmd, false, value);
@@ -13,17 +15,33 @@ function addLink() {
     }
 }
 function sanitizeTextTag(body) {
+    // Decode HTML entities
     body = body.replace(/&lt;/g, '<').replace(/&gt;/g, '>');
-    body = body.replace(/&nbsp;/g, '');
-    body = body.replace(/<span[^>]*style="[^"]*"[^>]*>(.*?)<\/span>/gi, '');
-    body = body.replace(/style="[^"]*"/gi, '');
-    body = body.replace(/<div>/g, '').replace(/<\/div>/g, ' ');
+    body = body.replace(/&nbsp;/g, ' ');
+
+    // Remove styles but keep content
+    body = body.replace(/<span[^>]*style="[^"]*"[^>]*>(.*?)<\/span>/gi, '$1');
+    body = body.replace(/ style="[^"]*"/gi, '');
+
+    // Remove all class properties
+    body = body.replace(/ class="[^"]*"/gi, '');
+
+    // Remove extra <o:p> tags
+    body = body.replace(/<o:p[^>]*>.*?<\/o:p>/gi, '');
+
+    // Replace <div> with spaces and remove script and PHP tags
+    body = body.replace(/<div>/g, ' ').replace(/<\/div>/g, ' ');
     body = body.replace(/<script[^>]*>/gi, '<div class="code">');
     body = body.replace(/<\/script>/gi, '</div>');
     body = body.replace(/<\?php/gi, '<div class="code">');
     body = body.replace(/\?>/gi, '</div>');
+
+    // Trim extra spaces
+    body = body.trim();
+
     return body;
 }
+
 function loadArtsPaginate(page = 1) {
     let limit = 50;
     $.ajax({
@@ -76,43 +94,76 @@ function loadArtsPaginate(page = 1) {
         }
     })
 }
-function loadArtistsPaginate(page = 1) {
-    let limit = 50;
-    $.ajax({
+
+function fetchArtists(page = 1, limit = 50) {
+    return $.ajax({
         url: 'admin/load-artists-paginate',
         method: 'GET',
         data: { page, limit },
-        success: function (res) {
-            if (res.success && res.data.length) {
-                $('#main-table thead').html('');
-                $('#main-table tbody').html('');
-                const tableHead = `<tr><th>#</th> <th>Name</th> <th>Image</th><th>Action</th> <th>Create at</th></tr>`;
-                $('#main-table thead').html(tableHead);
-                const data = res.data;
-                data.forEach((d, k) => {
-                    let tr = `<tr data-id="${d.user_id}" key="${d.id}">
-                                        <td>${k + 1}</td>
-                                        <td>${d.first_name + ' ' + d.last_name}</td>
-                                        <td>
-                                            <div>
-                                                <img src="../${d.userphoto}" alt="" width="80px" height="60px">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex gap-1 align-items-center justify-content-center">
-                                                <a class="edit-arts btn btn-sm bg-primary text-white text-nowrap"
-                                                    data-bs-toggle="modal" data-bs-target="#staticmodal">Full Edit</a>
-                                                <a class="delete-arts btn btn-sm bg-danger">Delete</a>
-                                            </div>
-                                        </td>
-                                        <td>${d.cr_at}</td>
-                                    </tr>`;
-                    $('#main-table tbody').append(tr);
-                });
-            }
-        }
-    })
+    });
 }
+function renderTable(data) {
+    $('#main-table thead').html('');
+    $('#main-table tbody').html('');
+
+    const tableHead = `<tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Image</th>
+        <th>Action</th>
+        <th>Create at</th>
+    </tr>`;
+    $('#main-table thead').html(tableHead);
+
+    data.forEach((d, k) => {
+        renderArtistRow(d, k + 1);
+    });
+}
+function addNewArtist(artist) {
+    artists.unshift(artist);
+    $('#main-table tbody').html('');
+    artists.forEach((artist, index) => {
+        renderArtistRow(artist, index + 1);
+    });
+}
+function updateArtist(artist) {
+    artists.unshift(artist);
+    $('#main-table tbody').html('');
+    artists.forEach((artist, index) => {
+        renderArtistRow(artist, index + 1);
+    });
+}
+function renderArtistRow(artist, index) {
+    const tr = `<tr data-id="${artist.user_id}" key="${artist.id}">
+        <td>${index}</td>
+        <td>${artist.first_name + ' ' + artist.last_name}</td>
+        <td>
+            <div>
+                <img src="../${artist.userphoto}" alt="" width="80px" height="60px">
+            </div>
+        </td>
+        <td>
+            <div class="d-flex gap-1 align-items-center justify-content-center">
+                <a class="edit-artist btn btn-sm bg-primary text-white text-nowrap" id="edit-artist"
+                    data-bs-toggle="modal" data-bs-target="#staticmodal">Full Edit</a>
+                <a class="delete-artists btn btn-sm bg-danger">Delete</a>
+            </div>
+        </td>
+        <td>${artist.cr_at}</td>
+    </tr>`;
+    $('#main-table tbody').append(tr);
+}
+function loadArtistsPaginate(page = 1) {
+    fetchArtists(page).then(res => {
+        if (res.success && res.data.length) {
+            artists = res.data; // Update the global artists array
+            renderTable(artists);
+        }
+    }).catch(err => {
+        console.error('Failed to fetch artists', err);
+    });
+}
+
 function addButton(id, title, icon) {
     return `<div class="d-flex pb-3 px-3 justify-content-end"> <a class="d-flex align-items-center text-secondary cursor-pointer border border-1 border-secondary p-2 bg-primary bg-grey-400-hover" id="${id}" data-bs-toggle="modal" data-bs-target="#staticmodal"> <i class="${icon}-icon icon-bg-grey" style="zoom:1.5"></i> <span class="ps-2">${title}</span> </a> </div>`;
 }
@@ -127,7 +178,7 @@ function updateInputField() {
 function imageProcess(images, formData) {
     const promises = [];
     Array.from(images).forEach(function (imgElement, index) {
-        const canvasWidth = 400;
+        const canvasWidth = index == 0 ? 400 : 800;
         const canvasHeight = 400;
         promises.push(new Promise((resolve, reject) => {
             const img = new Image();
@@ -136,6 +187,7 @@ function imageProcess(images, formData) {
                 canvas.width = canvasWidth
                 canvas.height = canvasHeight
                 const ctx = canvas.getContext('2d');
+                ctx.fillStyle = 'white';
                 ctx.drawImage(img, 0, 0);
                 ctx.fillRect(0, 0, canvasWidth, canvasHeight);
                 let width = img.width;
@@ -172,6 +224,46 @@ function imageProcess(images, formData) {
     })
     return Promise.all(promises);
 }
+function imageProcess2(images, formData) {
+    const promises = [];
+    Array.from(images).forEach(function (imgElement, index) {
+        promises.push(new Promise((resolve, reject) => {
+            const img = new Image();
+            img.onload = function () {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+
+                // Set canvas dimensions to the image's original dimensions
+                canvas.width = img.width;
+                canvas.height = img.height;
+
+                // Fill the canvas with white background
+                ctx.fillStyle = 'white';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                // Draw the image on the canvas
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+                // Convert the canvas content to a Blob with reduced quality
+                canvas.toBlob((blob) => {
+                    if (blob) {
+                        const fileName = `image${index + 1}.jpg`;
+                        formData.append('images[]', blob, fileName);
+                        resolve();
+                    } else {
+                        reject(new Error('Blob conversion failed'));
+                    }
+                }, 'image/jpeg', 0.7); // Adjust quality here (0.7 means 70% quality)
+            };
+            img.onerror = function () {
+                reject(new Error('Image loading failed'));
+            };
+            img.src = $(imgElement).attr('src');
+        }));
+    });
+    return Promise.all(promises);
+}
+
 function saveFormData(formData, url) {
     $.ajax({
         url: url,
@@ -184,6 +276,7 @@ function saveFormData(formData, url) {
                 $('#staticmodal').modal('hide');
                 $('.toaster').html(anySuccess(res.message));
                 const d = res.data;
+                addNewArtist(d);
                 let tr = `<tr data-id="${d.art_id}" key="0">
                 <td>0</td>
                 <td>${d.name}</td>
@@ -211,7 +304,7 @@ function saveFormData(formData, url) {
                 </td>
                 <td>${d.cr_at}</td>
             </tr>`;
-                $('#main-table tbody').prepend(tr);
+                // $('#main-table tbody').prepend(tr);
             }
         },
         error: function (xhr) {
@@ -358,6 +451,7 @@ $(document).ready(function () {
                     success: function (response) {
                         if (response.success) {
                             tr.remove();
+
                             $('.toaster').html(anySuccess(response.message));
                         } else {
                             $('.toaster').html(anyError(response.message));
@@ -388,18 +482,26 @@ $(document).ready(function () {
             const barLoader = $(e.target).closest('.modal-content').find('.loader-wrapper');
             barLoader.removeClass('d-none');
             let formData = new FormData();
-            let firstName = $('#first_name').val(), lastName = $('#last_name').val(), bio = $('#bio').html();
+            let firstName = $('#first_name').val(), lastName = $('#last_name').val(), lifespan = $('#lifespan').val(), origin = $('#origin').val(), bio1 = $('#bio1').html(), bio2 = $('#bio2').html(), bio3 = $('#bio3').html();
             if (firstName) {
-                formData.append('firstName', firstName);
+                formData.append('fname', firstName);
             } else {
                 $('.toaster').html(anyError('First Name is required !'));
                 return 0;
             }
             if (lastName) {
-                formData.append('lastName', lastName);
+                formData.append('lname', lastName);
             }
-            if (bio) {
-                formData.append('bio', sanitizeTextTag(bio));
+            if (bio1) {
+                formData.append('lifespan', lifespan);
+                formData.append('origin', origin);
+                formData.append('bio1', sanitizeTextTag(bio1));
+            }
+            if (bio2) {
+                formData.append('bio2', sanitizeTextTag(bio2));
+            }
+            if (bio3) {
+                formData.append('bio3', sanitizeTextTag(bio3));
             }
             const images = $('#previewBox img');
             if (images.length === 0) {
@@ -407,10 +509,108 @@ $(document).ready(function () {
                 return 0;
             }
             imageProcess(images, formData).then(() => {
-                saveFormData(formData, 'store-artist');
+                $.ajax({
+                    url: "store-artist",
+                    method: "POST",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (res) {
+                        if (res.success) {
+                            $('#staticmodal').modal('hide');
+                            $('.toaster').html(anySuccess(res.message));
+                            const d = res.data;
+                            addNewArtist(d);
+                        }
+                    }
+                });
             }).catch((error) => {
                 console.error('Error processing images:', error);
             });
+        }
+        if (e.target.id === 'artistupdatebtn') {
+            const barLoader = $(e.target).closest('.modal-content').find('.loader-wrapper');
+            barLoader.removeClass('d-none');
+            let formData = new FormData();
+            let artId = $('#artupdatebtn').data('id'), firstName = $('#first_name').val(), lastName = $('#last_name').val(), lifespan = $('#lifespan').val(), origin = $('#origin').val(), bio1 = $('#bio1').html(), bio2 = $('#bio2').html(), bio3 = $('#bio3').html();
+            if (firstName) {
+                formData.append('art_id', artId);
+                formData.append('fname', firstName);
+            } else {
+                $('.toaster').html(anyError('First Name is required !'));
+                return 0;
+            }
+            if (lastName) {
+                formData.append('lname', lastName);
+            }
+            if (bio1) {
+                formData.append('lifespan', lifespan);
+                formData.append('origin', origin);
+                formData.append('bio1', sanitizeTextTag(bio1));
+            }
+            if (bio2) {
+                formData.append('bio2', sanitizeTextTag(bio2));
+            }
+            if (bio3) {
+                formData.append('bio3', sanitizeTextTag(bio3));
+            }
+            const images = $('#previewBox img');
+            if (images.length === 0) {
+                $('.toaster').html(anyError('Image required !'));
+                return 0;
+            }
+            images.each(function (index, img) {
+                if ($(img).hasClass('previousImg')) {
+                    // Append previous images to formData
+                    if (index === 0) {
+                        formData.append('previousUserImage', img.src);
+                    } else if (index === 1) {
+                        formData.append('previousCoverImage', img.src);
+                    }
+                } else {
+                    const fileInput = document.getElementById('choosepostimage');
+                    const files = fileInput.files;
+                    Array.from(files).forEach((file, i) => {
+                        formData.append(`images[]`, file, file.name);
+                    });
+                }
+            })
+            $.ajax({
+                url: 'update-artists',
+                method: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (res) {
+                    if (res.success) {
+                        $('#staticmodal').modal('hide');
+                        $('.toaster').html(anySuccess(res.message));
+                        updateArtist(res.data);
+                    }
+                }
+            })
+        }
+        if ($(e.target).closest('.delete-artists').length) {
+            const tr = $(e.target).closest('tr');
+            const dataId = tr.data('id');
+            if (confirm('Are you sure to Delete this?')) {
+                $.ajax({
+                    url: '/delete-artists',
+                    type: 'POST',
+                    data: { id: dataId },
+                    success: function (response) {
+                        if (response.success) {
+                            tr.remove();
+                            $('.toaster').html(anySuccess(response.message));
+                        } else {
+                            $('.toaster').html(anyError(response.message));
+                        }
+                    },
+                    error: function () {
+                        $('.toaster').html(anyError(response.message));
+                    }
+                });
+            }
         }
     });
 
@@ -527,7 +727,9 @@ $(document).ready(function () {
                     $('#staticmodal .modal-content').html(res);
                     let fields = [
                         { input: '#first_name', limit: 50 },
-                        { input: '#last_name', limit: 50 }
+                        { input: '#last_name', limit: 50 },
+                        { input: '#lifespan', limit: 50 },
+                        { input: '#origin', limit: 100 }
                     ];
                     fields.forEach((field) => {
                         $(field.input).on('keyup', function (e) {
@@ -539,7 +741,76 @@ $(document).ready(function () {
                                 spanElement.text(`(Exceeded by ${Math.abs(remaining)} characters)`).removeClass('text-success').addClass('text-danger');
                             }
                         })
-                    })
+                    });
+                    let textareas = [
+                        { input: '#bio1', limit: 10000 },
+                        { input: '#bio2', limit: 10000 },
+                        { input: '#bio3', limit: 10000 }
+                    ];
+
+                    textareas.forEach((field) => {
+                        $(field.input).on('input', function () {
+                            let textLength = $(this).text().length;
+                            let remaining = field.limit - textLength;
+                            let spanElement = $(this).closest('.form-control').prev('label').find('.limit');
+
+                            if (remaining >= 0) {
+                                spanElement.text(`(Max ${field.limit} characters // ${remaining} remaining)`).removeClass('text-danger').addClass('text-success');
+                            } else {
+                                spanElement.text(`(Exceeded by ${Math.abs(remaining)} characters)`).removeClass('text-success').addClass('text-danger');
+                            }
+                        });
+                    });
+                }
+            })
+        }
+        if (targetId === 'edit-artist') {
+            const tr = $(e.relatedTarget).closest('tr');
+            const dataId = tr.data('id');
+            console.log(dataId)
+            $('#staticmodal .modal-content').html(' ');
+            $.ajax({
+                url: 'admin/edit-artists-modal',
+                method: 'GET',
+                data: { dataId, mode: 'edit' },
+                success: function (res) {
+                    $('#staticmodal .modal-content').html(res);
+                    let fields = [
+                        { input: '#first_name', limit: 50 },
+                        { input: '#last_name', limit: 50 },
+                        { input: '#lifespan', limit: 50 },
+                        { input: '#origin', limit: 100 }
+                    ];
+                    fields.forEach((field) => {
+                        $(field.input).on('keyup', function (e) {
+                            let remaining = field.limit - $(this).val().length;
+                            let spanElement = $(this).closest('div').prev('label').find('.limit');
+                            if (remaining >= 0) {
+                                spanElement.text(`(Max ${field.limit} characters // ${remaining} remaining)`).removeClass('text-danger').addClass('text-success');
+                            } else {
+                                spanElement.text(`(Exceeded by ${Math.abs(remaining)} characters)`).removeClass('text-success').addClass('text-danger');
+                            }
+                        })
+                    });
+                    let textareas = [
+                        { input: '#bio1', limit: 500 },
+                        { input: '#bio2', limit: 500 },
+                        { input: '#bio3', limit: 500 }
+                    ];
+
+                    textareas.forEach((field) => {
+                        $(field.input).on('input', function () {
+                            let textLength = $(this).text().length;
+                            let remaining = field.limit - textLength;
+                            let spanElement = $(this).closest('.form-control').prev('label').find('.limit');
+
+                            if (remaining >= 0) {
+                                spanElement.text(`(Max ${field.limit} characters // ${remaining} remaining)`).removeClass('text-danger').addClass('text-success');
+                            } else {
+                                spanElement.text(`(Exceeded by ${Math.abs(remaining)} characters)`).removeClass('text-success').addClass('text-danger');
+                            }
+                        });
+                    });
                 }
             })
         }
