@@ -106,7 +106,7 @@ class User
         $artists = [];
         $role = 'artists';
         $status = 1;
-        $stmt = $this->connection->prepare("SELECT u.user_id, u.first_name, u.last_name, u.email, u.phone, u.userphoto,u.coverphoto, u.bio, u.userrole, u.status, u.cr_at
+        $stmt = $this->connection->prepare("SELECT u.user_id, u.first_name, u.last_name, u.email, u.phone, u.userphoto,u.coverphoto, u.bio1, u.userrole, u.status, u.cr_at
             FROM {$this->userstable} u
             WHERE u.status = ? AND u.userrole = ?
         ");
@@ -180,6 +180,35 @@ class User
             return true;
         }
     }
+    public function updateArtist($data)
+    {
+        $updateStmt = $this->connection->prepare("UPDATE {$this->userstable} SET first_name = ?, last_name = ?, userphoto = ?, coverphoto = ?, lifespan = ?, origin = ?, bio1 = ?, bio2 = ?, bio3 = ?, userip = ? WHERE user_id = ?");
+        if ($updateStmt === false) {
+            die('Prepare failed: ' . htmlspecialchars($this->connection->error));
+        }
+
+        $updateStmt->bind_param(
+            'sssssssssss',
+            $data['fname'],
+            $data['lname'],
+            $data['userphoto'],
+            $data['coverphoto'],
+            $data['lifespan'],
+            $data['origin'],
+            $data['bio1'],
+            $data['bio2'],
+            $data['bio3'],
+            $data['ip'],
+            $data['user_id']
+        );
+
+        if ($updateStmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function userStatusUpdate($uid, $s)
     {
         $stmt = $this->connection->prepare("UPDATE {$this->userstable} SET status = ? WHERE user_id = ?");

@@ -41,58 +41,87 @@ function sanitizeTextTag(body) {
 
     return body;
 }
-
-function loadArtsPaginate(page = 1) {
-    let limit = 50;
-    $.ajax({
+function fetchArts(page = 1, limit = 50) {
+    return $.ajax({
         url: 'admin/load-arts-paginate',
         method: 'GET',
         data: { page, limit },
-        success: function (res) {
-            if (res.success && res.data.length) {
-                $('#main-table thead').html('');
-                $('#main-table tbody').html('');
-                const tableHead = `<tr><th>#</th>
-                                    <th>Name</th>
-                                    <th>Image</th>
-                                    <th>Artists</th>
-                                    <th>Price</th>
-                                    <th>Action</th>
-                                    <th>Create at</th></tr>`;
-                $('#main-table thead').html(tableHead);
+    });
+}
+function renderArtsTable(data) {
+    $('#main-table thead').html('');
+    $('#main-table tbody').html('');
 
-                const data = res.data;
-                data.forEach((d, k) => {
-                    let tr = `<tr data-id="${d.art_id}" key="${d.id}">
-                                        <td>${k + 1}</td>
-                                        <td>${d.name}</td>
-                                        <td>
-                                            <div>
-                                                <img src="../storage/arts/${d.image}" alt="" width="80px" height="60px">
-                                            </div>
-                                        </td>
-                                        <td class="">`
-                    d.users.forEach(user => {
-                        tr += `<a class="bg-dark text-white mx-1 fs-8px"> ${user.first_name + ' ' + user.last_name}</a>`;
-                    })
-                    tr += `</td>
-                                        <td>${d.price + ' ' + d.currency} </td>
-                                        <td>
-                                            <div class="d-flex gap-1 align-items-center justify-content-center">
-                                             <a class="copy-art btn btn-sm bg-success text-white"
-                                                    data-bs-toggle="modal" data-bs-target="#staticmodal" id="copy-art">Copy</a>
-                                                <a class="edit-arts btn btn-sm bg-primary text-white text-nowrap" id="edit-art"
-                                                    data-bs-toggle="modal" data-bs-target="#staticmodal">Full Edit</a>
-                                                <a class="delete-arts btn btn-sm bg-danger">Delete</a>
-                                            </div>
-                                        </td>
-                                        <td>${d.cr_at}</td>
-                                    </tr>`;
-                    $('#main-table tbody').append(tr);
-                });
-            }
-        }
+    const tableHead = `<tr><th>#</th>
+    <th>Name</th>
+    <th>Image</th>
+    <th>Artists</th>
+    <th>Price</th>
+    <th>Action</th>
+    <th>Create at</th></tr>`;
+    $('#main-table thead').html(tableHead);
+
+    data.forEach((d, k) => {
+        renderArtsRow(d, k + 1);
+    });
+}
+function renderArtsRow(art, index) {
+    let tr = `<tr data-id="${art.art_id}" key="${art.id}">
+    <td>${index}</td>
+    <td>${art.name}</td>
+    <td>
+        <div>
+            <img src="../storage/arts/${art.image}" alt="" width="80px" height="60px">
+        </div>
+    </td>
+    <td class="">`
+    art.users.forEach(user => {
+        tr += `<a class="bg-dark text-white mx-1 fs-8px"> ${user.first_name + ' ' + user.last_name}</a>`;
     })
+    tr += `</td>
+    <td>${art.price + ' ' + art.currency} </td>
+    <td>
+        <div class="d-flex gap-1 align-items-center justify-content-center">
+         <a class="copy-art btn btn-sm bg-success text-white"
+                data-bs-toggle="modal" data-bs-target="#staticmodal" id="copy-art">Copy</a>
+            <a class="edit-arts btn btn-sm bg-primary text-white text-nowrap" id="edit-art"
+                data-bs-toggle="modal" data-bs-target="#staticmodal">Full Edit</a>
+            <a class="delete-arts btn btn-sm bg-danger">Delete</a>
+        </div>
+    </td>
+    <td>${art.cr_at}</td>
+</tr>`;
+    $('#main-table tbody').append(tr);
+}
+function addedOrUpdatedArt(art) {
+    // Find the index of the artist with the same user_id
+    const index = arts.findIndex(a => a.art_id === art.art_id);
+
+    if (index !== -1) {
+        // Update the existing artist data
+        arts[index] = art;
+    } else {
+        // If the artist is not found, add it to the beginning of the array
+        arts.unshift(art);
+    }
+
+    // Clear the current table body
+    $('#main-table tbody').html('');
+
+    // Re-render the table with the updated artists array
+    arts.forEach((art, index) => {
+        renderArtsRow(art, index + 1);
+    });
+}
+function loadArtsPaginate(page = 1) {
+    fetchArts(page).then(res => {
+        if (res.success && res.data.length) {
+            arts = res.data; // Update the global artists array
+            renderArtsTable(arts);
+        }
+    }).catch(err => {
+        console.error('Failed to fetch artists', err);
+    });
 }
 
 function fetchArtists(page = 1, limit = 50) {
@@ -102,7 +131,7 @@ function fetchArtists(page = 1, limit = 50) {
         data: { page, limit },
     });
 }
-function renderTable(data) {
+function renderArtistTable(data) {
     $('#main-table thead').html('');
     $('#main-table tbody').html('');
 
@@ -117,20 +146,6 @@ function renderTable(data) {
 
     data.forEach((d, k) => {
         renderArtistRow(d, k + 1);
-    });
-}
-function addNewArtist(artist) {
-    artists.unshift(artist);
-    $('#main-table tbody').html('');
-    artists.forEach((artist, index) => {
-        renderArtistRow(artist, index + 1);
-    });
-}
-function updateArtist(artist) {
-    artists.unshift(artist);
-    $('#main-table tbody').html('');
-    artists.forEach((artist, index) => {
-        renderArtistRow(artist, index + 1);
     });
 }
 function renderArtistRow(artist, index) {
@@ -153,11 +168,31 @@ function renderArtistRow(artist, index) {
     </tr>`;
     $('#main-table tbody').append(tr);
 }
+function addedOrUpdatedArtist(artist) {
+    // Find the index of the artist with the same user_id
+    const index = artists.findIndex(a => a.user_id === artist.user_id);
+
+    if (index !== -1) {
+        // Update the existing artist data
+        artists[index] = artist;
+    } else {
+        // If the artist is not found, add it to the beginning of the array
+        artists.unshift(artist);
+    }
+
+    // Clear the current table body
+    $('#main-table tbody').html('');
+
+    // Re-render the table with the updated artists array
+    artists.forEach((artist, index) => {
+        renderArtistRow(artist, index + 1);
+    });
+}
 function loadArtistsPaginate(page = 1) {
     fetchArtists(page).then(res => {
         if (res.success && res.data.length) {
             artists = res.data; // Update the global artists array
-            renderTable(artists);
+            renderArtistTable(artists);
         }
     }).catch(err => {
         console.error('Failed to fetch artists', err);
@@ -384,7 +419,20 @@ $(document).ready(function () {
                 const blob = new Blob([byteArray], { type: 'image/jpeg' });
                 formData.append('image', blob, 'image.jpg');
             }
-            saveFormData(formData, 'store-art');
+            $.ajax({
+                url: "store-art",
+                method: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (res) {
+                    if (res.success) {
+                        $('#staticmodal').modal('hide');
+                        $('.toaster').html(anySuccess(res.message));
+                        addedOrUpdatedArt(res.data);
+                    }
+                }
+            });
         }
         if (e.target.id === 'artupdatebtn') {
             const barLoader = $(e.target).closest('.modal-content').find('.loader-wrapper');
@@ -438,6 +486,20 @@ $(document).ready(function () {
                 formData.append('image', blob, 'image.jpg');
             }
             saveFormData(formData, 'update-art');
+            $.ajax({
+                url: 'update-art',
+                method: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (res) {
+                    if (res.success) {
+                        $('#staticmodal').modal('hide');
+                        $('.toaster').html(anySuccess(res.message));
+                        addedOrUpdatedArt(res.data);
+                    }
+                }
+            })
         }
 
         if ($(e.target).closest('.delete-arts').length) {
@@ -451,7 +513,7 @@ $(document).ready(function () {
                     success: function (response) {
                         if (response.success) {
                             tr.remove();
-
+                            arts = arts.filter(art => art.art_id !== dataId);
                             $('.toaster').html(anySuccess(response.message));
                         } else {
                             $('.toaster').html(anyError(response.message));
@@ -519,8 +581,7 @@ $(document).ready(function () {
                         if (res.success) {
                             $('#staticmodal').modal('hide');
                             $('.toaster').html(anySuccess(res.message));
-                            const d = res.data;
-                            addNewArtist(d);
+                            addedOrUpdatedArtist(res.data);
                         }
                     }
                 });
@@ -532,9 +593,9 @@ $(document).ready(function () {
             const barLoader = $(e.target).closest('.modal-content').find('.loader-wrapper');
             barLoader.removeClass('d-none');
             let formData = new FormData();
-            let artId = $('#artupdatebtn').data('id'), firstName = $('#first_name').val(), lastName = $('#last_name').val(), lifespan = $('#lifespan').val(), origin = $('#origin').val(), bio1 = $('#bio1').html(), bio2 = $('#bio2').html(), bio3 = $('#bio3').html();
+            let userId = $('#artistupdatebtn').data('id'), firstName = $('#first_name').val(), lastName = $('#last_name').val(), lifespan = $('#lifespan').val(), origin = $('#origin').val(), bio1 = $('#bio1').html(), bio2 = $('#bio2').html(), bio3 = $('#bio3').html();
             if (firstName) {
-                formData.append('art_id', artId);
+                formData.append('user_id', userId);
                 formData.append('fname', firstName);
             } else {
                 $('.toaster').html(anyError('First Name is required !'));
@@ -560,19 +621,18 @@ $(document).ready(function () {
                 return 0;
             }
             images.each(function (index, img) {
+                const previewImg = $(img).closest('.previewImg');
+                const file = previewImg.data('file');
+
                 if ($(img).hasClass('previousImg')) {
                     // Append previous images to formData
-                    if (index === 0) {
+                    if ($(img).hasClass('user')) {
                         formData.append('previousUserImage', img.src);
-                    } else if (index === 1) {
+                    } else if ($(img).hasClass('cover')) {
                         formData.append('previousCoverImage', img.src);
                     }
-                } else {
-                    const fileInput = document.getElementById('choosepostimage');
-                    const files = fileInput.files;
-                    Array.from(files).forEach((file, i) => {
-                        formData.append(`images[]`, file, file.name);
-                    });
+                } else if (file) {
+                    formData.append(`images[]`, file, file.name);
                 }
             })
             $.ajax({
@@ -585,7 +645,7 @@ $(document).ready(function () {
                     if (res.success) {
                         $('#staticmodal').modal('hide');
                         $('.toaster').html(anySuccess(res.message));
-                        updateArtist(res.data);
+                        addedOrUpdatedArtist(res.data);
                     }
                 }
             })
@@ -601,6 +661,7 @@ $(document).ready(function () {
                     success: function (response) {
                         if (response.success) {
                             tr.remove();
+                            artists = artists.filter(artist => artist.user_id !== dataId);
                             $('.toaster').html(anySuccess(response.message));
                         } else {
                             $('.toaster').html(anyError(response.message));

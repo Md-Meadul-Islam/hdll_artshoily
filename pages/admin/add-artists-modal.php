@@ -41,7 +41,7 @@
                         <strong>Life Span </strong><span class="limit text-success fs-8px"></span></label>
                     <div class="input-group">
                         <input type="text" name="lifespan" class="form-control rounded-0" id="lifespan"
-                            placeholder="23-5-2098">
+                            placeholder="1998-2018">
                     </div>
                 </div>
                 <div class="col-md-6 col-12">
@@ -301,6 +301,8 @@
             </div>
         </div>
         <div class="col-12 py-2">
+            <p style="color:blue; font-size:10px; margin-bottom:0;">Please upload "Profile Photo" and "Cover Picture" in
+                sequence</p>
             <div class="previewBox py-2" id="previewBox">
             </div>
             <div class="d-flex" style="width:80px">

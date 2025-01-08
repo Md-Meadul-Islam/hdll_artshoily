@@ -37,9 +37,58 @@
                 </div>
                 <div>
                     <a class="d-flex align-items-center text-secondary cursor-pointer border border-1 border-secondary p-2 bg-danger-subtle bg-grey-400-hover"
+                        id="sculptures">
+                        <i class="article-icon icon-bg-grey" style="zoom:1.5"></i>
+                        <span class="ps-2">Sculptures</span>
+                    </a>
+                </div>
+                <div>
+                    <a class="d-flex align-items-center text-secondary cursor-pointer border border-1 border-secondary p-2 bg-danger-subtle bg-grey-400-hover"
                         id="blogs">
                         <i class="article-icon icon-bg-grey" style="zoom:1.5"></i>
                         <span class="ps-2">Blogs</span>
+                    </a>
+                </div>
+                <div>
+                    <a class="d-flex align-items-center text-secondary cursor-pointer border border-1 border-secondary p-2 bg-danger-subtle bg-grey-400-hover"
+                        id="inspired-collections">
+                        <span class="ps-2 text-nowrap">Inspired Collections</span>
+                    </a>
+                </div>
+                <div>
+                    <a class="d-flex align-items-center text-secondary cursor-pointer border border-1 border-secondary p-2 bg-danger-subtle bg-grey-400-hover"
+                        id="limited-edition">
+                        <span class="ps-2 text-nowrap">Limited Edition</span>
+                    </a>
+                </div>
+                <div>
+                    <a class="d-flex align-items-center text-secondary cursor-pointer border border-1 border-secondary p-2 bg-danger-subtle bg-grey-400-hover"
+                        id="artshoily-in-focus">
+                        <span class="ps-2 text-nowrap">Artshoily In Focus</span>
+                    </a>
+                </div>
+                <div>
+                    <a class="d-flex align-items-center text-secondary cursor-pointer border border-1 border-secondary p-2 bg-danger-subtle bg-grey-400-hover"
+                        id="client-stories">
+                        <span class="ps-2 text-nowrap">Client Stories </span>
+                    </a>
+                </div>
+                <div>
+                    <a class="d-flex align-items-center text-secondary cursor-pointer border border-1 border-secondary p-2 bg-danger-subtle bg-grey-400-hover"
+                        id="partners-and-clients">
+                        <span class="ps-2 text-nowrap">Partners And Clients</span>
+                    </a>
+                </div>
+                <div>
+                    <a class="d-flex align-items-center text-secondary cursor-pointer border border-1 border-secondary p-2 bg-danger-subtle bg-grey-400-hover"
+                        id="latest-from-our-blog">
+                        <span class="ps-2 text-nowrap">Latest From Our Blog</span>
+                    </a>
+                </div>
+                <div>
+                    <a class="d-flex align-items-center text-secondary cursor-pointer border border-1 border-secondary p-2 bg-danger-subtle bg-grey-400-hover"
+                        id="hero-banner">
+                        <span class="ps-2 text-nowrap">Hero Banner</span>
                     </a>
                 </div>
             </div>

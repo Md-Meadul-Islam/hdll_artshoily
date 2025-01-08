@@ -41,7 +41,7 @@
                         <strong>Life Span </strong><span class="limit text-success fs-8px"></span></label>
                     <div class="input-group">
                         <input type="text" name="lifespan" class="form-control rounded-0" id="lifespan"
-                            value="<?php echo $artist['lifespan'] ?>" placeholder="23-5-2098">
+                            value="<?php echo $artist['lifespan'] ?>" placeholder="1998-2018">
                     </div>
                 </div>
                 <div class="col-md-6 col-12">
@@ -305,11 +305,17 @@
             </div>
         </div>
         <div class="col-12 py-2">
+            <p style="color:blue; font-size:10px; margin-bottom:0;">Please upload "Profile Photo" and "Cover Picture" in
+                sequence</p>
             <div class="previewBox py-2" id="previewBox">
-                <div class="previewImg position-relative"><img src="../<?php echo $artist['userphoto'] ?>"
-                        class="previousImg"><span class="previewcrossbtn">✖</span></div>
-                <div class="previewImg position-relative"><img src="../<?php echo $artist['coverphoto'] ?>"
-                        class="previousImg"><span class="previewcrossbtn">✖</span></div>
+                <div class="previewImg position-relative">
+                    <img src="../<?php echo $artist['userphoto'] ?>" class="previousImg user"><span
+                        class="previewcrossbtn">✖</span>
+                </div>
+                <div class="previewImg position-relative">
+                    <img src="../<?php echo $artist['coverphoto'] ?>" class="previousImg cover"><span
+                        class="previewcrossbtn">✖</span>
+                </div>
             </div>
             <div class="d-flex" style="width:80px">
                 <div class="input-group">
@@ -324,7 +330,8 @@
         <div class="col-12 d-flex justify-content-end align-items-center gap-2">
             <?php
             if (user()->email) { ?>
-                <button type="submit" class="btn btn-primary" id="artistupdatebtn" name="artistupdatebtn">Update</button>
+                <button type="submit" class="btn btn-primary" id="artistupdatebtn" data-id="<?php echo $artist['user_id'] ?>"
+                    name="artistupdatebtn">Update</button>
             <?php } ?>
         </div>
     </div>
