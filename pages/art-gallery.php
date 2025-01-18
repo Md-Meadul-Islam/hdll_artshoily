@@ -102,7 +102,7 @@
                                 <div class="row g-0 d-flex justify-content-between align-items-end pt-2">
                                     <div class="col-6">
                                         <p class="mb-0 fs-10px"><a
-                                                href="viewart?a=<?php echo $art['art_id'] ?>"><?php echo $art['name']; ?></a>
+                                                href="viewart?a=<?php echo $art['art_id'] ?>"  class="text-dark fw-bold"><?php echo $art['name']; ?></a>
                                         </p>
                                         <p class="text-secondary fs-10px mb-0">
                                             <?php echo $art['canvas_type'] . " on " . $art['media']; ?>

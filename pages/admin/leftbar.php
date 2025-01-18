@@ -24,7 +24,7 @@
                 <div>
                     <a class="all-arts-btn d-flex align-items-center text-secondary cursor-pointer border border-1 border-secondary p-2 bg-primary-subtle bg-grey-400-hover"
                         id="all-arts-btn">
-                        <i class="article-icon icon-bg-grey" style="zoom:1.5"></i>
+                        <i class="art-icon icon-bg-grey" style="zoom:1.5"></i>
                         <span class="ps-2">Arts</span>
                     </a>
                 </div>
@@ -36,15 +36,15 @@
                     </a>
                 </div>
                 <div>
-                    <a class="d-flex align-items-center text-secondary cursor-pointer border border-1 border-secondary p-2 bg-danger-subtle bg-grey-400-hover"
-                        id="sculptures">
-                        <i class="article-icon icon-bg-grey" style="zoom:1.5"></i>
+                    <a class="all-sculptures-btn d-flex align-items-center text-secondary cursor-pointer border border-1 border-secondary p-2 bg-danger-subtle bg-grey-400-hover"
+                        id="all-sculptures-btn">
+                        <i class="sculpture-icon icon-bg-grey" style="zoom:1.5"></i>
                         <span class="ps-2">Sculptures</span>
                     </a>
                 </div>
                 <div>
-                    <a class="d-flex align-items-center text-secondary cursor-pointer border border-1 border-secondary p-2 bg-danger-subtle bg-grey-400-hover"
-                        id="blogs">
+                    <a class="all-blogs-btn d-flex align-items-center text-secondary cursor-pointer border border-1 border-secondary p-2 bg-danger-subtle bg-grey-400-hover"
+                        id="all-blogs-btn">
                         <i class="article-icon icon-bg-grey" style="zoom:1.5"></i>
                         <span class="ps-2">Blogs</span>
                     </a>

@@ -4,15 +4,13 @@
         <div class="col-md-7 col-12">
             <img data-src="./images/logo2.jpg" alt="logo" style="width:150px">
             <div class="w-100">
-                <p>Artshoily is a destination for artistic luxury where you can discover and buy the most exquisite
-                    pieces of fine art and
-                    collectibles. With an unwavering focus on quality and curation, we bring to you a handpicked
-                    selection of paintings, drawings,
-                    limited edition prints and serigraphs, sculptures, digital art, pichwais, traditional art, tribal
-                    art, old collectibles, curios, artefacts
-                    and more. Each piece at Artshoily is sourced from the most reputed and trustworthy artists,designers
-                    and collectors, so that
-                    you can truly enjoy your experience of discovering that special find.</p>
+                <p>Artshoily is your trusted source for authentic art collections, where you will discover a perfect
+                    blend of aesthetics and artistic sensibilities. We are committed to promoting and supporting
+                    artistic talent, offering genuine pieces of art and collectibles from a diverse range of artists and
+                    verified sources.</p>
+                <p>At Artshoily, you will find artworks by both celebrated and emerging artists, whose creations are
+                    meticulously curated to appeal to your aesthetic buds and bring you the true joy of artistic
+                    appreciation.</p>
             </div>
             <div>
                 <a href="tel:+8809876543210">+880 9876 543 210</a><span class="px-2">|</span><a

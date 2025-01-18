@@ -35,18 +35,6 @@
 
     <body>
         <?php pageAdd('components/header'); ?>
-        <script>
-            let headtitle = document.querySelector('head title');
-            let metakeys = document.querySelector('meta[name="keywords"]');
-            let metadesc = document.querySelector('meta[name="description"]');
-            let canonical = document.querySelector('link[rel="canonical"]');
-            function meta(title, key, desc, can) {
-                headtitle.innerHTML = title;
-                metakeys.setAttribute('content', key);
-                metadesc.setAttribute('content', desc);
-                canonical.setAttribute('href', can);
-            }
-        </script>
         <!-- hero section starts -->
         <section class="mt-5">
             <div class="row g-0 d-flex">
@@ -154,8 +142,7 @@
                                 <p>Acrylic on Canvas</p>
                                 <div class="goldenStroke"></div>
                                 <div class="py-2">
-                                    <a href="viewart/?a=dadfdd545dfd3424"
-                                        class="btn btn-sm btn-outline-secondary">EXPLORE</a>
+                                    <a href="artists" class="btn btn-sm btn-outline-secondary">EXPLORE</a>
                                 </div>
                             </div>
                         </div>
@@ -168,7 +155,7 @@
                                 <p>Oil Paint on Canvas</p>
                                 <div class="goldenStroke"></div>
                                 <div class="py-2">
-                                    <a href="viewartists/?a=" class="btn btn-sm btn-outline-secondary">DISCOVER</a>
+                                    <a href="blogs" class="btn btn-sm btn-outline-secondary">DISCOVER</a>
                                 </div>
                             </div>
                         </div>
@@ -379,7 +366,7 @@
                         </div>
                         <div class="col-2 p-2 h-100">
                             <div class="w-100 h-100">
-                                <img data-src="./images/news/India-Today_200x.png" alt="India" class="w-100 h-100">
+                                <img data-src="./images/news/mark.jpg" alt="Mark" class="w-100 h-100">
                             </div>
                         </div>
                         <div class="col-2 p-2 h-100">

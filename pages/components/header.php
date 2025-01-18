@@ -15,7 +15,7 @@
                     <ul
                         class="nav w-100 d-sm-flex d-block text-center justify-content-sm-end justify-content-center align-items-center gap-3 fs-10px">
                         <li class="nav-item py-sm-0 py-2">
-                            <a class="">BLOG</a>
+                            <a href="blogs" class="">BLOG</a>
                         </li>
                         <li class="nav-item py-sm-0 py-2">
                             <a class="" href="/login">LOG IN</a>

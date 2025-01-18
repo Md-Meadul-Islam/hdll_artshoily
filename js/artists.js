@@ -98,6 +98,7 @@ $(document).ready(function () {
     if (urlPath === '/viewartists') {
         loadArtsOfArtist();
     }
+    let clickCount = 1;
     $('body').on('click', function (e) {
         if ($(e.target).closest('.drawer-menu a, .drawer').length) {
             if ($(e.target).closest('.drawer-menu a').length) {
@@ -106,6 +107,37 @@ $(document).ready(function () {
         } else {
             $('.drawer').removeClass('active');
         }
+
+        if ($(e.target).closest('.bioMoreBtn').length) {
+            const bio2 = $('.bio2');
+            const bio3 = $('.bio3');
+            const bioMoreBtn = $('.bioMoreBtn');
+            const icon = bioMoreBtn.find('i');
+
+            if (clickCount === 1) {
+                bio2.addClass('active');
+                clickCount += 1;
+                if (!bio3.length) {
+                    icon.removeClass('angle-down-icon').addClass('angle-up-icon');
+                }
+            } else if (clickCount === 2) {
+                if (bio3.length) {
+                    bio3.addClass('active');
+                    icon.removeClass('angle-down-icon').addClass('angle-up-icon');
+                    clickCount += 1;
+                } else {
+                    clickCount = 1;
+                    bio2.removeClass('active');
+                    icon.removeClass('angle-up-icon').addClass('angle-down-icon');
+                }
+            } else if (clickCount === 3) {
+                bio2.removeClass('active');
+                bio3.removeClass('active');
+                icon.removeClass('angle-up-icon').addClass('angle-down-icon');
+                clickCount = 1;
+            }
+        }
+
     });
 
 

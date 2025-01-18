@@ -108,33 +108,60 @@ class Art
     }
     public function updateArt($data)
     {
-        $stmt = $this->connection->prepare("UPDATE {$this->arts} SET user_ids =?, name=?, date_created=?, place_created=?, media=?, canvas_type=?, size=?, frame=?, description=?, price=?, currency=?, image=?, imgalt=?, status=? WHERE art_id =?");
+        $stmt = $this->connection->prepare("
+            UPDATE {$this->arts} 
+            SET user_ids = ?, name = ?, date_created = ?, place_created = ?, media = ?, canvas_type = ?, size = ?, frame = ?, description = ?, price = ?, currency = ?, image = ?, imgalt = ?, status = ? 
+            WHERE art_id = ?
+        ");
         if ($stmt === false) {
             die('Prepare failed: ' . htmlspecialchars($this->connection->error));
         }
-        $stmt->bind_param('sssssssssssssss', $data['artists'], $data['name'], $data['creationDate'], $data['place'], $data['media'], $data['canvasType'], $data['size'], $data['frame'], $data['description'], $data['price'], $data['currency'], $data['image'], $data['name'], $data['availability'], $data['artId']);
+
+        $stmt->bind_param(
+            'sssssssssssssss',
+            $data['artists'],
+            $data['name'],
+            $data['creationDate'],
+            $data['place'],
+            $data['media'],
+            $data['canvasType'],
+            $data['size'],
+            $data['frame'],
+            $data['description'],
+            $data['price'],
+            $data['currency'],
+            $data['image'],
+            $data['name'],
+            $data['availability'],
+            $data['artId']
+        );
+
         if ($stmt->execute()) {
-            $insertId = $this->connection->insert_id;
-            $fetchStmt = $this->connection->prepare("SELECT  a.art_id, a.name, a.image, a.price, a.currency, a.cr_at,
+            $artId = $data['artId'];
+            $fetchStmt = $this->connection->prepare("
+                SELECT a.art_id, a.name, a.image, a.price, a.currency, a.cr_at,
                 JSON_ARRAYAGG(JSON_OBJECT('user_id', u.user_id, 'first_name', u.first_name, 'last_name', u.last_name)) AS users
                 FROM {$this->arts} AS a
                 LEFT JOIN {$this->users} AS u 
                 ON JSON_CONTAINS(a.user_ids, JSON_QUOTE(u.user_id), '$')
-                WHERE a.id = ?
-                GROUP BY a.id
-                ");
+                WHERE a.art_id = ?
+                GROUP BY a.art_id
+            ");
             if ($fetchStmt === false) {
                 die('Prepare failed: ' . htmlspecialchars($this->connection->error));
             }
-            $fetchStmt->bind_param('i', $insertId);
+
+            $fetchStmt->bind_param('s', $artId);
             $fetchStmt->execute();
             $result = $fetchStmt->get_result();
-            $insertedRow = $result->fetch_assoc();
-            return ['data' => $insertedRow];
+            $updatedRow = $result->fetch_assoc();
+
+            return ['data' => $updatedRow];
         } else {
             return ['error' => $stmt->error];
         }
     }
+
     public function moreFromArtist($art_id, $user_id, $limit = 5)
     {
         $data = [];

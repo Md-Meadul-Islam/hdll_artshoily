@@ -50,11 +50,11 @@
         <section class="my-2">
             <div class="row pt-2 g-0 d-flex align-items-center justify-content-center">
                 <div class="col-lg-10 col-12 py-5 px-2">
-                    <p>Artshoily is your platform for buying and collecting art. The name suggests a fusion of art with
-                        a distinctly Bangladeshi cultural essence, drawing from the word "shoily" (meaning style or
-                        approach in Bengali). Artshoily (pronounced as "Art-shoy-lee") aims to provide a space where
-                        artists can showcase their work, and collectors or enthusiasts can discover, purchase, and
-                        support local and emerging talent.</p>
+                    <p><strong>Artshoily</strong> is your platform for buying and collecting art. The name suggests a
+                        fusion of art with a distinctly Bangladeshi cultural essence, drawing from the word "shoily"
+                        (meaning style or approach in Bengali). Artshoily (pronounced as "Art-shoy-lee") aims to provide
+                        a space where artists can showcase their work, and collectors or enthusiasts can discover,
+                        purchase, and support local and emerging talent.</p>
                     <p>At Artshoily, we focus on quality and thoughtful curation, offering a carefully selected
                         collection of paintings, drawings, limited edition prints, sculptures, digital art, traditional
                         crafts, tribal art, rare collectibles, and unique artifacts. Each piece is sourced from trusted
@@ -62,12 +62,12 @@
                         discovering a statement piece or a hidden gem, Artshoily is your gateway to celebrating the rich
                         artistic heritage of Bangladesh and beyond.</p>
                     <div>
-                        <h5>Artshoily’s services: </h5>
+                        <h5>Artshoily's services:</h5>
                         <ul>
                             <li><strong>A Marketplace for Art: </strong>A curated space for fine art, traditional
                                 crafts, modern pieces, and digital artworks, focusing authentic artists from Bangladesh
                                 and other countries.</li>
-                            <li><strong>Cultural Identity: </strong>Focusing on the unique cultural narratives of
+                            <li><strong>Cultural Identity: </strong>FFocusing on the unique cultural narratives of
                                 Bangladesh, tying in with themes that reflect the socio-cultural shifts as evidenced
                                 through the Bangladesh's Gen Z movement of 2024 or historical student movements.</li>
                             <li><strong>Artist Support: </strong>A platform to empower artists, offering exposure and

@@ -127,22 +127,6 @@
     -webkit-mask: url('../images/icons/angle-right.svg') no-repeat center;
 }
 
-.polls-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/polls.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/polls.svg') no-repeat center;
-}
-
-.posts-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/posts.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/posts.svg') no-repeat center;
-}
-
 .article-icon {
     display: inline-block;
     width: 16px;
@@ -151,7 +135,23 @@
     -webkit-mask: url('../images/icons/article.svg') no-repeat center;
 }
 
-.bold-icon {
+.art-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    mask: url('../images/icons/art.svg') no-repeat center;
+    -webkit-mask: url('../images/icons/art.svg') no-repeat center;
+}
+
+.sculpture-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    mask: url('../images/icons/sculpture-icon.svg') no-repeat center;
+    -webkit-mask: url('../images/icons/sculpture-icon.svg') no-repeat center;
+}
+
+s .bold-icon {
     display: inline-block;
     width: 16px;
     height: 16px;
@@ -325,4 +325,20 @@
     height: 16px;
     mask: url('../images/icons/cart.svg') no-repeat center;
     -webkit-mask: url('../images/icons/cart.svg') no-repeat center;
+}
+
+.delete-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    mask: url('../images/icons/trash.svg') no-repeat center;
+    -webkit-mask: url('../images/icons/trash.svg') no-repeat center;
+}
+
+.resize-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    mask: url('../images/icons/resize.svg') no-repeat center;
+    -webkit-mask: url('../images/icons/resize.svg') no-repeat center;
 }

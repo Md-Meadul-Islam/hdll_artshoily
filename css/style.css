@@ -531,6 +531,68 @@ a:hover>.icon-bg-white-hover {
 }
 
 /* index section end */
+/* artist section start */
+.bio2,
+.bio3 {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    /* Ensure content doesn't display when height is 0 */
+    transition: all 0.2s ease-in;
+}
+
+.bio2.active,
+.bio3.active {
+    opacity: 1 !important;
+    height: auto !important;
+    /* Allow the div to expand naturally */
+    overflow: visible;
+    /* Ensure content is visible when active */
+}
+
+.bioMoreDiv {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    padding-bottom: 10px;
+    width: 100%;
+    min-height: 80px;
+    background: linear-gradient(rgba(128, 128, 128, 0), rgb(128, 128, 128)90%);
+}
+
+.bioMoreBtn {
+    display: flex;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.25s ease-in;
+}
+
+.bioMoreBtn.active {
+    display: flex !important;
+}
+
+.bioMoreBtn:hover {
+    background-color: var(--bs-gray-400) !important;
+}
+
+.bioLessDiv {
+    position: absolute;
+    left: 0;
+    bottom: -50px;
+    display: none;
+    align-items: end;
+    justify-content: center;
+    padding-bottom: 10px;
+    width: 100%;
+    min-height: 80px;
+    background: linear-gradient(rgba(128, 128, 128, 0), rgb(128, 128, 128)90%);
+}
+
+/* artist section end */
+
 /* admin section start */
 .loggeduser .usermiddlemenu {
     flex: 1;
@@ -595,27 +657,13 @@ a:hover>.icon-bg-white-hover {
     color: red;
 }
 
+.previousImg {
+    max-width: 120px;
+    max-height: 100px;
+}
+
 #choosepostimage {
     display: none;
-}
-
-#imageInputDiv {
-    display: none;
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translate(-15%, -50%);
-    background-color: white;
-    min-width: 200px;
-    border-radius: 5px;
-    border: 2px solid grey;
-    padding: 0.5rem;
-}
-
-#imagewidthparam,
-#imageheightparam {
-    width: 40px;
-    outline: none;
 }
 
 #customImgInput {
@@ -630,6 +678,48 @@ a:hover>.icon-bg-white-hover {
     border-radius: 5px;
     padding: 2px;
     margin-right: 5px;
+}
+
+.imageDiv {
+    display: inline-flex;
+    cursor: pointer;
+    font-size: 16px;
+    position: relative;
+    text-align: center;
+    border: 2px solid rgba(128, 128, 128, 0.5);
+    border-radius: 5px;
+    padding: 2px;
+    margin-right: 5px;
+}
+
+#chooseinnerimage {
+    display: none;
+}
+
+#textbody img {
+    position: relative;
+    cursor: pointer;
+    max-width: 100%;
+    padding: 5px;
+}
+
+.img-options {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 0 10px black;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.img-options a {
+    cursor: pointer;
 }
 
 /* modal section end */

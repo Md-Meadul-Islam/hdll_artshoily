@@ -69,19 +69,25 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-12 p-2">
-                                    <p class="text-justify text-secondary">
+                                <div class="col-md-6 col-12 p-2 position-relative">
+                                    <div>
                                         <?php echo html_entity_decode($artist['bio1']) ?>
-                                    </p>
+                                    </div>
                                     <?php if ($artist['bio2']) { ?>
-                                        <p class="text-justify text-secondary">
+                                        <div class="bio2">
                                             <?php echo html_entity_decode($artist['bio2']); ?>
-                                        </p>
+                                        </div>
+                                        <div class="bioMoreDiv">
+                                            <a class="bioMoreBtn active"><i
+                                                    class="angle-down-icon icon-bg-white icon-bg-grey-hover"
+                                                    style="zoom:1.5"></i></a>
+                                        </div>
                                     <?php } ?>
                                     <?php if ($artist['bio3']) { ?>
-                                        <p class="text-justify text-secondary">
+                                        <div class="bio3">
                                             <?php echo html_entity_decode($artist['bio3']); ?>
-                                        </p><?php } ?>
+                                        </div>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -91,9 +97,9 @@
         </section>
         <!-- artist section ends -->
         <section>
-            <div class="row g-0 d-flex align-items-center justify-content-center pt-2">
+            <div class="row g-0 d-flex align-items-center justify-content-center py-2">
                 <div class="col-md-10 col-12">
-                    <h5 class="text-uppercase fw-semibold px-2">More of his Design</h5>
+                    <h5 class="text-uppercase fw-semibold px-2">MORE OF THE ARTIST'S WORK</h5>
                     <div class="goldenStroke"></div>
                     <div class="more-from-artist row g-2 d-flex justify-content-center">
                     </div>

@@ -118,6 +118,23 @@ class User
         }
         return $artists;
     }
+    public function bloggers()
+    {
+        $artists = [];
+        $role = 'blogger';
+        $status = 1;
+        $stmt = $this->connection->prepare("SELECT u.user_id, u.first_name, u.last_name, u.email, u.phone, u.userphoto,u.coverphoto, u.bio1, u.userrole, u.status, u.cr_at
+            FROM {$this->userstable} u
+            WHERE u.status = ? AND u.userrole = ?
+        ");
+        $stmt->bind_param('ss', $status, $role);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            $artists[] = $row;
+        }
+        return $artists;
+    }
     public function paginateArtist($page, $limit)
     {
         $artists = [];

@@ -90,55 +90,47 @@
                 <div class="col-lg-8 col-12">
                     <h4 class="text-center text-uppercase text-secondary">- Sculpture Gallery -</h4>
                     <div class="row g-0 d-flex justify-content-center">
-                        <div class="col-md-4 col-sm-6 col-12 p-3">
-                            <div class="d-flex align-items-center justify-content-center">
-                                <img data-src="./images/sculptures/Link 1.png" alt="Sculpture"
-                                    style="height:300px; max-width:300px;width:100%">
-                            </div>
-                            <div class="row g-0 d-flex justify-content-between align-items-end pt-2">
-                                <div class="col-6">
-                                    <p class="mb-0 fs-10px fw-bold">Hanuman Plaque 01 </p>
-                                    <p class="text-secondary fs-10px mb-0">Brass</p>
-                                    <p class="text-secondary fs-10px">6 x 2 x 7.75 inches</p>
+                        <?php foreach ($sculptures as $key => $sculpture): ?>
+                            <div class="col-md-4 col-sm-6 col-12 p-3">
+                                <div class="d-flex align-items-center justify-content-center border border-1">
+                                    <a href="view-sculpture?a=<?php echo $sculpture['sculpture_id'] ?>">
+                                        <img data-src="../<?php echo $sculpture['image']; ?>"
+                                            alt="<?php $sculpture['imgalt'] ?>"
+                                            style="height:300px; max-width:300px;width:100%; object-fit:cover;">
+                                    </a>
                                 </div>
-                                <div class="col-6 d-flex flex-column align-items-end">
-                                    <p class="text-secondary fs-10px">BDT 50,400 </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 col-12 p-3">
-                            <div class="d-flex align-items-center justify-content-center">
-                                <img data-src="./images/sculptures/Link 2.png" alt="Sculpture" style="height:300px;
-                                    max-width:300px;width:100%">
-                            </div>
-                            <div class="row g-0 d-flex justify-content-between align-items-end pt-2">
-                                <div class="col-6">
-                                    <p class="mb-0 fs-10px fw-bold">Sperry Remington Idool Red Typewriter </p>
-                                    <p class="text-secondary fs-10px mb-0">Assorted Materials </p>
-                                    <p class="text-secondary fs-10px">13.5 x 12 x 4.5 Inches</p>
-                                </div>
-                                <div class="col-6 d-flex flex-column align-items-end">
-                                    <p class="text-secondary fs-10px">BDT 33,040</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 col-12 p-3">
-                            <div class="d-flex align-items-center justify-content-center">
-                                <img data-src="./images/sculptures/Link 3.png" alt="Sculpture"
-                                    style="height:300px; max-width:300px;width:100%">
-                            </div>
-                            <div class="row g-0 d-flex justify-content-between align-items-end pt-2">
-                                <div class="col-6">
-                                    <p class="mb-0 fs-10px fw-bold">Alex Bonan</p>
-                                    <p class="text-secondary fs-10px mb-0">Bronze</p>
-                                    <p class="text-secondary fs-10px">3.5 x 3.5 x 4 inches</p>
-                                </div>
-                                <div class="col-6 d-flex flex-column align-items-end">
-                                    <p class="text-secondary fs-10px">Price on Inquiry | <span
-                                            class="text-uppercase text-gold">Sold</span></p>
+                                <div class="row g-0 d-flex justify-content-between align-items-end pt-2">
+                                    <div class="col-6">
+                                        <p class="mb-0 fs-10px"><a
+                                                href="view-sculpture?a=<?php echo $sculpture['sculpture_id'] ?>"
+                                                class="text-dark fw-bold"><?php echo $sculpture['name']; ?></a>
+                                        </p>
+                                        <p class="text-secondary fs-10px mb-0">
+                                            <?php echo $sculpture['media']; ?>
+                                        </p>
+                                        <p class="art-dimension text-secondary fs-10px" title="">
+                                            <?php echo $sculpture['size']; ?>
+                                        </p>
+                                    </div>
+                                    <div class="col-6 d-flex flex-column align-items-end">
+                                        <p class="mb-0 fs-10px"><a
+                                                class="cursor-pointer text-white text-uppercase rounded-0"><i
+                                                    class="cart-icon icon-bg-gold icon-bg-grey-hover"></i>
+                                            </a>
+                                        </p>
+                                        <p class="text-secondary fs-10px mb-0">
+                                            <?php foreach ($sculpture['users'] as $user): ?>
+                                                <a
+                                                    href="viewartists/?a=<?php echo $user['user_id'] ?>"><?php echo $user['first_name'] . ' ' . $user['last_name']; ?></a>
+                                            <?php endforeach ?>
+                                        </p>
+                                        <p class="text-secondary fs-10px">
+                                            <?php echo $sculpture['currency'] . " " . $sculpture['price']; ?>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        <?php endforeach ?>
                         <div class="col-12 d-flex align-items-end justify-content-end">
                             <a href="sculptures" class="btn btn-sm bg-secondary-subtle text-uppercase">View more</a>
                         </div>

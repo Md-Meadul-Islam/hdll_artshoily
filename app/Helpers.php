@@ -159,8 +159,8 @@ function generateSlug($title)
 }
 function uploadFile($file, $upload_dir, $allowed_types, $max_size)
 {
-    if (!file_exists('storage/artists')) {
-        mkdir('storage/artists', 0777, true);
+    if (!file_exists($upload_dir)) {
+        mkdir($upload_dir, 0777, true);
     }
     if ($file['error'] !== UPLOAD_ERR_OK) {
         return "Error uploading file: " . $file['error'];

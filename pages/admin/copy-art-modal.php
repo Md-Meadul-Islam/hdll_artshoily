@@ -46,7 +46,16 @@
                             <?php endforeach ?>
                         </select>
                     </div>
-                    <ul id="selectedArtistsList" class="d-flex flex-wrap p-0 my-1 gap-1"></ul>
+                    <ul id="selectedArtistsList" class="d-flex flex-wrap p-0 my-1 gap-1">
+                        <?php foreach ($art['users'] as $selctedUser) { ?>
+                            <li class="d-flex align-items-center bg-primary fs-8px px-2"
+                                data-id="<?php echo $selctedUser['user_id'] ?>">
+                                <?php echo $selctedUser['first_name'] . ' ' . $selctedUser['last_name'] ?>
+                                <a class="remove-artist text-danger ps-2 cursor-pointer"
+                                    data-id="<?php echo $selctedUser['user_id'] ?>">✖</a>
+                            </li>
+                        <?php } ?>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -257,22 +266,22 @@
 </div>
 <script>
     $('#artists').on('change', function () {
-        let selectedValue = $(this).val();
-        let selectedText = $('#artists option:selected').text();
-        if (!selectedArtists.includes(selectedValue)) {
-            selectedArtists.push(selectedValue);
+        const selectedId = $(this).val();
+        const selectedText = $('#artists option:selected').text();
+        if (!selectedArtists.hasOwnProperty(selectedId)) {
+            selectedArtists[selectedId] = selectedText.trim();
             $('#selectedArtistsList').append(`
-                <li class="d-flex align-items-center bg-primary fs-8px px-2" data-id="${selectedValue}">
+                <li class="d-flex align-items-center bg-primary fs-8px px-2" data-id="${selectedId}">
                     ${selectedText}
-                    <a class="remove-artist text-danger ps-2 cursor-pointer" data-id="${selectedValue}">✖</a>
+                    <a class="remove-artist text-danger ps-2 cursor-pointer" data-id="${selectedId}">✖</a>
                 </li>
             `);
         }
         $(this).val('');
     });
     $('#selectedArtistsList').on('click', '.remove-artist', function () {
-        let artistId = $(this).data('id');
-        selectedArtists = selectedArtists.filter(id => id !== artistId);
+        const artistId = $(this).data('id');
+        delete selectedArtists[artistId];
         $(`#selectedArtistsList li[data-id="${artistId}"]`).remove();
     });
 </script>

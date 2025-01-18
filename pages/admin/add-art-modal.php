@@ -4,7 +4,7 @@
     </div>
     <div class="w-100 g-0 d-flex justify-content-between align-items-center p-3">
         <div class="">
-            <h5 class="modal-title">Create Art</h5>
+            <h5 class="modal-title">Add New Art</h5>
         </div>
         <div class="position-relative">
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -237,22 +237,22 @@
 </div>
 <script>
     $('#artists').on('change', function () {
-        let selectedValue = $(this).val();
-        let selectedText = $('#artists option:selected').text();
-        if (!selectedArtists.includes(selectedValue)) {
-            selectedArtists.push(selectedValue);
+        const selectedId = $(this).val();
+        const selectedText = $('#artists option:selected').text();
+        if (!selectedArtists.hasOwnProperty(selectedId)) {
+            selectedArtists[selectedId] = selectedText.trim();
             $('#selectedArtistsList').append(`
-                <li class="d-flex align-items-center bg-primary fs-8px px-2" data-id="${selectedValue}">
+                <li class="d-flex align-items-center bg-primary fs-8px px-2" data-id="${selectedId}">
                     ${selectedText}
-                    <a class="remove-artist text-danger ps-2 cursor-pointer" data-id="${selectedValue}">✖</a>
+                    <a class="remove-artist text-danger ps-2 cursor-pointer" data-id="${selectedId}">✖</a>
                 </li>
             `);
         }
         $(this).val('');
     });
     $('#selectedArtistsList').on('click', '.remove-artist', function () {
-        let artistId = $(this).data('id');
-        selectedArtists = selectedArtists.filter(id => id !== artistId);
+        const artistId = $(this).data('id');
+        delete selectedArtists[artistId];
         $(`#selectedArtistsList li[data-id="${artistId}"]`).remove();
     });
 </script>
