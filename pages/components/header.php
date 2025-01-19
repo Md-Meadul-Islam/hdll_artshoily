@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg bg-white fixed-top flex-column py-0 px-lg-4 px-2 shadow-lg">
-    <div class="row g-0 w-100 d-flex align-items-center justify-content-between py-1">
+    <div class="row g-0 w-100 d-flex align-items-center justify-content-between py-1" style="max-width:1440px">
         <div class="col-lg-4 col-2">
             <a class="" href="/">
                 <img data-src="./images/logo.jpg" alt="logo" style="width:100px">

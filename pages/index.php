@@ -181,7 +181,7 @@
                         </p>
                         <div class="goldenStroke w-50"></div>
                     </div>
-                    <div class="row g-0 d-flex align-items-center justify-content-around">
+                    <div class="row g-0 d-flex align-items-center justify-content-around p-2">
                         <div class="col-12 py-3">
                             <div>
                                 <img data-src="./images/Desktop-06_1800x.png" alt="Limited Editions"
@@ -189,7 +189,7 @@
                             </div>
                         </div>
                         <div class="col-12">
-                            <div class="limited-edition row d-flex align-items-center justify-content-center">
+                            <div class="limited-edition row d-flex g-4 align-items-center justify-content-center">
                             </div>
                         </div>
                         <div class="col-12 d-flex align-items-end justify-content-end">
@@ -198,7 +198,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 py-3">
+                <div class="col-md-10 col-12 py-3">
                     <div>
                         <img data-src="./images/Homepage_Small_Banner_Desktop_1800x.png" alt="Limited Editions"
                             class="w-100 h-100">
@@ -229,11 +229,11 @@
                             - CLIENT STORIES -
                         </h4>
                     </div>
-                    <div class="row g-0 d-flex align-items-center justify-content-around p-2">
-                        <div class="col-md-4 col-sm-6 col-12 p-3">
+                    <div class="row g-4 d-flex align-items-center justify-content-around p-2">
+                        <div class="col-md-4 col-sm-6 col-12">
                             <div class="d-flex align-items-center justify-content-center">
                                 <img data-src="./images/stories/Mohit-Chopra-Dinkar-Jadhav-Gurgaon_420x420.png"
-                                    alt="editions" style="max-height:300px; max-width:300px">
+                                    alt="editions" style="max-height:300px; width:100%; object-fit:cover">
                             </div>
                             <div>
                                 <p class="fs-10px text-italic py-2">Painting by Rafael Mirkim</p>
@@ -242,10 +242,10 @@
                                 <p class="text-secondary fs-10px">Toronto, Canada</p>
                             </div>
                         </div>
-                        <div class="col-md-4 col-sm-6 col-12 p-3">
+                        <div class="col-md-4 col-sm-6 col-12">
                             <div class="d-flex align-items-center justify-content-center">
                                 <img data-src="./images/stories/Amit-Banerji-Claire-Iono-02_420x420.png" alt="editions"
-                                    style="max-height:300px; max-width:300px">
+                                    style="max-height:300px; width:100%; object-fit:cover">
                             </div>
                             <div>
                                 <p class="fs-10px text-italic py-2">Paintings by Claire Iono </p>
@@ -254,10 +254,10 @@
                                 <p class="text-secondary fs-10px">New York, USA </p>
                             </div>
                         </div>
-                        <div class="col-md-4 col-sm-6 col-12 p-3">
+                        <div class="col-md-4 col-sm-6 col-12">
                             <div class="d-flex align-items-center justify-content-center">
                                 <img data-src="./images/stories/Mohit-Chopra-Dinkar-Jadhav-Gurgaon_420x420.png"
-                                    alt="editions" style="max-height:300px; max-width:300px">
+                                    alt="editions" style="max-height:300px; width:100%; object-fit:cover">
                             </div>
                             <div>
                                 <p class="fs-10px text-italic py-2">Painting by Alex Bonan</p>
@@ -276,82 +276,23 @@
             </div>
         </section>
         <!-- client stories section ends -->
-        <!--  gift cards section starts -->
-        <!-- <section class="py-5">
-            <div class="row g-0 d-flex align-items-center justify-content-center">
-                <h4 class="text-center text-uppercase">
-                    - Gift cards - </h4>
-                <div class="col-md-10 col-12">
-                    <div>
-                        <img data-src="./images/gifts/Gift-Card-Banner-Desktop-1_271a1c0a-d499-48d5-b0dc-689c6a0b2f45_1800x.png"
-                            alt="gifts" class="w-100">
-                    </div>
-                </div>
-            </div>
-        </section> -->
-        <!-- gift cards section ends -->
-        <!-- collectibles section starts -->
+        <!-- Sculptures section starts -->
         <section class="py-5">
             <div class="row g-0 d-flex align-items-center justify-content-center">
                 <h4 class="text-center text-uppercase">
                     - SCULPTURES -
                 </h4>
                 <div class="col-md-10 col-12">
-                    <div class="row g-0 d-flex justify-content-around">
-                        <div class="col-md-4 col-sm-6 col-12 p-3">
-                            <div class="d-flex align-items-center justify-content-center">
-                                <img data-src="./images/sculptures/Link 1.png" alt="Sculpture"
-                                    style="height:300px; max-width:300px">
-                            </div>
-                            <div class="row g-0 d-flex justify-content-between align-items-end pt-2">
-                                <div class="col-6">
-                                    <p class="mb-0 fs-10px fw-bold">Hanuman Plaque 01 </p>
-                                    <p class="text-secondary fs-10px mb-0">Brass</p>
-                                    <p class="text-secondary fs-10px">6 x 2 x 7.75 inches</p>
-                                </div>
-                                <div class="col-6 d-flex flex-column align-items-end">
-                                    <p class="text-secondary fs-10px">BDT 50,400 </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 col-12 p-3">
-                            <div class="d-flex align-items-center justify-content-center">
-                                <img data-src="./images/sculptures/Link 2.png" alt="Sculpture" style="height:300px;
-                                    max-width:300px">
-                            </div>
-                            <div class="row g-0 d-flex justify-content-between align-items-end pt-2">
-                                <div class="col-6">
-                                    <p class="mb-0 fs-10px fw-bold">Sperry Remington Idool Red Typewriter </p>
-                                    <p class="text-secondary fs-10px mb-0">Assorted Materials </p>
-                                    <p class="text-secondary fs-10px">13.5 x 12 x 4.5 Inches</p>
-                                </div>
-                                <div class="col-6 d-flex flex-column align-items-end">
-                                    <p class="text-secondary fs-10px">BDT 33,040</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 col-12 p-3">
-                            <div class="d-flex align-items-center justify-content-center">
-                                <img data-src="./images/sculptures/Link 3.png" alt="Sculpture"
-                                    style="height:300px; max-width:300px">
-                            </div>
-                            <div class="row g-0 d-flex justify-content-between align-items-end pt-2">
-                                <div class="col-6">
-                                    <p class="mb-0 fs-10px fw-bold">Alex Bonan</p>
-                                    <p class="text-secondary fs-10px mb-0">Bronze</p>
-                                    <p class="text-secondary fs-10px">3.5 x 3.5 x 4 inches</p>
-                                </div>
-                                <div class="col-6 d-flex flex-column align-items-end">
-                                    <p class="text-secondary fs-10px">Price on Inquiry | <span
-                                            class="text-uppercase text-gold">Sold</span></p>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="home-sculptures row g-4 d-flex justify-content-around p-2">
+                    </div>
+                    <div class="d-flex align-items-center justify-content-end">
+                        <a href="sculptures" class="btn btn-sm bg-secondary-subtle text-uppercase">VIEW ENTIRE
+                            COLLECTION </a>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- collectibles section ends -->
+        <!-- Sculptures section ends -->
         <!-- news section starts -->
         <section class="py-5">
             <div class="row g-0 d-flex align-items-center justify-content-center">
@@ -413,7 +354,7 @@
                         <div class="col-md-4 col-sm-6 col-12 p-3">
                             <div class="d-flex align-items-center justify-content-center">
                                 <img data-src="./images/blog/718a48ac-3d9d-47b1-9dc6-c124fb10c66e_435x290.png"
-                                    alt="editions" style="max-height:200px; width:100%">
+                                    alt="editions" style="max-height:250px; width:100%">
                             </div>
                             <div class="py-3">
                                 <p class="fs-10px pb-2">Trails in Colour - Tracking Anjolie Ela Menon's
@@ -424,7 +365,7 @@
                         <div class="col-md-4 col-sm-6 col-12 p-3">
                             <div class="d-flex align-items-center justify-content-center">
                                 <img data-src="./images/blog/bb76d2b4-7349-4b02-a869-f3c938e376e4_435x290.jpg"
-                                    alt="editions" style="max-height:200px; width:100%">
+                                    alt="editions" style="max-height:250px; width:100%">
                             </div>
                             <div class="py-3">
                                 <div class="goldenStroke w-80"></div>
@@ -435,7 +376,7 @@
                         <div class="col-md-4 col-sm-6 col-12 p-3">
                             <div class="d-flex align-items-center justify-content-center">
                                 <img data-src="./images/blog/c69ad448-6e9a-4cb3-9769-591de18a0ef9_435x290.jpg"
-                                    alt="editions" style="max-height:200px; width:100%">
+                                    alt="editions" style="max-height:250px; width:100%">
                             </div>
                             <div class="py-3">
                                 <p class="fs-10px pb-2">Byran Wolf The Record breaking Icon of Italian Modernism</p>
@@ -443,7 +384,8 @@
                             </div>
                         </div>
                         <div class="col-12 d-flex align-items-end justify-content-end">
-                            <a class="btn btn-sm bg-secondary-subtle text-uppercase shadow-lg">VIEW All BLOGS
+                            <a href="/blogs" class="btn btn-sm bg-secondary-subtle text-uppercase shadow-lg">VIEW All
+                                BLOGS
                             </a>
                         </div>
                     </div>

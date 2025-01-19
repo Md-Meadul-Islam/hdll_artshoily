@@ -6,11 +6,11 @@ function loadLimitedEditionPrints() {
             if (res.success && res.data.length > 0) {
                 const data = res.data;
                 data.forEach(art => {
-                    let elm = ` <div class="col-md-4 col-sm-6 col-12 p-3">
-                                <div class="d-flex align-items-center justify-content-center">
-                                <a href="viewart?a=${art['art_id']}">
+                    let elm = ` <div class="col-md-4 col-sm-6 col-12">
+                                <div class="d-flex align-items-center justify-content-center w-100">
+                                <a href="viewart?a=${art['art_id']}" class="w-100">
                                     <img src="../storage/arts/${art['image']}" alt="editions"
-                                        style="max-height:300px; max-width:300px">
+                                        style="max-height:300px; width:100%;object-fit:cover">
                                         </a>
                                 </div>
                                 <div class="row g-0 d-flex justify-content-between align-items-end pt-2">
@@ -65,11 +65,44 @@ function focusArtists() {
         }
     })
 }
+function homeSculpture() {
+    $.ajax({
+        url: 'api/home-sculptures',
+        method: 'GET',
+        success: function (res) {
+            if (res.success && res.data.length > 0) {
+                const data = res.data;
+                data.forEach(sculp => {
+                    let elm = `<div class="col-md-4 col-sm-6 col-12">
+                            <div class="d-flex align-items-center justify-content-center">
+                            <a href="/view-sculpture?a=${sculp['sculpture_id']}"><img src="../${sculp['image']}" alt="${sculp['imgalt']}"
+                                    style="height:300px; width:100%;object-fit:cover">
+                                    </a>
+                            </div>
+                            <div class="row g-0 d-flex justify-content-between align-items-end pt-2">
+                                <div class="col-6">
+                                    <p class="mb-0 fs-10px fw-bold"><a href="/view-sculpture?a=${sculp['sculpture_id']}" class="text-dark">${sculp['name']}</a></p>
+                                    <p class="text-secondary fs-10px mb-0">${sculp['media']}</p>
+                                    <p class="text-secondary fs-10px">${sculp['size']}</p>
+                                </div>
+                                <div class="col-6 d-flex flex-column align-items-end">
+                                    <p class="text-secondary fs-10px">${sculp['currency'] + ' ' + sculp['price']}</p>
+                                </div>
+                            </div>
+                        </div>`;
+                    $('.home-sculptures').append(elm);
+                })
+            }
+        }
+    })
+
+}
 $(document).ready(function () {
     const urlPath = window.location.pathname;
     if (urlPath === '/') {
         loadLimitedEditionPrints();
         focusArtists();
+        homeSculpture();
     }
     function generateUUID() {
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {

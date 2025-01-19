@@ -24,7 +24,7 @@
         <link rel="canonical" href="https://artishoily.com/blog" />
         <link rel="apple-touch-icon" href="https://www.artishoily.com/images/favicon.ico">
         <link rel="icon" type="image/gif" href="../images/favicon.ico">
-        <title>Art Shoily | Blogs</title>
+        <title>Art Shoily | Blogs | Bangladeshi Art: A Tapestry of Tradition and Modernity</title>
         <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="./css/bootstrap.css" />
         <link rel="stylesheet" href="./css/style.css" />
@@ -51,12 +51,10 @@
             <div class="blogs row g-0 d-flex justify-content-center">
                 <div class="col-lg-8 col-md-10 col-12 p-2">
                     <h3 class="text-center fw-bold" style="color:rgb(0, 122, 192)">Bangladeshi Art: A Tapestry of
-                        Tradition
-                        and
-                        Modernity</h3>
+                        Tradition and Modernity</h3>
                     <div class="pb-2">
                         <p>
-                            Bangladeshi art, an essential facet of the country’s cultural identity, reflects a rich
+                            Bangladeshi art, an essential facet of the country's cultural identity, reflects a rich
                             amalgamation of history, tradition, and contemporary innovation. Rooted in the region's
                             ancient
                             heritage and enriched by diverse influences over centuries, Bangladeshi art offers a vibrant
@@ -82,7 +80,7 @@
                             captivate art historians.
                         </p>
                         <div class="d-flex justify-content-center">
-                            <img data-src="../storage/blogs/blog_2.jpg" alt="blog2" style="max-width:600px; width:100%">
+                            <img data-src="../storage/blogs/blog_2.jpg" alt="blog2" style="max-width:600px;">
                         </div>
                         <p>
                             Islamic influences began shaping the region's artistic landscape from the 13th century with
@@ -107,7 +105,7 @@
                             storytelling.
                         </p>
                         <div class="d-flex justify-content-center">
-                            <img data-src="../storage/blogs/blog_3.jpg" alt="blog3" style="max-width:600px; width:100%">
+                            <img data-src="../storage/blogs/blog_3.jpg" alt="blog3" style="max-width:600px;">
                         </div>
                         <p>
                             Patachitra, or scroll painting, is another traditional art form rooted in ancient
@@ -131,7 +129,7 @@
                             pivotal role in fostering this synthesis.
                         </p>
                         <div class="d-flex justify-content-center">
-                            <img data-src="../storage/blogs/blog_4.jpg" alt="blog4" style="max-width:600px; width:100%">
+                            <img data-src="../storage/blogs/blog_4.jpg" alt="blog4" style="max-width:600px;">
                         </div>
                         <p>
                             In East Bengal (now Bangladesh), artists such as Zainul Abedin emerged as pioneers of modern
@@ -150,7 +148,7 @@
                             Dhaka) emerged as a vibrant hub for nurturing creative talent.
                         </p>
                         <div class="d-flex justify-content-center">
-                            <img data-src="../storage/blogs/blog_5.jpg" alt="blog5" style="max-width:600px; width:100%">
+                            <img data-src="../storage/blogs/blog_5.jpg" alt="blog5" style="max-width:600px;">
                         </div>
                         <p>
                             Prominent artists like SM Sultan, Qayyum Chowdhury, and Shahabuddin Ahmed pushed the
@@ -177,7 +175,7 @@
                             collaboration.
                         </p>
                         <div class="d-flex justify-content-center">
-                            <img data-src="../storage/blogs/blog_6.jpg" alt="blog6" style="max-width:600px; width:100%">
+                            <img data-src="../storage/blogs/blog_6.jpg" alt="blog6" style="max-width:600px;">
                         </div>
                         <p>
                             Artists like Tayeba Begum Lipi and Rana Begum have garnered international acclaim for their

@@ -13,6 +13,13 @@ class SculptureController
         $sculptures = $sculpture->sculptures(1);
         view('sculptures', ['sculptures' => $sculptures]);
     }
+    public function homeSculpture()
+    {
+        header('Content-Type: application/json');
+        $sculp = new Sculpture();
+        $sculps = $sculp->homeSculpture(3);
+        echo json_encode(['success' => true, 'data' => $sculps]);
+    }
     public function loadSculpPaginate()
     {
         header('Content-type: application/json');

@@ -6,6 +6,7 @@ use App\Services\Route;
 Route::get('', 'HomeController', 'index');
 Route::get('api/load-limited-edition-prints', 'ArtController', 'loadLimitedEditionPrints');
 Route::get('api/focus-artists', 'ArtistsController', 'focusArtists');
+Route::get('api/home-sculptures', 'SculptureController', 'homeSculpture');
 
 //Art gallery page
 Route::get('art-gallery', 'ArtController', 'index');

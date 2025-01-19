@@ -37,6 +37,27 @@ class Sculpture
         }
         return $data;
     }
+    public function homeSculpture($limit)
+    {
+        $stmt = $this->connection->prepare("SELECT 
+            s.*,
+            JSON_ARRAYAGG(JSON_OBJECT('user_id', u.user_id, 'first_name', u.first_name, 'last_name', u.last_name)) AS users
+            FROM {$this->sculpture} AS s
+            LEFT JOIN {$this->users} AS u 
+            ON JSON_CONTAINS(s.user_ids, JSON_QUOTE(u.user_id), '$')
+            GROUP BY s.id
+            ORDER BY RAND()
+            LIMIT ?");
+        $stmt->bind_param('i', $limit);
+
+        $stmt->execute();
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            $row['users'] = json_decode($row['users'], true);  // Decode users JSON array
+            $data[] = $row;
+        }
+        return $data;
+    }
     public function view($sid)
     {
         $stmt = $this->connection->prepare("SELECT 
