@@ -54,6 +54,7 @@ Route::get('edit-blog-modal', 'BlogController', 'loadEditBlogModal');
 Route::post('update-blog', 'BlogController', 'updateBlog');
 Route::post('delete-blog', 'BlogController', 'deleteBlog');
 //sculptures
+Route::get('view-sculpture/{a}', 'SculptureController', 'view');
 Route::get('sculptures', 'SculptureController', 'index');
 Route::get('admin/load-sculptures-paginate', 'SculptureController', 'loadSculpPaginate');
 Route::get('admin/create-sculpture-modal', 'SculptureController', 'loadCreateSculpModal');

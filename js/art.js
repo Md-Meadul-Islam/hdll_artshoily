@@ -24,7 +24,7 @@ function moreFromArtist() {
                             alt="${art['imgalt']}"
                             style="max-height:300px; max-width:300px;width:100%;">
                     </a>
-                    <p class="mb-0 fs-10px">${art['name']}</p>
+                    <p class="mb-0 fs-10px"><a href="viewart/?a=${art['art_id']}" class="text-dark fw-bold">${art['name']}</a></p>
                     <p class="text-secondary fs-10px mb-0">
                     ${art['canvas_type'] + ' on ' + art['media']}
                     </p>

@@ -63,7 +63,7 @@ function loadArtsOfArtist() {
                             <div class="row g-0 d-flex justify-content-between align-items-start pt-2">
                                 <div class="col-6">
                                     <p class="mb-0 fs-10px"><a
-                                            href="viewart?a=${art['art_id']}">${art['name']}</a>
+                                            href="viewart?a=${art['art_id']}" class="fw-bold text-dark">${art['name']}</a>
                                     </p>
                                     <p class="text-secondary fs-10px mb-0">${art['canvas_type'] + ' on ' + art['media']}
                                     </p>

@@ -29,12 +29,12 @@ class SculptureController
         $sculptures = $sculpture->sculptures($page, $limit);
         echo json_encode(['success' => true, 'data' => $sculptures]);
     }
-    public function view($sid)
+    public function view($a)
     {
         $sculps = new Sculpture();
-        if ($sid) {
-            $sculp = $sculps->view($sid);
-            view('viewart', ['art' => $sculp]);
+        if ($a) {
+            $sculp = $sculps->view($a);
+            view('view-sculpture', ['sculp' => $sculp]);
         }
     }
     public function loadCreateSculpModal()
