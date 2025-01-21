@@ -36,7 +36,7 @@ if ($mode === 'edit') {
                     </label>
                     <div class="input-group">
                         <select name="user" id="user" class="form-select rounded-0">
-                            <option value="" disabled selected>Choose an blogger</option>
+                            <option value="" disabled selected>Choose a blogger</option>
                             <?php foreach ($bloggers as $user): ?>
                                 <option value="<?php echo $user['user_id'] ?>">
                                     <?php echo $user['first_name'] . ' ' . $user['last_name'] ?>

@@ -14,6 +14,7 @@ $data = [
     "currency" => "",
     "status" => "",
     "image" => "",
+    "users" => []
 ];
 if ($mode === 'edit' || $mode === 'copy') {
     $data = $sculpture;
@@ -66,7 +67,16 @@ if ($mode === 'edit' || $mode === 'copy') {
                             <?php endforeach ?>
                         </select>
                     </div>
-                    <ul id="selectedArtistsList" class="d-flex flex-wrap p-0 my-1 gap-1"></ul>
+                    <ul id="selectedArtistsList" class="d-flex flex-wrap p-0 my-1 gap-1">
+                        <?php foreach ($data['users'] as $selctedUser) { ?>
+                            <li class="d-flex align-items-center bg-primary fs-8px px-2"
+                                data-id="<?php echo $selctedUser['user_id'] ?>">
+                                <?php echo $selctedUser['first_name'] . ' ' . $selctedUser['last_name'] ?>
+                                <a class="remove-artist text-danger ps-2 cursor-pointer"
+                                    data-id="<?php echo $selctedUser['user_id'] ?>">✖</a>
+                            </li>
+                        <?php } ?>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -145,8 +155,9 @@ if ($mode === 'edit' || $mode === 'copy') {
                         <strong>Currency</strong></label>
                     <div class="input-group">
                         <select name="currency" id="currency" class="form-select rounded-0">
-                            <option value="BDT" selected>BDT</option>
+                            <option value="BDT">BDT</option>
                             <option value="USD">USD</option>
+                            <option value="Range" selected>Range</option>
                         </select>
                     </div>
                 </div>
@@ -274,6 +285,7 @@ if ($mode === 'edit' || $mode === 'copy') {
 </div>
 <script>
     $('#artists').on('change', function () {
+        console.log(selectedArtists)
         const selectedId = $(this).val();
         const selectedText = $('#artists option:selected').text();
         if (!selectedArtists.hasOwnProperty(selectedId)) {

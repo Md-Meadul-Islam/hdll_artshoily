@@ -125,7 +125,7 @@
                     <label for="price" class="form-label mb-0">
                         <strong>Price </strong></label>
                     <div class="input-group">
-                        <input type="number" name="price" class="form-control" id="price" min="10"
+                        <input type="text" name="price" class="form-control" id="price" min="10"
                             value="<?php echo $art['price'] ?>">
                     </div>
                 </div>
@@ -134,8 +134,9 @@
                         <strong>Currency</strong></label>
                     <div class="input-group">
                         <select name="currency" id="currency" class="form-select rounded-0">
-                            <option value="BDT" selected>BDT</option>
+                            <option value="BDT">BDT</option>
                             <option value="USD">USD</option>
+                            <option value="Range" selected>Range</option>
                         </select>
                     </div>
                 </div>
