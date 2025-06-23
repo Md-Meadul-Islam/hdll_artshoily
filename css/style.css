@@ -519,8 +519,8 @@ a:hover>.icon-bg-white-hover {
 
 /* index section end */
 /* artist section start */
-.bio2,
-.bio3 {
+.artist-bio .bio2,
+.artist-bio .bio3 {
     opacity: 0;
     height: 0;
     overflow: hidden;
@@ -528,8 +528,8 @@ a:hover>.icon-bg-white-hover {
     transition: all 0.2s ease-in;
 }
 
-.bio2.active,
-.bio3.active {
+.artist-bio .bio2.active,
+.artist-bio .bio3.active {
     opacity: 1 !important;
     height: auto !important;
     /* Allow the div to expand naturally */

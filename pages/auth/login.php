@@ -39,14 +39,14 @@
                 <div class="col-lg-6 col-md-12">
                     <div class="d-flex justify-content-center py-4">
                         <a href="/" class="d-flex align-items-center w-auto" style="text-decoration: none">
-                            <img src="../images/logo.jpg" width="150px" height="50px" alt="Art Shoily"></a>
+                            <img data-src="../images/logo.jpg" width="150px" height="50px" alt="Art Shoily"></a>
                     </div><!-- End Logo -->
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="pt-4 pb-2">
                                 <h5 class="card-title text-center pb-0 fs-4">Access to your Account!!</h5>
                             </div>
-                            <form action="writerlogin" method="POST" class="row g-1">
+                            <form action="/writerlogin" method="POST" class="row g-1">
                                 <div class="col-12">
                                     <label for="email" class="form-label"><strong>E-mail</strong></label>
                                     <div class="input-group">

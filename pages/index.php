@@ -39,9 +39,21 @@
         <section class="mt-5">
             <div class="row g-0 d-flex">
                 <div class="col-12">
-                    <div class="hero-img w-100">
+                    <div class="w-100">
                         <img data-src="./images/hero.jpg" src="./images/hero.jpg" alt="HomePage" class="w-100 h-100">
                     </div>
+                    <!-- <div class="d-flex align-items-center justify-content-center p-2"
+                        style="position:absolute; top:50%; right:0; transform: translate(0%, -50%); z-index: 1; width:100%;max-width: 460px; height:100%">
+                        <div class="d-flex flex-column align-items-center p-lg-4 p-md-3 p-2 rounded-3 border border-white text-white"
+                            style="background-color:rgba(195, 171, 122, 0.7);">
+                            <h3>Exquisite Pickwick Painting</h3>
+                            <div class="goldenStroke w-80 pt-2"></div>
+                            <p class="pt-2">A Celebration of Hand Drawing</p>
+                            <a href="/art-gallery"
+                                class="btn btn-outline-success rounded-2 shadow text-uppercase fs-10px text-white icon-bg-gold">Click
+                                to Discover</a>
+                        </div>
+                    </div> -->
                 </div>
             </div>
         </section>
@@ -59,28 +71,17 @@
                             art that
                             celebrates the rich cultural heritage of Bangladesh and beyond. Inspired by the Bengali word
                             "shoily" (style), we blend tradition with modernity, offering unique pieces that resonate
-                            with art enthusiasts and art lovers. More than a marketplace, Artshoily supports emerging
-                            talent and honors the narratives shaping our history. Discover art with authenticity, depth,
-                            and a story to tell.
+                            with art enthusiasts and art lovers. <span class="more-btn cursor-pointer"
+                                style="color:blue">More</span><span class="more-dot" style="color:blue">...</span><span
+                                class="more-text d-none">
+                                than a marketplace, Artshoily
+                                supports
+                                emerging
+                                talent and honors the narratives shaping our history. Discover art with authenticity,
+                                depth,
+                                and a story to tell.</span>
                         </p>
                     </div>
-                    <!-- <ul class="nav text-uppercase text-gold fs-10px d-flex align-items-center justify-content-around">
-                        <li class="nav-item">
-                            <a>Impeccable Curation</a>
-                        </li>
-                        <li class="nav-item">
-                            <a>Guaranteed Authenticity</a>
-                        </li>
-                        <li class="nav-item">
-                            <a>Personalized Service</a>
-                        </li>
-                        <li class="nav-item">
-                            <a>Insured Worldwide Shipping</a>
-                        </li>
-                    </ul>
-                    <div class="w-100 d-flex align-items-center justify-content-center py-3 fs-10px">
-                        <a class="btn btn-sm btn-outline-secondary text-uppercase">Learn More</a>
-                    </div> -->
                     <div class="w-100 bg-secondary-subtle mt-3 py-3">
                         <h4 class="text-center">
                             - DISCOVER OUR WORLD -
@@ -170,7 +171,7 @@
                 <div class="col-md-10 col-12">
                     <div class="p-2 d-flex flex-column justify-content-center align-items-center">
                         <h4 class="text-center text-uppercase py-3">
-                            - Limited Edition Prints -
+                            - Exclusive Gallery of fine Art -
                         </h4>
                         <p class="text-center">
                             A curated collection of limited edition European masterpieces; serigraphs provide an
@@ -182,10 +183,10 @@
                         <div class="goldenStroke w-50"></div>
                     </div>
                     <div class="row g-0 d-flex align-items-center justify-content-around p-2">
-                        <div class="col-12 py-3">
+                        <div class="col-12 pt-3 pb-5">
                             <div>
-                                <img data-src="./images/Desktop-06_1800x.png" alt="Limited Editions"
-                                    class="w-100 h-100">
+                                <img data-src="./images/limited_edition.jpg" alt="Limited Editions"
+                                    class="w-100 h-100 border border-2">
                             </div>
                         </div>
                         <div class="col-12">
@@ -211,7 +212,7 @@
         <section class="py-5">
             <div class="row g-0 d-flex align-items-center justify-content-center">
                 <h4 class="text-center text-uppercase pb-3">
-                    - ARTSHOILY IN FOCUS -
+                    - Artists IN FOCUS -
                 </h4>
                 <div class="col-md-10 col-12">
                     <div class="focus-artists row g-0 d-flex align-items-center justify-content-around">
@@ -353,8 +354,8 @@
                     <div class="row g-0 d-flex justify-content-around p-2">
                         <div class="col-md-4 col-sm-6 col-12 p-3">
                             <div class="d-flex align-items-center justify-content-center">
-                                <img data-src="./images/blog/718a48ac-3d9d-47b1-9dc6-c124fb10c66e_435x290.png"
-                                    alt="editions" style="max-height:250px; width:100%">
+                                <img data-src="./images/blog/1st.jpg"
+                                    alt="editions" style="max-height:250px; width:100%; object-fit: contain;">
                             </div>
                             <div class="py-3">
                                 <p class="fs-10px pb-2">Trails in Colour - Tracking Anjolie Ela Menon's
@@ -364,8 +365,8 @@
                         </div>
                         <div class="col-md-4 col-sm-6 col-12 p-3">
                             <div class="d-flex align-items-center justify-content-center">
-                                <img data-src="./images/blog/bb76d2b4-7349-4b02-a869-f3c938e376e4_435x290.jpg"
-                                    alt="editions" style="max-height:250px; width:100%">
+                                <img data-src="./images/blog/2nd.jpg"
+                                    alt="editions" style="max-height:250px; width:100%; object-fit: contain;">
                             </div>
                             <div class="py-3">
                                 <div class="goldenStroke w-80"></div>
@@ -375,8 +376,8 @@
                         </div>
                         <div class="col-md-4 col-sm-6 col-12 p-3">
                             <div class="d-flex align-items-center justify-content-center">
-                                <img data-src="./images/blog/c69ad448-6e9a-4cb3-9769-591de18a0ef9_435x290.jpg"
-                                    alt="editions" style="max-height:250px; width:100%">
+                                <img data-src="./images/blog/3rd.jpg"
+                                    alt="editions" style="max-height:250px; width:100%; object-fit: contain;">
                             </div>
                             <div class="py-3">
                                 <p class="fs-10px pb-2">Byran Wolf The Record breaking Icon of Italian Modernism</p>

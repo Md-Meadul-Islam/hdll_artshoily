@@ -135,6 +135,26 @@ class User
         }
         return $artists;
     }
+    public function paginateUsers($page, $limit)
+    {
+        $artists = [];
+        $offset = ($page - 1) * $limit;
+        $role = 'admin';
+        $status = 1;
+        $stmt = $this->connection->prepare("SELECT u.user_id, u.first_name, u.last_name, u.email, u.phone, u.userphoto,u.coverphoto, u.userrole, u.status, u.cr_at
+            FROM {$this->userstable} u
+            WHERE u.status =? AND u.userrole != ?
+            ORDER BY u.id DESC
+            LIMIT ? OFFSET ?
+        ");
+        $stmt->bind_param('ssii', $status, $role, $limit, $offset);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            $artists[] = $row;
+        }
+        return $artists;
+    }
     public function paginateArtist($page, $limit)
     {
         $artists = [];
@@ -155,29 +175,19 @@ class User
         }
         return $artists;
     }
-    public function get($id, $role = 'artists')
-    {
-        $stmt = $this->connection->prepare("SELECT u.user_id, u.first_name, u.last_name, u.email, u.phone, u.userphoto, u.coverphoto, u.lifespan, u.origin, u.bio1, u.bio2, u.bio3
-            FROM {$this->userstable} u
-            WHERE u.user_id = ? AND u.userrole = ?
-        ");
-        $stmt->bind_param('ss', $id, $role);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_assoc();
-    }
-    public function focusArtists()
+    public function paginateBlogger($page, $limit)
     {
         $artists = [];
-        $role = 'artists';
-        $stmt = $this->connection->prepare("SELECT u.user_id, u.first_name, u.last_name,  u.userphoto, u.coverphoto
+        $offset = ($page - 1) * $limit;
+        $role = 'blogger';
+        $status = 1;
+        $stmt = $this->connection->prepare("SELECT u.user_id, u.first_name, u.last_name, u.email, u.phone, u.userphoto,u.coverphoto, u.userrole, u.status, u.cr_at
             FROM {$this->userstable} u
-            INNER JOIN {$this->focusartists} f
-            ON u.user_id = f.user_id
-            WHERE u.userrole = ? AND u.status = 1 
-            ORDER BY f.sl LIMIT 4
+            WHERE u.status =? AND u.userrole = ?
+            ORDER BY u.id DESC
+            LIMIT ? OFFSET ?
         ");
-        $stmt->bind_param('s', $role);
+        $stmt->bind_param('ssii', $status, $role, $limit, $offset);
         $stmt->execute();
         $result = $stmt->get_result();
         while ($row = $result->fetch_assoc()) {
@@ -185,27 +195,38 @@ class User
         }
         return $artists;
     }
-    public function storeArtists($data)
+    public function get($id)
     {
-        $insertStmt = $this->connection->prepare("INSERT INTO {$this->userstable} (user_id, first_name, last_name, userphoto, coverphoto, lifespan, origin, bio1, bio2, bio3, userip) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $this->connection->prepare("SELECT user_id, first_name, last_name, email, phone, userphoto, coverphoto, lifespan, origin, bio1, bio2, bio3, userrole
+            FROM {$this->userstable}
+            WHERE user_id = ? AND userrole != 'admin'
+        ");
+        $stmt->bind_param('s', $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+    public function storeUser($data)
+    {
+        $insertStmt = $this->connection->prepare("INSERT INTO {$this->userstable} (user_id, first_name, last_name, userphoto, coverphoto, lifespan, origin, bio1, bio2, bio3,userrole, userip) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         if ($insertStmt === false) {
             die('Prepare failed: ' . htmlspecialchars($this->connection->error));
         }
-        $insertStmt->bind_param('sssssssssss', $data['user_id'], $data['fname'], $data['lname'], $data['userphoto'], $data['coverphoto'], $data['lifespan'], $data['origin'], $data['bio1'], $data['bio2'], $data['bio3'], $data['ip']);
+        $insertStmt->bind_param('ssssssssssss', $data['user_id'], $data['fname'], $data['lname'], $data['userphoto'], $data['coverphoto'], $data['lifespan'], $data['origin'], $data['bio1'], $data['bio2'], $data['bio3'], $data['userrole'], $data['ip']);
 
         if ($insertStmt->execute()) {
             return true;
         }
     }
-    public function updateArtist($data)
+    public function updateUser($data)
     {
-        $updateStmt = $this->connection->prepare("UPDATE {$this->userstable} SET first_name = ?, last_name = ?, userphoto = ?, coverphoto = ?, lifespan = ?, origin = ?, bio1 = ?, bio2 = ?, bio3 = ?, userip = ? WHERE user_id = ?");
+        $updateStmt = $this->connection->prepare("UPDATE {$this->userstable} SET first_name = ?, last_name = ?, userphoto = ?, coverphoto = ?, lifespan = ?, origin = ?, bio1 = ?, bio2 = ?, bio3 = ?, userrole = ?,  userip = ? WHERE user_id = ?");
         if ($updateStmt === false) {
             die('Prepare failed: ' . htmlspecialchars($this->connection->error));
         }
 
         $updateStmt->bind_param(
-            'sssssssssss',
+            'ssssssssssss',
             $data['fname'],
             $data['lname'],
             $data['userphoto'],
@@ -215,6 +236,7 @@ class User
             $data['bio1'],
             $data['bio2'],
             $data['bio3'],
+            $data['userrole'],
             $data['ip'],
             $data['user_id']
         );
@@ -271,6 +293,109 @@ class User
         if ($deleteStmt->execute()) {
             if ($deleteStmt->affected_rows > 0) {
                 return ['success' => true, 'message' => 'Record and image deleted successfully!'];
+            } else {
+                return ['success' => false, 'message' => 'Failed to delete the record!'];
+            }
+        } else {
+            return ['success' => false, 'message' => 'Delete query failed!'];
+        }
+    }
+    public function focusArtists()
+    {
+        $artists = [];
+        $role = 'artists';
+        $stmt = $this->connection->prepare("SELECT u.user_id, u.first_name, u.last_name,  u.userphoto, u.coverphoto
+            FROM {$this->userstable} u
+            INNER JOIN {$this->focusartists} f
+            ON u.user_id = f.user_id
+            WHERE u.userrole = ? AND u.status = 1 
+            ORDER BY f.sl LIMIT 4
+        ");
+        $stmt->bind_param('s', $role);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            $artists[] = $row;
+        }
+        return $artists;
+    }
+    public function paginatedFocusArtists($page, $limit){
+        $artists = [];
+         $offset = ($page - 1) * $limit;
+        $role = 'artists';
+        $stmt = $this->connection->prepare("SELECT u.user_id, u.first_name, u.last_name,  u.userphoto, u.coverphoto, f.id, f.sl, f.cr_at
+            FROM {$this->userstable} u
+            INNER JOIN {$this->focusartists} f 
+            ON u.user_id = f.user_id
+            WHERE u.userrole = ? AND u.status = 1 
+            ORDER BY f.sl 
+             LIMIT ? OFFSET ?
+        ");
+        $stmt->bind_param('sii', $role, $limit, $offset);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            $artists[] = $row;
+        }
+        return $artists;
+    }
+    public function storeFocusArtists($data){
+        $artists = $data["artists"];
+       $inserted = [];
+           // Get current max sl
+        $result = $this->connection->query("SELECT MAX(sl) as max_sl FROM {$this->focusartists}");
+        $row = $result->fetch_assoc();
+        $currentSl = $row['max_sl'] ?? 0;
+
+        foreach ($artists as $artist) {
+            $checkStmt = $this->connection->prepare("SELECT id FROM {$this->focusartists} WHERE user_id = ?");
+            $checkStmt->bind_param("s", $artist);
+            $checkStmt->execute();
+            $checkResult = $checkStmt->get_result();
+
+            if ($checkResult->num_rows === 0) {
+                // Only insert if not already present
+                $currentSl++;
+                $insertStmt = $this->connection->prepare("INSERT INTO {$this->focusartists} (user_id, sl) VALUES (?, ?)");
+                $insertStmt->bind_param("si", $artist, $currentSl);
+                $insertStmt->execute();
+                $insertedId = $insertStmt->insert_id;
+                $inserted[] = [
+                    'id' => $insertedId,
+                    'user_id' => $artist,
+                    'sl' => $currentSl, 
+                    'cr_at'=>'Now'
+                ];
+            }
+        }
+        // If nothing was inserted
+        if (empty($inserted)) {
+            return [];
+        }
+        $finalResult = [];
+            foreach ($inserted as $entry) {
+                $stmt = $this->connection->prepare("SELECT first_name, last_name, userphoto FROM {$this->userstable} WHERE user_id = ?");
+                $stmt->bind_param("s", $entry['user_id']);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $user = $result->fetch_assoc();
+
+                if ($user) {
+                    $finalResult[] = array_merge($entry, $user);
+                }
+            }
+        return $finalResult;
+    }
+        public function deleteFocusArtists($id)
+    {
+        $deleteStmt = $this->connection->prepare("DELETE FROM {$this->focusartists} WHERE user_id = ?");
+        if ($deleteStmt === false) {
+            die('Prepare failed: ' . htmlspecialchars($this->connection->error));
+        }
+        $deleteStmt->bind_param('s', $id);
+        if ($deleteStmt->execute()) {
+            if ($deleteStmt->affected_rows > 0) {
+                return ['success' => true, 'message' => 'Focus Artists Deleted Successfully!'];
             } else {
                 return ['success' => false, 'message' => 'Failed to delete the record!'];
             }

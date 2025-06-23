@@ -10,7 +10,7 @@ class GuestMiddleware
                 redirect('/artists');
                 exit();
             } elseif (user()->role == 'admin') {
-                redirect('/admin');
+                redirect('/admin/dashboard');
                 exit();
             }
         }

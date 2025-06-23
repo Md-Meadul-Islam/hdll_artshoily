@@ -125,7 +125,15 @@ $(document).ready(function () {
             $('.drawer').removeClass('active');
         }
 
+        if ($(e.target).closest(".more-btn").length) {
+          let moreBtn = $(e.target).closest(".more-btn");
+          let moreText = moreBtn.nextAll(".more-text");
+          let moreDot = moreBtn.next(".more-dot");
 
+          moreBtn.css("color", "black");
+          moreText.toggleClass("d-none");
+          moreDot.toggleClass("d-none");
+        }
     });
 
 

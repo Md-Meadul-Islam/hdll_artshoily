@@ -1,10 +1,28 @@
+<?php
+$data = [
+    "user_id" => "",
+    "first_name" => "",
+    "last_name" => "",
+    "lifespan" => "",
+    "origin" => "",
+    "bio1" => "",
+    "bio2" => "",
+    "bio3" => "",
+    "userphoto" => "",
+    "coverphoto" => "",
+    "userrole" => ""
+];
+if ($mode === 'edit') {
+    $data = $user;
+}
+?>
 <div>
     <div class="loader-wrapper d-none">
         <div class="bar-loader"></div>
     </div>
     <div class="w-100 g-0 d-flex justify-content-between align-items-center p-3">
         <div class="">
-            <h5 class="modal-title">Add new Artists</h5>
+            <h5 class="modal-title"><?php echo $mode === 'edit' ? 'Edit & Update User' : 'Add New User' ?></h5>
         </div>
         <div class="position-relative">
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -21,7 +39,7 @@
                         <strong>First Name </strong><span class="limit text-success fs-8px"></span></label>
                     <div class="input-group">
                         <input type="text" name="first_name" class="form-control rounded-0" id="first_name"
-                            placeholder="Leonardo" required>
+                            value="<?php echo $data['first_name'] ?>" placeholder="Leonardo" required>
                     </div>
                 </div>
                 <div class="col-md-6 col-12">
@@ -29,7 +47,7 @@
                         <strong>Last Name </strong><span class="limit text-success fs-8px"></span></label>
                     <div class="input-group">
                         <input type="text" name="last_name" class="form-control rounded-0" id="last_name"
-                            placeholder="da Vinci">
+                            value="<?php echo $data['last_name'] ?>" placeholder="da Vinci">
                     </div>
                 </div>
             </div>
@@ -41,7 +59,7 @@
                         <strong>Life Span </strong><span class="limit text-success fs-8px"></span></label>
                     <div class="input-group">
                         <input type="text" name="lifespan" class="form-control rounded-0" id="lifespan"
-                            placeholder="1998-2018">
+                            value="<?php echo $data['lifespan'] ?>" placeholder="1998-2018">
                     </div>
                 </div>
                 <div class="col-md-6 col-12">
@@ -49,7 +67,7 @@
                         <strong>Origin </strong><span class="limit text-success fs-8px"></span></label>
                     <div class="input-group">
                         <input type="text" name="origin" class="form-control rounded-0" id="origin"
-                            placeholder="paris, france">
+                            value="<?php echo $data['origin'] ?>" placeholder="paris, france">
                     </div>
                 </div>
             </div>
@@ -132,7 +150,7 @@
                 </div>
                 <div class="bio1 mb-1 m-2" id="bio1" contenteditable="true" spellcheck="true" role="textbox"
                     aria-multiline="true" style="min-height:50px; max-height:400px; overflow-y:auto;outline:none">
-                    <div></div>
+                    <?php echo html_entity_decode($data['bio1']) ?>
                 </div>
             </div>
         </div>
@@ -214,7 +232,9 @@
                 </div>
                 <div class="bio2 mb-1 m-2" id="bio2" contenteditable="true" spellcheck="true" role="textbox"
                     aria-multiline="true" style="min-height:50px; max-height:400px; overflow-y:auto;outline:none;">
-                    <div></div>
+                    <?php if ($data['bio2']) {
+                        echo html_entity_decode($data['bio2']);
+                    } ?>
                 </div>
             </div>
         </div>
@@ -296,7 +316,9 @@
                 </div>
                 <div class="bio3 mb-1 m-2" id="bio3" contenteditable="true" spellcheck="true" role="textbox"
                     aria-multiline="true" style="min-height:50px; max-height:400px; overflow-y:auto;outline:none;">
-                    <div></div>
+                    <?php if ($data['bio3']) {
+                        echo html_entity_decode($data['bio3']);
+                    } ?>
                 </div>
             </div>
         </div>
@@ -304,6 +326,19 @@
             <p style="color:blue; font-size:10px; margin-bottom:0;">Please upload "Profile Photo" and "Cover Picture" in
                 sequence</p>
             <div class="previewBox py-2" id="previewBox">
+                <?php if ($data['userphoto']) { ?>
+                    <div class="previewImg position-relative">
+                        <img src="../<?php echo $data['userphoto'] ?>" class="previousImg user"><span
+                            class="previewcrossbtn">✖</span>
+                    </div>
+                <?php }
+                if ($data['coverphoto']) { ?>
+                    <div class="previewImg position-relative">
+                        <img src="../<?php echo $data['coverphoto'] ?>" class="previousImg cover"><span
+                            class="previewcrossbtn">✖</span>
+                    </div>
+
+                <?php } ?>
             </div>
             <div class="d-flex" style="width:80px">
                 <div class="input-group">
@@ -316,9 +351,21 @@
     </div>
     <div class="modal-footer px-0 pb-0">
         <div class="col-12 d-flex justify-content-end align-items-center gap-2">
+            <div>
+                <select name="userrole" id="userrole" class="form-select">
+                    <option value="" disabled>Please select user Role</option>
+                    <option value="artists" <?php echo $data['userrole'] == 'artists' ? "selected" : "" ?>>Artists
+                    </option>
+                    <option value="blogger" <?php echo $data['userrole'] == 'blogger' ? "selected" : "" ?>>Blogger
+                    </option>
+                </select>
+            </div>
             <?php
             if (user()->email) { ?>
-                <button type="submit" class="btn btn-primary" id="artistssavebtn" name="artistssavebtn">Save</button>
+                <button type="submit" class="btn btn-primary"
+                    id="<?php echo $mode == 'edit' ? 'userupdatebtn' : 'usersavebtn' ?>"
+                    name="<?php echo $mode == 'edit' ? 'userupdatebtn' : 'usersavebtn' ?>"
+                    data-id="<?php echo $data['user_id'] ?>"><?php echo $mode == 'edit' ? 'Update' : 'Save' ?></button>
             <?php } ?>
         </div>
     </div>

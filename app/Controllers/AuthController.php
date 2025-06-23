@@ -41,14 +41,14 @@ class AuthController
             if ($userinfo['userid']) {
                 $_SESSION['temp'] = $userinfo['userid'];
                 $_SESSION['success'][] = 'Welcome ! You are Logged In.';
-                return redirect('/admin');
+                return redirect('/admin/dashboard');
             } else {
                 $_SESSION['error'][] = $userinfo['error'];
-                return redirect('/admin/login');
+                return redirect('/admin');
             }
         } else {
             $_SESSION['error'][] = 'Please fill Up Required Field !';
-            return redirect('admin/login');
+            return redirect('admin');
         }
 
     }

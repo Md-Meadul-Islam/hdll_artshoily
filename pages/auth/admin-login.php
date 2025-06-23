@@ -46,7 +46,7 @@
                             <div class="pt-4 pb-2">
                                 <h5 class="card-title text-center pb-0 fs-4">Access to your Account!!</h5>
                             </div>
-                            <form action="login" method="POST" class="row g-1">
+                            <form action="/admin" method="POST" class="row g-1">
                                 <div class="col-12">
                                     <label for="username" class="form-label"><strong>UserName</strong></label>
                                     <div class="input-group">

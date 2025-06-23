@@ -29,10 +29,10 @@
                     </a>
                 </div>
                 <div>
-                    <a class="all-artists-btn d-flex align-items-center text-secondary cursor-pointer border border-1 border-secondary p-2 bg-success-subtle bg-grey-400-hover"
-                        id="all-artists-btn">
+                    <a class="all-users-btn d-flex align-items-center text-secondary cursor-pointer border border-1 border-secondary p-2 bg-success-subtle bg-grey-400-hover"
+                        id="all-users-btn">
                         <i class="user-icon icon-bg-grey" style="zoom:1.5"></i>
-                        <span class="ps-2">Artists</span>
+                        <span class="ps-2">Users</span>
                     </a>
                 </div>
                 <div>
@@ -62,8 +62,9 @@
                     </a>
                 </div>
                 <div>
-                    <a class="d-flex align-items-center text-secondary cursor-pointer border border-1 border-secondary p-2 bg-danger-subtle bg-grey-400-hover"
+                    <a class="artshoily-in-focus d-flex align-items-center text-secondary cursor-pointer border border-1 border-secondary p-2 bg-warning-subtle bg-grey-400-hover"
                         id="artshoily-in-focus">
+                        <i class="user-icon icon-bg-grey" style="zoom:1.5"></i>
                         <span class="ps-2 text-nowrap">Artshoily In Focus</span>
                     </a>
                 </div>

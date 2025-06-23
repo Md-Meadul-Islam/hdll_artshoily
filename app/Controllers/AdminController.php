@@ -19,15 +19,6 @@ class AdminController
         $arts = $art->arts($page, $limit);
         echo json_encode(['success' => true, 'data' => $arts]);
     }
-    public function loadArtistsPaginate()
-    {
-        header('Content-type: application/json');
-        $page = $_GET['page'];
-        $limit = $_GET['limit'];
-        $user = new User();
-        $artists = $user->paginateArtist($page, $limit);
-        echo json_encode(['success' => true, 'data' => $artists]);
-    }
     public function loadCreateArtModal()
     {
         $user = new User();
@@ -43,22 +34,5 @@ class AdminController
         $arts = new Art();
         $art = $arts->view($artId);
         view('admin.copy-art-modal', ['artists' => $artists, 'art' => $art, 'mode' => $mode]);
-    }
-    public function loadCreateArtistsModal()
-    {
-        view('admin.add-artists-modal', );
-    }
-    public function loadEditArtistsModal()
-    {
-        $id = $_GET['dataId'];
-        $user = new User();
-        $artist = $user->get($id, 'artists');
-        view('admin.edit-artists-modal', ['artist' => $artist]);
-    }
-    public function loadFocusArtistsModal()
-    {
-        $user = new User();
-        $artists = $user->artists();
-        view('admin.focus-artists-modal', ['artists' => $artists]);
     }
 }

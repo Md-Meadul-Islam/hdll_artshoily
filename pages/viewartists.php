@@ -69,7 +69,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-12 p-2 position-relative">
+                                <div class="artist-bio col-md-6 col-12 p-2 position-relative">
                                     <div>
                                         <?php echo html_entity_decode($artist['bio1']) ?>
                                     </div>

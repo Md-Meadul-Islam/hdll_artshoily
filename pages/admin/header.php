@@ -30,7 +30,7 @@
                             <a class="btn btn-sm btn-secondary cursor-pointer text-nowrap"
                                 onclick="event.preventDefault(); document.getElementById('logout_form').submit();">Log
                                 Out</a>
-                            <form id="logout_form" action="logout" method="POST"></form>
+                            <form id="logout_form" action="/logout" method="POST"></form>
                         </div>
                     </div>
                 <?php } ?>
