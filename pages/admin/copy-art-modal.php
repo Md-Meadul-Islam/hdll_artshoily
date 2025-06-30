@@ -125,8 +125,12 @@
                     <label for="price" class="form-label mb-0">
                         <strong>Price </strong></label>
                     <div class="input-group">
-                        <input type="text" name="price" class="form-control" id="price" min="10"
-                            value="<?php echo $art['price'] ?>">
+                        <?php $prices = ["favorite"=>"Favorite", "premium"=>"Premium", "high_value"=>"High Value", "not_for_sale"=>"Not for Sale"]?>
+                        <select name="price" id="price" class="form-control">
+                            <?php foreach ($prices as $key => $value) {?>
+                                <option value="<?php echo $key ?>" <?php echo ($key === $art["price"]) ? "selected" : ""; ?>><?php echo $value ?></option>
+                            <?php }?>
+                        </select>
                     </div>
                 </div>
                 <div class="col-md-4 col-6">

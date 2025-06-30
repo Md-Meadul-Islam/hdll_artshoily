@@ -122,8 +122,8 @@
                                                     href="viewartists/?a=<?php echo $user['user_id'] ?>"><?php echo $user['first_name'] . ' ' . $user['last_name']; ?></a>
                                             <?php endforeach ?>
                                         </p>
-                                        <p class="text-secondary fs-10px">
-                                            <?php echo $art['currency'] . " " . $art['price']; ?>
+                                        <p class="text-secondary fs-10px text-capitalize">
+                                            <?php echo ucwords(str_replace('_', ' ', $art['price'])); ?>
                                         </p>
                                     </div>
                                 </div>

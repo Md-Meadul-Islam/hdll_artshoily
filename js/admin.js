@@ -2,7 +2,7 @@ let arts = [];
 let users = [];
 let sculptures = [];
 let blogs = [];
-let focusArtists = [];
+window.focusArtists = [];
 function formatDoc(cmd, value = null) {
   if (value) {
     document.execCommand(cmd, false, value);
@@ -398,7 +398,6 @@ function renderFocusArtistsTable(data) {
     <th>#</th>
     <th>Name</th>
     <th>Image</th>
-    <th>Order/SL</th>
     <th>Action</th>
     <th>Create at</th>
 </tr>`;
@@ -408,8 +407,10 @@ function renderFocusArtistsTable(data) {
   });
 }
 function renderFocusArtistsRow(artists, index) {
-  const tr = `<tr data-id="${artists.user_id}" key="${artists.id}">
-        <td>${index}</td>
+  const tr = `<tr data-id="${artists.id}" key="${artists.id}" data-sl="${
+    artists.sl
+  }" draggable="true" ondragstart="onDragStart(event)" ondragover="onDragOver(event)" ondrop="onDrop(event)">
+        <td>${artists.sl}</td>
         <td>${artists.first_name + " " + artists.last_name}</td>
         <td>
             <div>
@@ -418,7 +419,6 @@ function renderFocusArtistsRow(artists, index) {
                 }" alt="" width="80px" height="60px">
             </div>
         </td>
-         <td>${artists.sl}</td>
         <td>        
             <div class="d-flex gap-1 align-items-center justify-content-center">
                 <a class="delete-focus-artists-btn btn btn-sm bg-danger">Delete</a>
@@ -565,7 +565,7 @@ $(document).ready(function () {
         canvasType = $("#canvas-type").val(),
         size = $("#size").val(),
         frame = $("#frame").val(),
-        price = $("#price").val(),
+        price = $("#price").val() || "favorite",
         currency = $("#currency").val(),
         availability = $("#availability").val(),
         description = $("#description").html();
@@ -1295,7 +1295,7 @@ $(document).ready(function () {
       current_clicked !== "artshoily-in-focus"
     ) {
       current_clicked = "artshoily-in-focus";
-      const mainTable = ` <table class="table table-bordered table-striped hover" id="main-table">
+      const mainTable = ` <table class="table table-bordered table-striped hover" data-array="focusArtists" id="main-table">
             <thead> </thead>
             <tbody> </tbody>
         </table>`;
@@ -1973,3 +1973,104 @@ $(document).ready(function () {
     updateInputField();
   });
 });
+
+let draggedId = null;
+function onDragStart(e) {
+  dragSrcEl = e.currentTarget;
+  dragSrcEl.classList.add("dragging");
+  e.dataTransfer.effectAllowed = "move";
+  e.dataTransfer.setData("text/html", dragSrcEl.outerHTML);
+  draggedId = dragSrcEl.getAttribute("data-id");
+}
+function onDragOver(e) {
+  e.preventDefault();
+  e.dataTransfer.dropEffect = "move";
+  const target = e.currentTarget;
+  const tbody = target.parentNode;
+  const draggingRow = document.querySelector(".dragging");
+
+  if (target !== draggingRow) {
+    const bounding = target.getBoundingClientRect();
+    const offset = bounding.y + bounding.height / 2;
+    if (e.clientY - offset > 0) {
+      target.after(draggingRow);
+    } else {
+      target.before(draggingRow);
+    }
+  }
+}
+function onDrop(e) {
+  const draggingRow = document.querySelector(".dragging");
+  if (draggingRow) draggingRow.classList.remove("dragging");
+  updateOrderAfterDrag();
+}
+function updateOrderAfterDrag() {
+  const rows = Array.from(document.querySelectorAll("#main-table tbody tr"));
+  const arrayName = document.querySelector("#main-table").dataset.array;
+  let dataArray = window[arrayName];
+
+  const oldIndex = dataArray.findIndex((p) => p.id == draggedId);
+  const newIndex = rows.findIndex(
+    (row) => row.getAttribute("data-id") == draggedId
+  );
+  if (newIndex === oldIndex) return;
+  const minIndex = Math.min(oldIndex, newIndex);
+  const maxIndex = Math.max(oldIndex, newIndex);
+  const affectedRows = rows.slice(minIndex, maxIndex + 1);
+  const slList = affectedRows.map((row) =>
+    parseInt(row.getAttribute("data-sl"))
+  );
+  const minSl = Math.min(...slList);
+  let updatedArraySlice = [];
+  affectedRows.forEach((row, i) => {
+    const id = row.getAttribute("data-id");
+    const sl = row.getAttribute("data-sl");
+    const data = dataArray.find((p) => p.id == id);
+    if (data) {
+      const newSl = minSl + i;
+      if (data && data.sl !== newSl) {
+        data.sl = newSl;
+        row.setAttribute("data-sl", newSl); // update attribute if needed
+        row.children[0].textContent = newSl; // update visual sl
+        updatedArraySlice.push({ id: data.id, sl: newSl });
+      }
+    }
+  });
+  updatedArraySlice.forEach((u) => {
+    const index = window[arrayName].findIndex((item) => item.id == u.id);
+    if (index !== -1) {
+      window[arrayName][index].sl = u.sl;
+    }
+  });
+  saveRowOrder(updatedArraySlice, arrayName); // Optional: send to server
+}
+
+function saveRowOrder(updatedArraySlice, arrayName) {
+  const payload = {
+    arrayName: arrayName,
+    order: updatedArraySlice.map((p) => ({ id: p.id, sl: p.sl })),
+  };
+  $.ajax({
+    url: "/admin/update-row-order",
+    method: "POST",
+    contentType: "application/json",
+    data: JSON.stringify(payload),
+    success: (res) => {
+      if (res.success) {
+        let body = `<div class="toast-message">
+                    <div class="d-flex align-items-center px-2">
+                        <a class="px-2">
+                            <i class="okey-icon icon-bg-green" style="zoom:1.3"></i>
+                        </a>
+                        <p class="text-secondary p-1 mb-0">
+                        ${res.message}</p><a class="toasterHideBtn cursor-pointer d-flex text-warning px-1 bg-grey-400-hover rounded-circle">✖</a>
+                    </div>
+                </div>`;
+        $(".toaster").html(body);
+      } else {
+        anyError(res.message);
+      }
+    },
+    error: (err) => {},
+  });
+}

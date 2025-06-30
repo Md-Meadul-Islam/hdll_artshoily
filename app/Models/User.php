@@ -386,7 +386,7 @@ class User
             }
         return $finalResult;
     }
-        public function deleteFocusArtists($id)
+    public function deleteFocusArtists($id)
     {
         $deleteStmt = $this->connection->prepare("DELETE FROM {$this->focusartists} WHERE user_id = ?");
         if ($deleteStmt === false) {
@@ -401,6 +401,14 @@ class User
             }
         } else {
             return ['success' => false, 'message' => 'Delete query failed!'];
+        }
+    }
+    public function updateTableOrder($tableName, $order) {
+        foreach ($order as $item) {
+            // Update each row with the new sl value
+            $sql = "UPDATE $tableName SET sl = ? WHERE id = ?";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->execute([$item['sl'], $item['id']]);
         }
     }
 }
