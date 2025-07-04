@@ -7,9 +7,22 @@ class ArtController
 {
     public function index()
     {
+        view('art-gallery');
+    }
+    public function paginatedArts(){
+        header('Content-type: application/json');
+        $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+        $limit = isset($_GET['limit']) ? (int) $_GET['limit'] : 20;
+
+        $filters = [
+            'art_name' => $_GET['art_name'] ?? null,
+            'artist_name' => $_GET['artist_name'] ?? null,
+            'price' => $_GET['price'] ?? null,
+        ];
+
         $art = new Art();
-        $arts = $art->arts(1);
-        view('art-gallery', ['arts' => $arts]);
+        $arts = $art->arts($page, $limit, $filters);
+        echo json_encode(['success' => true, 'data' => $arts]);
     }
     public function view($a)
     {

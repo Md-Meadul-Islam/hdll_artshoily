@@ -38,13 +38,13 @@
         <!-- hero section starts -->
         <section class="pt-5">
             <div class="row g-0 d-flex justify-content-center">
-                <div class="col-md-10 col-12 pt-lg-4 pt-md-3 pt-2">
+                <div class="col-lg-8 col-md-10 col-12 pt-lg-4 pt-md-3 pt-2">
                     <div>
-                        <img src="../<?php echo $blog['image'] ?>" alt="<?php echo $blog['imgalt'] ?>"
+                        <img data-src="../<?php echo $blog['image'] ?>" alt="<?php echo $blog['imgalt'] ?>"
                             style="width:100%;max-height:300px; object-fit:cover;">
                     </div>
                     <h2 class="text-center fw-bold"><?php echo $blog['title'] ?></h2>
-                    <div>
+                    <div class="blog">
                         <?php echo html_entity_decode($blog['body']); ?>
                     </div>
                 </div>
@@ -54,6 +54,7 @@
         <?php pageAdd('components/footer'); ?>
         <script src="./js/jquery.min.js"></script>
         <script src="./js/bootstrap.min.js"></script>
+        <script src="./js/animations.js"></script>
         <script src="./js/blogs.js"></script>
     </body>
 

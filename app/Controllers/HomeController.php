@@ -51,6 +51,40 @@ class HomeController
         }
         $search->storeKey($key, $is_find);
     }
+    public function uploadFile(){
+        $response = ['success' => false];
+        $image_upload_dir = 'storage/blogs/';
+        $image_max_size = 5 * 1024 * 1024; // 5 MB
+        $allowed_image_types = ['image/jpeg', 'image/png', 'image/gif'];
+        if (!empty($_FILES['image']['name'])) {
+            $image = [
+                'name' => $_FILES['image']['name'],
+                'type' => $_FILES['image']['type'],
+                'tmp_name' => $_FILES['image']['tmp_name'],
+                'error' => $_FILES['image']['error'],
+                'size' => $_FILES['image']['size']
+            ];
+            $filename = uploadFile($image, $image_upload_dir, $allowed_image_types, $image_max_size);
+            if (!$filename) {
+                $response['error'] = 'Upload failed';
+                $_SESSION['error'][] = "Failed to upload image!";
+                return 0;
+            }
+            $response['success'] = true;
+            $response['url'] = $filename;
+        }
+        echo json_encode($response);
+    }
+    public function deleteFile(){
+        $response = ['success' => false];
+        if (isset($_POST['image_url'])) {
+            $filePath = $_POST['image_url'];
+            $response = deleteFile($filePath);
+        } else {
+            $response['error'] = 'Image URL not provided';
+        }
+        echo json_encode($response);
+    }
     public function terms()
     {
         view('terms');

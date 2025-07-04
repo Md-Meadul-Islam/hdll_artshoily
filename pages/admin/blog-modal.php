@@ -170,15 +170,60 @@ if ($mode === 'edit') {
     </div>
 </div>
 <script>
+let savedRange = null;
+
+$('#textbody').on('mouseup keyup', function () {
+    const sel = window.getSelection();
+    if (sel.rangeCount > 0) {
+        savedRange = sel.getRangeAt(0);
+    }
+});
+
+function insertImageAtCursor(imageUrl) {
+    const sel = window.getSelection();
+    if (savedRange) {
+        sel.removeAllRanges();
+        sel.addRange(savedRange);
+    }
+
+    const range = sel.getRangeAt(0);
+    const img = document.createElement('img');
+    img.src = imageUrl;
+    img.dataset.src = imageUrl
+    img.alt = 'Blog Image';
+
+    range.deleteContents();
+    range.insertNode(img);
+    range.setStartAfter(img);
+    range.setEndAfter(img);
+    sel.removeAllRanges();
+    sel.addRange(range);
+}
+
     $('body').on('change', '#chooseinnerimage', function (e) {
         const file = e.target.files[0];
         if (file) {
-            const reader = new FileReader();
-            reader.onload = function (event) {
-                const img = $('<img>').attr('src', event.target.result);
-                $('#textbody').append(img);
-            };
-            reader.readAsDataURL(file);
+             const formData = new FormData();
+            formData.append('image', file);
+
+            $.ajax({
+                url: '/upload-file',
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    const result = JSON.parse(response);
+                    if (result.success) {
+                        insertImageAtCursor(`../${result.url}`);
+                    } else {
+                        anyError(`Upload failed:  ${result.error}`);
+                    }
+                },
+                error: function () {
+                    anyError(`Upload failed:  ${result.error}`);
+                }
+            });
         }
     });
 
@@ -221,7 +266,19 @@ if ($mode === 'edit') {
     });
 
     $('body').on('click', '.delete-btn', function () {
-        $(this).closest('.img-options').prev('img').remove();
+        const img = $(this).closest('.img-options').prev('img');
+        let src = img.attr('src');
+        if (src.startsWith('../')) {
+            src = src.substring(3);
+        }
+        $.post('/delete-file', { image_url: src }, function (res) {
+            const result = JSON.parse(res);
+            if (result.success) {
+                img.remove();
+            } else {
+                anyError(`Failed to delete image:  ${result.error}`);
+            }
+        });
         $(this).closest('.img-options').remove();
     });
 

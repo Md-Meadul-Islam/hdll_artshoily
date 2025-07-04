@@ -1,344 +1,344 @@
 .search-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    text-align: center;
-    mask: url('../images/icons/search.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/search.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  mask: url("../images/icons/search.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/search.svg") no-repeat center;
 }
 
 .menu-dot-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    text-align: center;
-    mask: url('../images/icons/menu-dot.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/menu-dot.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  mask: url("../images/icons/menu-dot.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/menu-dot.svg") no-repeat center;
 }
 
 .menu-grid-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    text-align: center;
-    mask: url('../images/icons/menu-grid.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/menu-grid.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  mask: url("../images/icons/menu-grid.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/menu-grid.svg") no-repeat center;
 }
 
 .menu-bar-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    text-align: center;
-    mask: url('../images/icons/menu-bar.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/menu-bar.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  mask: url("../images/icons/menu-bar.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/menu-bar.svg") no-repeat center;
 }
 
 .home-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    text-align: center;
-    mask: url('../images/icons/house-fill.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/house-fill.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  mask: url("../images/icons/house-fill.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/house-fill.svg") no-repeat center;
 }
 
 .user-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    text-align: center;
-    mask: url('../images/icons/person-fill.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/person-fill.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  mask: url("../images/icons/person-fill.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/person-fill.svg") no-repeat center;
 }
 
 .settings-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    text-align: center;
-    mask: url('../images/icons/settings.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/settings.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  mask: url("../images/icons/settings.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/settings.svg") no-repeat center;
 }
 
 .notification-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    text-align: center;
-    mask: url('../images/icons/bell-fill.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/bell-fill.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  mask: url("../images/icons/bell-fill.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/bell-fill.svg") no-repeat center;
 }
 
 .like-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    text-align: center;
-    mask: url('../images/icons/hand-thumbs-up-fill.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/hand-thumbs-up-fill.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  mask: url("../images/icons/hand-thumbs-up-fill.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/hand-thumbs-up-fill.svg") no-repeat center;
 }
 
 .love-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/heart-fill.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/heart-fill.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  mask: url("../images/icons/heart-fill.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/heart-fill.svg") no-repeat center;
 }
 
 .star-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/star.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/star.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  mask: url("../images/icons/star.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/star.svg") no-repeat center;
 }
 
 .comment-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/chat-text-fill.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/chat-text-fill.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  mask: url("../images/icons/chat-text-fill.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/chat-text-fill.svg") no-repeat center;
 }
 
 .views-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/eye.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/eye.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  mask: url("../images/icons/eye.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/eye.svg") no-repeat center;
 }
 
 .angle-left-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/angle-left.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/angle-left.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  mask: url("../images/icons/angle-left.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/angle-left.svg") no-repeat center;
 }
 
 .angle-right-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/angle-right.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/angle-right.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  mask: url("../images/icons/angle-right.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/angle-right.svg") no-repeat center;
 }
 
 .article-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/article.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/article.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  mask: url("../images/icons/article.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/article.svg") no-repeat center;
 }
 
 .art-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/art.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/art.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  mask: url("../images/icons/art.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/art.svg") no-repeat center;
 }
 
 .sculpture-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/sculpture-icon.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/sculpture-icon.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  mask: url("../images/icons/sculpture-icon.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/sculpture-icon.svg") no-repeat center;
 }
 
-s .bold-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/bold.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/bold.svg') no-repeat center;
+.bold-icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  mask: url("../images/icons/bold.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/bold.svg") no-repeat center;
 }
 
 .italic-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/italic.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/italic.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  mask: url("../images/icons/italic.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/italic.svg") no-repeat center;
 }
 
 .link-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/link.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/link.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  mask: url("../images/icons/link.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/link.svg") no-repeat center;
 }
 
 .unlink-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/unlink.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/unlink.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  mask: url("../images/icons/unlink.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/unlink.svg") no-repeat center;
 }
 
 .undo-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/undo.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/undo.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  mask: url("../images/icons/undo.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/undo.svg") no-repeat center;
 }
 
 .redo-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/redo.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/redo.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  mask: url("../images/icons/redo.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/redo.svg") no-repeat center;
 }
 
 .underline-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/underline.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/underline.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  mask: url("../images/icons/underline.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/underline.svg") no-repeat center;
 }
 
 .strikethrugh-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/text-delete.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/text-delete.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  mask: url("../images/icons/text-delete.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/text-delete.svg") no-repeat center;
 }
 
 .text-left-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/text-left.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/text-left.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  mask: url("../images/icons/text-left.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/text-left.svg") no-repeat center;
 }
 
 .text-right-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/text-right.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/text-right.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  mask: url("../images/icons/text-right.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/text-right.svg") no-repeat center;
 }
 
 .text-center-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/text-center.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/text-center.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  mask: url("../images/icons/text-center.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/text-center.svg") no-repeat center;
 }
 
 .text-justify-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/text-justify.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/text-justify.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  mask: url("../images/icons/text-justify.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/text-justify.svg") no-repeat center;
 }
 
 .olist-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/ordered-list.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/ordered-list.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  mask: url("../images/icons/ordered-list.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/ordered-list.svg") no-repeat center;
 }
 
 .ulist-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/unordered-list.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/unordered-list.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  mask: url("../images/icons/unordered-list.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/unordered-list.svg") no-repeat center;
 }
 
 .break-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/break.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/break.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  mask: url("../images/icons/break.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/break.svg") no-repeat center;
 }
 
 .image-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/image.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/image.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  mask: url("../images/icons/image.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/image.svg") no-repeat center;
 }
 
 .caret-down-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/caret-down.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/caret-down.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  mask: url("../images/icons/caret-down.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/caret-down.svg") no-repeat center;
 }
 
 .angle-down-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/angle-down.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/angle-down.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  mask: url("../images/icons/angle-down.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/angle-down.svg") no-repeat center;
 }
 
 .angle-up-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/angle-up.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/angle-up.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  mask: url("../images/icons/angle-up.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/angle-up.svg") no-repeat center;
 }
 
 .error-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/error.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/error.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  mask: url("../images/icons/error.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/error.svg") no-repeat center;
 }
 
 .okey-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/okey.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/okey.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  mask: url("../images/icons/okey.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/okey.svg") no-repeat center;
 }
 
 .cart-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/cart.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/cart.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  mask: url("../images/icons/cart.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/cart.svg") no-repeat center;
 }
 
 .delete-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/trash.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/trash.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  mask: url("../images/icons/trash.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/trash.svg") no-repeat center;
 }
 
 .resize-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    mask: url('../images/icons/resize.svg') no-repeat center;
-    -webkit-mask: url('../images/icons/resize.svg') no-repeat center;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  mask: url("../images/icons/resize.svg") no-repeat center;
+  -webkit-mask: url("../images/icons/resize.svg") no-repeat center;
 }

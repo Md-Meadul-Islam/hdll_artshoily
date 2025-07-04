@@ -20,11 +20,6 @@
                         <li class="nav-item py-sm-0 py-2">
                             <a class="" href="/login">LOG IN</a>
                         </li>
-                        <li class="nav-item py-sm-0 py-2">
-                            <a class="d-flex align-items-center justify-content-center">
-                                <span class="pe-1">SEARCH </span><i class="search-icon icon-bg-grey"></i>
-                            </a>
-                        </li>
                     </ul>
                 </div>
             </div>

@@ -12,30 +12,87 @@ class Art
     {
         $this->connection = Database::getInstance()->getConnection();
     }
-    public function arts($page = 1, $limit = 20)
+    public function arts($page = 1, $limit = 20, $filters = [])
     {
         $offset = ($page - 1) * $limit;
-        $data = [];
+        $where = [];
+        $params = [];
+        $paramTypes = '';
 
-        $stmt = $this->connection->prepare("SELECT 
-            a.*,
-            JSON_ARRAYAGG(JSON_OBJECT('user_id', u.user_id, 'first_name', u.first_name, 'last_name', u.last_name)) AS users
-        FROM {$this->arts} AS a
-        LEFT JOIN {$this->users} AS u 
-        ON JSON_CONTAINS(a.user_ids, JSON_QUOTE(u.user_id), '$')
-        GROUP BY a.id
-        ORDER BY a.id DESC 
-        LIMIT ? OFFSET ?
-    ");
-        $stmt->bind_param('ii', $limit, $offset);
+        // Filters
+        if (!empty($filters['art_name'])) {
+            $where[] = "a.name LIKE ?";
+            $params[] = "%" . $filters['art_name'] . "%";
+            $paramTypes .= 's';
+        }
 
+        if (!empty($filters['artist_name'])) {
+            $where[] = "EXISTS (SELECT 1 FROM {$this->users} u 
+                WHERE JSON_CONTAINS(a.user_ids, JSON_QUOTE(u.user_id), '$') 
+                AND CONCAT(u.first_name, ' ', u.last_name) LIKE ?
+            )";
+            $params[] = "%" . $filters['artist_name'] . "%";
+            $paramTypes .= 's';
+        }
+
+        if (!empty($filters['price'])) {
+            $where[] = "a.price = ?";
+            $params[] = $filters['price'];
+            $paramTypes .= 's';
+        }
+
+        $whereSQL = count($where) ? 'WHERE ' . implode(' AND ', $where) : '';
+
+        // Get total count
+        $countQuery = "SELECT COUNT(*) AS total FROM {$this->arts} a $whereSQL";
+        $countStmt = $this->connection->prepare($countQuery);
+
+        if ($paramTypes !== '') {
+            $countStmt->bind_param($paramTypes, ...$params);
+        }
+
+        $countStmt->execute();
+        $countResult = $countStmt->get_result();
+        $totalRow = $countResult->fetch_assoc();
+        $totalItems = (int) $totalRow['total'];
+        $totalPages = ceil($totalItems / $limit);
+
+        // Now get paginated data
+        $query = "SELECT  a.*, 
+                JSON_ARRAYAGG(
+                    JSON_OBJECT('user_id', u.user_id, 'first_name', u.first_name, 'last_name', u.last_name)
+                ) AS users
+            FROM {$this->arts} AS a
+            LEFT JOIN {$this->users} AS u 
+                ON JSON_CONTAINS(a.user_ids, JSON_QUOTE(u.user_id), '$')
+            $whereSQL
+            GROUP BY a.id
+            ORDER BY a.id DESC 
+            LIMIT ? OFFSET ?";
+
+        $stmt = $this->connection->prepare($query);
+
+        // Bind parameters with limit & offset
+        $paramTypesWithLimit = $paramTypes . 'ii';
+        $paramsWithLimit = [...$params, $limit, $offset];
+
+        $stmt->bind_param($paramTypesWithLimit, ...$paramsWithLimit);
         $stmt->execute();
         $result = $stmt->get_result();
+
+        $data = [];
         while ($row = $result->fetch_assoc()) {
-            $row['users'] = json_decode($row['users'], true);  // Decode users JSON array
+            $row['users'] = json_decode($row['users'], true);
             $data[] = $row;
         }
-        return $data;
+
+        return [
+            'success' => true,
+            'arts' => $data,
+            'total' => $totalItems,
+            'pages' => $totalPages,
+            'current_page' => $page
+        ];
     }
     public function view($a)
     {

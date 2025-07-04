@@ -86,7 +86,7 @@ function renderArtsRow(art, index) {
     }</a> ${i == 0 ? comma : ""}`;
   });
   tr += `</td>
-    <td>${art.price + " " + art.currency} </td>
+    <td>${art.price} </td>
     <td>
         <div class="d-flex gap-1 align-items-center justify-content-center">
          <a class="copy-art btn btn-sm bg-success text-white"
@@ -124,8 +124,8 @@ function addedOrUpdatedArt(art) {
 function loadArtsPaginate(page = 1) {
   fetchArts(page)
     .then((res) => {
-      if (res.success && res.data.length) {
-        arts = res.data; // Update the global artists array
+      if (res.success && res.data.arts.length) {
+        arts = res.data.arts; // Update the global artists array
         renderArtsTable(arts);
       }
     })
@@ -1213,7 +1213,7 @@ $(document).ready(function () {
       let blogId = $("#blogupdatebtn").data("id"),
         title = $("#title").val(),
         user = $("#user").val(),
-        body = $("#body").html();
+        body = $("#textbody").html();
       if (title) {
         formData.append("blog_id", blogId);
         formData.append("title", title);

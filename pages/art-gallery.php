@@ -47,37 +47,36 @@
             </div>
         </section>
         <!-- hero section ends -->
-        <section class="mt-5">
+        <section class="mt-3">
             <div class="row g-0 d-flex justify-content-center align-items-center">
                 <div class="col-lg-8 col-md-10 col-12">
-                    <div class="row g-0 d-flex align-items-center justify-content-between  py-3 px-lg-5 px-md-3 px-2">
+                    <div class="row g-0 d-flex align-items-center justify-content-md-between  justify-content-center py-3 px-lg-5 px-md-3 px-2">
                         <div class="col-lg-9 col-12">
                             <h6 class="text-uppercase text-secondary">Filter by</h6>
-                            <ul class="nav w-100 d-flex align-items-center justify-content-between">
-                                <li class="nav-item">
-                                    <a href=""
-                                        class="btn bg-gold btn-outline-secondary text-white rounded-0 border border-2 px-4">Name</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href=""
-                                        class="btn bg-gold btn-outline-secondary text-white rounded-0 border border-2 px-4">Price</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href=""
-                                        class="btn bg-gold btn-outline-secondary text-white rounded-0 border border-2 px-4">Size</a>
-                                </li>
-                                <li class="nav-item d-lg-block d-none">
+                            <div class="w-100 d-flex gap-3 align-items-center justify-content-between">
+                                <div>
+                                    <input type="text" name="filter-art" id="filter-art" class="form-control rounded-0 bg-gold" placeholder="Art Name">
+                                </div>
+                                <div>
+                                    <input type="text" name="filter-artist" id="filter-artist" class="form-control rounded-0 bg-gold" placeholder="Artist Name">
+                                </div>
+                                <div>
+                                    <select name="filter-price" id="filter-price" class="form-control rounded-0 bg-gold">
+                                        <option value="" selected disabled>Price</option>
+                                        <option value="favorite">Favorite</option>
+                                        <option value="premium">Premium</option>
+                                        <option value="high_value">High Value</option>
+                                        <option value="not_for_sale">Not For Sale</option>
+                                    </select>
+                                </div>
+                                <div class="d-lg-block d-none">
                                     <span style="font-size:30px; color: rgb(168, 128, 65);">|</span>
-                                </li>
-                            </ul>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-lg-3 col-12 text-end">
-                            <h6 class="text-uppercase text-secondary">Explore by</h6>
-                            <ul class="nav w-100 d-flex align-items-center justify-content-end">
-                                <li class="nav-item">
-                                    <a href=""
-                                        class="btn bg-gold btn-outline-secondary text-white rounded-0 border border-2 px-4">Artists</a>
-                                </li>
+                        <div class="col-lg-3 col-md-6 col-sm-8 col-12 pt-4 d-flex gap-2 justify-content-md-end justify-content-center">
+                            <span class="filter-apply btn bg-gold btn-outline-secondary text-white rounded-0 border border-2 px-3" id="filter-apply">Apply</span>
+                            <span class="filter-reset btn bg-gold btn-outline-secondary text-white rounded-0 border border-2 px-3" id="filter-reset">Reset</span>
                         </div>
                     </div>
                     <div class="goldenStroke w-100"></div>
@@ -89,49 +88,10 @@
             <div class="row g-0 d-flex align-items-center justify-content-center py-3">
                 <div class="col-lg-8 col-12">
                     <h4 class="text-center text-uppercase text-secondary">- Gallery -</h4>
-                    <div class="row g-0 d-flex justify-content-center">
-                        <?php foreach ($arts as $i => $art): ?>
-                            <div class="col-md-4 col-sm-6 col-12 p-3">
-                                <div class="d-flex align-items-center justify-content-center border border-1">
-                                    <a href="viewart?a=<?php echo $art['art_id'] ?>">
-                                        <img data-src="../storage/arts/<?php echo $art['image']; ?>"
-                                            alt="<?php $art['imgalt'] ?>"
-                                            style="max-height:300px; max-width:300px;width:100%;">
-                                    </a>
-                                </div>
-                                <div class="row g-0 d-flex justify-content-between align-items-end pt-2">
-                                    <div class="col-6">
-                                        <p class="mb-0 fs-10px"><a
-                                                href="viewart?a=<?php echo $art['art_id'] ?>"  class="text-dark fw-bold"><?php echo $art['name']; ?></a>
-                                        </p>
-                                        <p class="text-secondary fs-10px mb-0">
-                                            <?php echo $art['canvas_type'] . " on " . $art['media']; ?>
-                                        </p>
-                                        <p class="art-dimension text-secondary fs-10px" title=""><?php echo $art['size']; ?>
-                                        </p>
-                                    </div>
-                                    <div class="col-6 d-flex flex-column align-items-end">
-                                        <p class="mb-0 fs-10px"><a
-                                                class="cursor-pointer text-white text-uppercase rounded-0"><i
-                                                    class="cart-icon icon-bg-gold icon-bg-grey-hover"></i>
-                                            </a>
-                                        </p>
-                                        <p class="text-secondary fs-10px mb-0">
-                                            <?php foreach ($art['users'] as $user): ?>
-                                                <a
-                                                    href="viewartists/?a=<?php echo $user['user_id'] ?>"><?php echo $user['first_name'] . ' ' . $user['last_name']; ?></a>
-                                            <?php endforeach ?>
-                                        </p>
-                                        <p class="text-secondary fs-10px text-capitalize">
-                                            <?php echo ucwords(str_replace('_', ' ', $art['price'])); ?>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php endforeach ?>
-                        <div class="col-12 d-flex align-items-end justify-content-end">
-                            <a href="art-gallery" class="btn btn-sm bg-secondary-subtle text-uppercase">View more</a>
-                        </div>
+                    <div class="row g-0 d-flex justify-content-center" id="arts">
+                    </div>
+                    <div class="col-12 d-flex align-items-end justify-content-end">
+                        <a href="art-gallery" class="btn btn-sm bg-secondary-subtle text-uppercase">View more</a>
                     </div>
                 </div>
             </div>
@@ -141,7 +101,7 @@
         <script src="./js/jquery.min.js"></script>
         <script src="./js/bootstrap.min.js"></script>
         <script src="./js/animations.js"></script>
-        <script src="./js/index.js"></script>
+        <script src="./js/art.js"></script>
     </body>
 
 </html>

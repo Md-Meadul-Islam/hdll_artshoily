@@ -135,6 +135,38 @@ class User
         }
         return $artists;
     }
+    public function bloggersAndArtists()
+    {
+        $users = [];
+        $status = 1;
+        $roles = ['blogger', 'artists'];
+
+        // Prepare placeholders (?, ?) for the IN clause
+        $placeholders = implode(',', array_fill(0, count($roles), '?'));
+
+        // Build the SQL
+        $sql = "SELECT u.user_id, u.first_name, u.last_name, u.email, u.phone, u.userphoto, u.coverphoto, u.bio1, u.userrole, u.status, u.cr_at
+                FROM {$this->userstable} u
+                WHERE u.status = ? AND u.userrole IN ($placeholders)";
+
+        $stmt = $this->connection->prepare($sql);
+
+        // Dynamically bind status and roles
+        $types = 's' . str_repeat('s', count($roles)); // 's' for status, and one 's' per role
+        $params = array_merge([$status], $roles);
+
+        // Bind params dynamically using call_user_func_array
+        $stmt->bind_param($types, ...$params);
+
+        $stmt->execute();
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            $users[] = $row;
+        }
+
+        return $users;
+    }
+
     public function paginateUsers($page, $limit)
     {
         $artists = [];
@@ -247,7 +279,6 @@ class User
             return false;
         }
     }
-
     public function userStatusUpdate($uid, $s)
     {
         $stmt = $this->connection->prepare("UPDATE {$this->userstable} SET status = ? WHERE user_id = ?");

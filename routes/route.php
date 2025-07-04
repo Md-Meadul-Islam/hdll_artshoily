@@ -8,9 +8,6 @@ Route::get('api/load-limited-edition-prints', 'ArtController', 'loadLimitedEditi
 Route::get('api/focus-artists', 'ArtistsController', 'focusArtists');
 Route::get('api/home-sculptures', 'SculptureController', 'homeSculpture');
 
-//Art gallery page
-Route::get('art-gallery', 'ArtController', 'index');
-
 //view art page
 Route::get('viewart/{a}', 'ArtController', 'view');
 Route::get('api/more-from-artists', 'ArtController', 'moreFromArtist');
@@ -39,6 +36,10 @@ Route::get('admin/copy-art-modal', 'AdminController', 'loadCopyArtModal', []);
 Route::post('store-art', 'ArtController', 'storeArt', [AuthMiddleware::class]);
 Route::post('update-art', 'ArtController', 'updateArt', [AuthMiddleware::class]);
 Route::post('delete-art', 'ArtController', 'delete', [AuthMiddleware::class]);
+#endregion
+#region Art gallery page
+Route::get('art-gallery', 'ArtController', 'index');
+Route::get('load-art-paginate', 'ArtController', 'paginatedArts');
 #endregion
 #region users = artists / blogger
 Route::get('admin/load-users-paginate', 'UserController', 'loadUsersPaginate');
@@ -78,6 +79,8 @@ Route::post('store-focus-artists', 'ArtistsController', 'storeFocusArtists', [Au
 Route::post('delete-focus-artists', 'ArtistsController', 'deleteFocusArtists', [AuthMiddleware::class]);
 #endregion
 #region Default page
+Route::post('upload-file', 'HomeController', 'uploadFile');
+Route::post('delete-file', 'HomeController', 'deleteFile');
 Route::get('terms', 'HomeController', 'terms');
 Route::get('privacy', 'HomeController', 'privacy');
 Route::get('contact', 'HomeController', 'contact');

@@ -37,7 +37,7 @@ class Blog
             // Decode the user JSON object into an associative array
             $row['user'] = json_decode($row['user'], true);
             $body = html_entity_decode(strip_tags($row['body']));
-            $words = array_slice(explode(' ', $body), 0, 100);
+            $words = array_slice(explode(' ', $body), 0, 20);
             $row['body'] = implode(' ', $words);
             $data[] = $row;
         }

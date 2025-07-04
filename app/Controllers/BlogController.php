@@ -22,7 +22,7 @@ class BlogController
     public function loadCreateBlogModal()
     {
         $user = new User();
-        $bloggers = $user->bloggers();
+        $bloggers = $user->bloggersAndArtists();
         $mode = 'create';
         return view('admin.blog-modal', ['bloggers' => $bloggers, 'mode' => $mode]);
     }
@@ -30,7 +30,7 @@ class BlogController
     {
         $blogId = $_GET['blog_id'];
         $user = new User();
-        $bloggers = $user->bloggers();
+        $bloggers = $user->bloggersAndArtists();
         $blogs = new Blog();
         $blog = $blogs->blog($blogId);
         $mode = 'edit';

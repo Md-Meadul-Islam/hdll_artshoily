@@ -180,3 +180,16 @@ function uploadFile($file, $upload_dir, $allowed_types, $max_size)
         return false;
     }
 }
+function deleteFile($file_path) {
+    $response = ['success' => false];
+    if (file_exists($file_path)) {
+        if (unlink($file_path)) {
+            $response['success'] = true;
+        } else {
+            $response['error'] = 'Failed to delete file';
+        }
+    } else {
+        $response['error'] = 'File not found';
+    }
+    return $response;
+}
