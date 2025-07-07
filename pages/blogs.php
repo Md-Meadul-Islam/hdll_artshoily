@@ -48,7 +48,7 @@
         </section>
         <!-- hero section ends -->
         <section class="pt-5">
-            <div class="blogs row g-3 w-100 d-flex justify-content-center" id="blogs">
+            <div class="blogs row g-0 d-flex justify-content-center" id="blogs">
             </div>
         </section>
         <?php pageAdd('components/footer'); ?>

@@ -14,7 +14,7 @@
             </div>
             <div>
                 <a href="tel:+8809876543210">+880 9876 543 210</a><span class="px-2">|</span><a
-                    href="">info@artshoily.com</a>
+                    href="mailto:info@artshoily.com">info@artshoily.com</a>
             </div>
         </div>
         <div class="col-md-5 col-12 px-lg-2 p-0">

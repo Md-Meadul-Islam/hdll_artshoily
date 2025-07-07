@@ -5,26 +5,26 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="keywords" content="artshoily">
-        <meta name="description" content="">
+        <meta name="description" content="<?php echo $blog['title'] ?>">
         <meta property="og:locale" content="en_US">
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Art Shoily" />
-        <meta property="og:title" content="Art Shoily" />
+        <meta property="og:title" content="Art Shoily | <?php echo $blog['title'] ?>" />
         <meta property="og:description" content="" />
-        <meta property="og:image" content="https://www.artshoily.com/images/og.jpg" />
-        <meta property="og:url" content="https://www.artshoily.com/blog" />
+        <meta property="og:image" content="https://www.artshoily.com/<?php echo $blog['image'] ?>" />
+        <meta property="og:url" content="https://www.artshoily.com/blog?b=<?php echo $blog['blog_id'] ?>" />
         <meta property="og:image:width" content="1280">
         <meta property="og:image:height" content="720">
         <meta name="twitter:card" content="summary_large_image">
-        <meta itemprop="name" content="Art Shoily" />
-        <meta itemprop="description" content="" />
+        <meta itemprop="name" content="Art Shoily | <?php echo $blog['title'] ?>" />
+        <meta itemprop="description" content="<?php echo $blog['title'] ?>" />
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
         <meta name="rating" content="adult">
         <meta name="author" content="Art Shoily">
-        <link rel="canonical" href="https://artishoily.com/blog" />
+        <link rel="canonical" href="https://artshoily.com/blog?b=<?php echo $blog['blog_id'] ?>" />
         <link rel="apple-touch-icon" href="https://www.artishoily.com/images/favicon.ico">
         <link rel="icon" type="image/gif" href="../images/favicon.ico">
-        <title>Art Shoily | Blogs</title>
+        <title>Art Shoily | <?php echo $blog['title'] ?></title>
         <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="./css/bootstrap.css" />
         <link rel="stylesheet" href="./css/style.css" />
@@ -43,7 +43,7 @@
                         <img data-src="../<?php echo $blog['image'] ?>" alt="<?php echo $blog['imgalt'] ?>"
                             style="width:100%;max-height:300px; object-fit:cover;">
                     </div>
-                    <h2 class="text-center fw-bold"><?php echo $blog['title'] ?></h2>
+                    <h2 class="text-center fw-bold pt-2"><?php echo $blog['title'] ?></h2>
                     <div class="blog">
                         <?php echo html_entity_decode($blog['body']); ?>
                     </div>
