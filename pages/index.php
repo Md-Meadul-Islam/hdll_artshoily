@@ -294,7 +294,7 @@
             </div>
         </section>
         <!-- Sculptures section ends -->
-        <!-- news section starts -->
+        <!-- partners section starts -->
         <section class="py-5">
             <div class="row g-0 d-flex align-items-center justify-content-center">
                 <div class="col-md-10 col-12">
@@ -303,45 +303,36 @@
                         </h4>
                         <div class="col-2 p-2 h-100">
                             <div class="w-100 h-100">
-                                <img data-src="./images/news/Verve-02_200x.png" alt="VERVE" class="w-100 h-100">
+                                <img data-src="./images/partners/spellbound.jpg" alt="Spellbound" class="w-100 h-100">
                             </div>
                         </div>
                         <div class="col-2 p-2 h-100">
                             <div class="w-100 h-100">
-                                <img data-src="./images/news/mark.jpg" alt="Mark" class="w-100 h-100">
+                                <img data-src="./images/partners/shanto_mariam_institute.jpg" alt="Shanto Mariam" class="w-100 h-100">
                             </div>
                         </div>
                         <div class="col-2 p-2 h-100">
                             <div class="w-100 h-100">
-                                <img data-src="./images/news/Casa-Vogue-02_200x.png" alt="Casa-Vogue"
+                                <img data-src="./images/partners/ulkashemi.jpg" alt="Ul"
                                     class="w-100 h-100">
                             </div>
                         </div>
                         <div class="col-2 p-2 h-100">
                             <div class="w-100 h-100">
-                                <img data-src="./images/news/AD-02_200x.png" alt="AD-02" class="w-100 h-100">
+                                <img data-src="./images/partners/vista_systech.jpg" alt="VISTA systech" class="w-100 h-100">
                             </div>
                         </div>
                         <div class="col-2 p-2 h-100">
                             <div class="w-100 h-100">
-                                <img data-src="./images/news/Deccan-Chronicle_200x.png" alt="Deccan-Chronicle"
+                                <img data-src="./images/partners/shanto_mariam_foundation.jpg" alt="Shanto Mariam"
                                     class="w-100 h-100">
                             </div>
-                        </div>
-                        <div class="col-2 p-2 h-100">
-                            <div class="w-100 h-100">
-                                <img data-src="./images/news/DNA-02_200x.png" alt="DNA" class="w-100 h-100">
-                            </div>
-                        </div>
-                        <div class="col-12 d-flex align-items-center justify-content-end py-2">
-                            <a href="" class="btn btn-sm bg-secondary-subtle shadow-lg text-uppercase">View all press
-                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- news section ends -->
+        <!-- partners section ends -->
         <!-- blogs section starts -->
         <section class="py-5">
             <div class="row g-0 d-flex align-items-center justify-content-center">
@@ -358,8 +349,7 @@
                                     alt="editions" style="max-height:250px; width:100%; object-fit: contain;">
                             </div>
                             <div class="py-3">
-                                <p class="fs-10px pb-2">Trails in Colour - Tracking Anjolie Ela Menon's
-                                    Maverick Journey Through Her Artworks</p>
+                                <a class="pb-2" href="/blog?b=f0916450-aea2-88f0"><span  class="fw-bold text-dark text-underline-hover">From protest to graffiti of change</span> <br/><span class="fs-10px">- Abdullah Al Masud (Dhaka Tribune)</span></a>
                                 <div class="goldenStroke w-80"></div>
                             </div>
                         </div>
@@ -370,8 +360,7 @@
                             </div>
                             <div class="py-3">
                                 <div class="goldenStroke w-80"></div>
-                                <p class="fs-10px pt-2">Art of Consequence - A Photo Essay on the Legendary, Non
-                                    Conforming Artist Jamima Rock</p>
+                               <a href="/blog?b=43f86a7d-2674-6662"><span  class="fw-bold text-dark text-underline-hover">Bangladeshi Art: A Tapestry of Tradition and Modernity</span> <br/><span class="fs-10px">- Kazi Shahidul Islam</span></a>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-6 col-12 p-3">
@@ -380,7 +369,7 @@
                                     alt="editions" style="max-height:250px; width:100%; object-fit: contain;">
                             </div>
                             <div class="py-3">
-                                <p class="fs-10px pb-2">Byran Wolf The Record breaking Icon of Italian Modernism</p>
+                                <a href="/blog?b=141fe866-dfe1-8ce1"><span  class="fw-bold text-dark text-underline-hover">জয়নুল শৈলীতে নদীবাহিত বাংলার জীবন</span> <br/><span class="fs-10px">- Ashfaqur Rahman (Prothom Alo)</span></a>
                                 <div class="goldenStroke w-80"></div>
                             </div>
                         </div>
