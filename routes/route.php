@@ -48,6 +48,8 @@ Route::post('admin/store-user', 'UserController', 'store', [AuthMiddleware::clas
 Route::get('admin/edit-user-modal', 'UserController', 'loadEditUserModal', [AuthMiddleware::class]);
 Route::post('admin/update-user', 'UserController', 'update', [AuthMiddleware::class]);
 Route::post('admin/delete-user', 'UserController', 'delete', [AuthMiddleware::class]);
+Route::post('admin/change-user-status', 'UserController', 'changeStatus', [AuthMiddleware::class]);
+
 Route::post('admin/update-row-order', 'AdminController', 'updateRowOrder', [AuthMiddleware::class]);
 
 #endregion

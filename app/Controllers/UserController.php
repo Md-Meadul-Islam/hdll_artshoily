@@ -192,4 +192,22 @@ class UserController
             echo json_encode(['success' => false, 'message' => $res['message']]);
         }
     }
+    public function changeStatus()
+    {
+        header('Content-type: application/json');
+        if (empty($_POST['id'])) {
+            echo json_encode(['success' => false, 'message' => 'Something Wrong !']);
+            return 0;
+        }
+        $id = sanitizeInput($_POST['id']);
+        $status = sanitizeInput($_POST['status']);
+        $user = new User();
+        $res = $user->changeStatus($id, $status);
+        if ($res['success']) {
+            echo json_encode(['success' => true, 'message' => $res['message']]);
+            return 0;
+        } else {
+            echo json_encode(['success' => false, 'message' => $res['message']]);
+        }
+    }
 }

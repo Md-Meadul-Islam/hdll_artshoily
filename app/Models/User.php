@@ -175,11 +175,11 @@ class User
         $status = 1;
         $stmt = $this->connection->prepare("SELECT u.user_id, u.first_name, u.last_name, u.email, u.phone, u.userphoto,u.coverphoto, u.userrole, u.status, u.cr_at
             FROM {$this->userstable} u
-            WHERE u.status =? AND u.userrole != ?
+            WHERE u.userrole != ?
             ORDER BY u.id DESC
             LIMIT ? OFFSET ?
         ");
-        $stmt->bind_param('ssii', $status, $role, $limit, $offset);
+        $stmt->bind_param('sii', $role, $limit, $offset);
         $stmt->execute();
         $result = $stmt->get_result();
         while ($row = $result->fetch_assoc()) {
@@ -331,6 +331,50 @@ class User
             return ['success' => false, 'message' => 'Delete query failed!'];
         }
     }
+    public function changeStatus($id, $status)
+    {
+        // Fetch the record first
+        $fetchStmt = $this->connection->prepare("SELECT user_id, status FROM {$this->userstable} WHERE user_id = ?");
+        if ($fetchStmt === false) {
+            die('Prepare failed: ' . htmlspecialchars($this->connection->error));
+        }
+
+        $fetchStmt->bind_param('s', $id);
+        $fetchStmt->execute();
+        $result = $fetchStmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+
+            if ($row['status'] == $status) {
+                return ['success' => false, 'message' => 'Nothing to Update!'];
+            }
+        } else {
+            return ['success' => false, 'message' => 'Record not found!'];
+        }
+
+        // Perform the status update
+        $updateStmt = $this->connection->prepare("UPDATE {$this->userstable} SET status = ? WHERE user_id = ?");
+        if ($updateStmt === false) {
+            die('Prepare failed: ' . htmlspecialchars($this->connection->error));
+        }
+
+        $updateStmt->bind_param('ss', $status, $id);
+        $message = "User Deactivated Successfully !";
+        if($status==1){
+            $message = "User Activated Successfully !";
+        }
+        if ($updateStmt->execute()) {
+            if ($updateStmt->affected_rows > 0) {
+                return ['success' => true, 'message' => $message];
+            } else {
+                return ['success' => false, 'message' => 'Status update failed!'];
+            }
+        } else {
+            return ['success' => false, 'message' => 'Update query failed!'];
+        }
+    }
+
     public function focusArtists()
     {
         $artists = [];

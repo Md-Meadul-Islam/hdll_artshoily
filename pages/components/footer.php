@@ -13,7 +13,7 @@
                     appreciation.</p>
             </div>
             <div>
-                <a href="tel:+8809876543210">+880 9876 543 210</a><span class="px-2">|</span><a
+                <a href="tel:+8801912562764">+880 1912-562764</a><span class="px-2">|</span><a
                     href="mailto:info@artshoily.com">info@artshoily.com</a>
             </div>
         </div>

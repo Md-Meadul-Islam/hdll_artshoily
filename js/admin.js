@@ -175,7 +175,13 @@ function renderUsersRow(user, index) {
             <div class="d-flex gap-1 align-items-center justify-content-center">
                 <a class="edit-user btn btn-sm bg-primary text-white text-nowrap" id="edit-user"
                     data-bs-toggle="modal" data-bs-target="#staticmodal">Full Edit</a>
-                <a class="delete-user btn btn-sm bg-danger">Delete</a>
+                    <a data-status="${
+                      user.status
+                    }" class="change-user-status btn btn-sm ${
+    user.status == 1 ? "bg-success" : "bg-warning"
+  }">${
+    user.status == 1 ? "Deactivate" : "Activate"
+  }</a><a class="delete-user btn btn-sm bg-danger">Delete</a>
             </div>
         </td>
         <td>${user.cr_at}</td>
@@ -910,7 +916,7 @@ $(document).ready(function () {
           success: function (response) {
             if (response.success) {
               tr.remove();
-              artists = artists.filter((artist) => artist.user_id !== dataId);
+              users = users.filter((user) => user.user_id !== dataId);
               $(".toaster").html(anySuccess(response.message));
             } else {
               $(".toaster").html(anyError(response.message));
@@ -921,6 +927,39 @@ $(document).ready(function () {
           },
         });
       }
+    }
+    if ($(e.target).closest(".change-user-status").length) {
+      const tr = $(e.target).closest("tr");
+      const dataId = tr.data("id");
+      const status = $(e.target).attr("data-status");
+      let shouldChange = Number(status) === 1 ? 0 : 1;
+      $.ajax({
+        url: "/admin/change-user-status",
+        type: "POST",
+        data: { id: dataId, status: shouldChange },
+        success: function (response) {
+          if (response.success) {
+            users = users.map((user) => {
+              if (user.user_id == dataId) {
+                return { ...user, status: shouldChange };
+              }
+              return user;
+            });
+            const button = tr.find(".change-user-status");
+            button
+              .attr("data-status", shouldChange)
+              .toggleClass("bg-success", shouldChange == 1)
+              .toggleClass("bg-warning", shouldChange != 1)
+              .text(shouldChange == 1 ? "Deactivate" : "Activate");
+            $(".toaster").html(anySuccess(response.message));
+          } else {
+            $(".toaster").html(anyError(response.message));
+          }
+        },
+        error: function () {
+          $(".toaster").html(anyError(response.message));
+        },
+      });
     }
     //#endregion
     //#region Sculptures
