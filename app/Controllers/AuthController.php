@@ -16,11 +16,16 @@ class AuthController
         $pass = sanitizeInput($_POST['password']);
         if (isset($email) && isset($pass)) {
             $user = new User();
-            $userinfo = $user->login($email, $pass, 'artists');
-            if ($userinfo) {
-                $_SESSION['success'][] = 'Welcome ! You are Successfully Logged In.';
-                return redirect('/');
+            $userinfo = $user->login($email, $pass);
+            if (isset($userinfo['error'])) {
+                // Login failed
+                $_SESSION['error'][] = $userinfo['error'];
+                return redirect('/login');
             }
+           // Login success
+            $_SESSION['temp'] = $userinfo['userid'];
+            $_SESSION['success'][] = 'Welcome! You are successfully logged in.';
+            return redirect("/" . $userinfo['userrole']);
         } else {
             $_SESSION['error'][] = 'Please fill Up Required Field !';
             return redirect('login');
@@ -38,14 +43,15 @@ class AuthController
         if (isset($username) && isset($pass)) {
             $user = new User();
             $userinfo = $user->login($username, $pass, 'admin');
-            if ($userinfo['userid']) {
-                $_SESSION['temp'] = $userinfo['userid'];
-                $_SESSION['success'][] = 'Welcome ! You are Logged In.';
-                return redirect('/admin/dashboard');
-            } else {
+            if (isset($userinfo['error'])) {
+                // Login failed
                 $_SESSION['error'][] = $userinfo['error'];
                 return redirect('/admin');
             }
+           // Login success
+            $_SESSION['temp'] = $userinfo['userid'];
+            $_SESSION['success'][] = 'Welcome! You are successfully logged in.';
+            return redirect("/admin/dashboard");
         } else {
             $_SESSION['error'][] = 'Please fill Up Required Field !';
             return redirect('admin');
@@ -74,7 +80,9 @@ class AuthController
             'email' => $email,
             'phone' => $phone,
             'pass' => $pass,
-            'ip' => $ip
+            'ip' => $ip,
+            'userphoto'=>"storage/artists/default-user.jpg",
+            'coverphoto'=>"storage/artists/default-cover.jpg"
         ];
         if (isset($firstName) && isset($email) && isset($pass)) {
             $user = new User();
@@ -86,7 +94,7 @@ class AuthController
             }
         } else {
             $_SESSION['error'][] = 'Please fill Up Required Field !';
-            return redirect('register');
+            return redirect('signup');
         }
 
 

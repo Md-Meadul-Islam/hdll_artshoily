@@ -51,10 +51,17 @@ class Route
                     }
                 }
                 //handle middleware
-                foreach ($route['middleware'] as $middleware) {
-                    $middlewareClass = new $middleware;
+             foreach ($route['middleware'] as $middleware) {
+                if (is_array($middleware)) {
+                    // [Class, param1, param2, ...]
+                    $middlewareClass = new $middleware[0]();
+                    $args = array_slice($middleware, 1);
+                    $middlewareClass->handle(...$args);
+                } else {
+                    $middlewareClass = new $middleware();
                     $middlewareClass->handle();
                 }
+            }
 
                 $controllerClass = self::$controllerNamespace . $route['controller'];
                 $action = $route['action'];

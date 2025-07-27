@@ -20,7 +20,7 @@ class User
     {
         $this->connection = Database::getInstance()->getConnection();
     }
-    public function login($email, $pass, $type = 'artists')
+    public function login($email, $pass, $type = '')
     {
         $user_email = mysqli_real_escape_string($this->connection, $email);
         $user_password = mysqli_real_escape_string($this->connection, $pass);
@@ -34,17 +34,19 @@ class User
         $stmt = '';
         if ($type === 'admin') {
             $stmt = $this->connection->prepare("SELECT user_id, first_name, email, pass, userphoto,userrole, status FROM {$this->userstable} WHERE first_name = ? AND userrole = ? LIMIT 1");
+            $stmt->bind_param("ss", $user_email, $type);
         } else {
-            $stmt = $this->connection->prepare("SELECT user_id, first_name, email, pass, userphoto, userrole, status FROM {$this->userstable} WHERE email = ? AND userrole = ? LIMIT 1");
+             // Use <> operator for not equal
+            $stmt = $this->connection->prepare("SELECT user_id, first_name, email, pass, userphoto, userrole, status FROM {$this->userstable} WHERE email = ? LIMIT 1");
+            $stmt->bind_param("s", $user_email);
         }
-        $stmt->bind_param("ss", $user_email, $type);
         $stmt->execute();
         $result = $stmt->get_result();
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             if (password_verify($user_password, $row['pass'])) {
                 if ($row['status'] == 1) {
-                    return ['userid' => $row['user_id']];
+                    return ['userid' => $row['user_id'], 'userrole'=>$row['userrole']];
                 } else {
                     return ['error' => 'Please Contact to Admin !'];
                 }
@@ -56,7 +58,7 @@ class User
             return ['error' => 'User Not Found!'];
         }
     }
-    public function signup($data, $type = 'artists')
+    public function signup($data, $type = 'blogger')
     {
         $pass = password_hash($data['pass'], PASSWORD_DEFAULT);
         $stmt = $this->connection->prepare("SELECT * FROM {$this->userstable} WHERE (email =? OR userip = ?)  LIMIT 1");
@@ -69,11 +71,11 @@ class User
             return redirect('writer');
         } else {
             // Insert new user record
-            $insertStmt = $this->connection->prepare("INSERT INTO {$this->userstable} (user_id, first_name, last_name, email, phone, pass, userrole, userip) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            $insertStmt = $this->connection->prepare("INSERT INTO {$this->userstable} (user_id, first_name, last_name, email, phone, userphoto, coverphoto, pass, userrole, userip) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             if ($insertStmt === false) {
                 die('Prepare failed: ' . htmlspecialchars($this->connection->error));
             }
-            $insertStmt->bind_param('ssssssss', $data['userid'], $data['fname'], $data['lname'], $data['email'], $data['phone'], $pass, $type, $data['ip']);
+            $insertStmt->bind_param('ssssssssss', $data['userid'], $data['fname'], $data['lname'], $data['email'], $data['phone'], $data["userphoto"], $data["coverphoto"], $pass, $type, $data['ip']);
 
             if ($insertStmt->execute()) {
                 return [$data['userid'], $data['fname']];
@@ -166,7 +168,6 @@ class User
 
         return $users;
     }
-
     public function paginateUsers($page, $limit)
     {
         $artists = [];
@@ -374,7 +375,6 @@ class User
             return ['success' => false, 'message' => 'Update query failed!'];
         }
     }
-
     public function focusArtists()
     {
         $artists = [];
